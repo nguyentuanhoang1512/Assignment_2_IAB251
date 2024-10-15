@@ -15,11 +15,13 @@ namespace as2
         public int phoneNumber { get; set; }
         public string EmployeeType { get; set; }
         public string Address { get; set; }
-        public string Password { get; set; }
+
+        string Password;
 
         public Employee(string username, string password) : base(username, password)
         {
             this.phoneNumber = phoneNumber;
+            this.Password = password;
         }
     }
 }

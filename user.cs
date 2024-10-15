@@ -32,5 +32,10 @@ namespace as2
 
         public bool delete_user(string user_id)
         { return false; }
+
+        public bool update_user()
+        {
+            return false;
+        }
     }
 }

@@ -25,13 +25,14 @@ namespace IAB251_A2
             switch (choice)
             {
                 case "1":
-     //               RegisterCustomer();
+                    RegisterCustomer();
+
                     break;
                 case "2":
-      //              RegisterEmployee();
+                    RegisterEmployee();
                     break;
                 case "5":
-       //             ExitSystem();
+                    //             ExitSystem();
                     break;
                 default:
                     Console.WriteLine("Invalid choice, please try again.");
@@ -39,4 +40,46 @@ namespace IAB251_A2
                     break;
             }
         }
+
+        
+
+        public static void RegisterEmployee()
+        {
+            Console.WriteLine("Enter first name");
+            string username = Console.ReadLine();
+            Console.WriteLine("Enter last name");
+            string lastname = Console.ReadLine();
+
+
+            Console.WriteLine("Enter password");
+            string password = Console.ReadLine();
+            Employee employee = new Employee(username, password);
+
+            employees.Add(employee);
+        }
+
+        public static void RegisterCustomer()
+        {
+            Console.WriteLine("Enter username");
+            string username = Console.ReadLine();
+            Console.WriteLine("Enter password");
+            string password = Console.ReadLine();
+            Console.WriteLine("User Created please add extra details");
+
+            Customer customer = new Customer(username, password);
+
+            Console.WriteLine("Enter first name");
+            customer.FirstName = Console.ReadLine();
+            Console.WriteLine("Enter last name");
+            customer.LastName = Console.ReadLine();
+            Console.WriteLine("Enter email address");
+            customer.EmailAddress = Console.ReadLine();
+            Console.WriteLine("Enter phone number");
+            customer.phoneNumber = Int32.Parse(Console.ReadLine());
+
+
+            customers.Add(customer);
+            Console.WriteLine(customers[0].FirstName + "  " + customers[0].LastName +  " " + customers[0].EmailAddress);
+        }
     }
+}
