@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace as2
 {
-    public class Customer : user
+    public class Customer : User
     {
         public string FirstName { get; set; }
         public string LastName { get; set; }

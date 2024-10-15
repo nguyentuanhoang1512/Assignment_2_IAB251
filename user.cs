@@ -7,13 +7,13 @@ using System.Threading.Tasks;
 
 namespace as2
 {
-    public class user
+    public class User
     {
         string username;
         string password;
         int user_id;
         enum user_type { staff, customer }
-        public user(string username, string password)
+        public User(string username, string password)
         {
             this.username = username;
             this.password = password;

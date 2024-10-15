@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace as2
 {
-    public class Employee : user
+    public class Employee : User
     {
         public string FirstName { get; set; }
         public string LastName { get; set; }
