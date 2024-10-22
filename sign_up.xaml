@@ -5,11 +5,11 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:front_end"
         mc:Ignorable="d"
-        Title="Sign Up" Height="440.1" Width="214.5">
+        Title="Sign Up" Height="440.1" Width="214.5" Background="#002F6C">
 
-    <!-- Adding ScrollViewer to enable scrolling -->
+    <!-- ScrollViewer for scrollable content -->
     <ScrollViewer VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Disabled">
-        <Grid HorizontalAlignment="Center" Width="221" Background="#FF233A66">
+        <Grid HorizontalAlignment="Center" Width="221">
             <Grid.RowDefinitions>
                 <RowDefinition Height="31*"/>
                 <RowDefinition Height="21*"/>
@@ -26,42 +26,43 @@
             <Label Content="Sign Up" HorizontalAlignment="Center" VerticalAlignment="Center" Grid.Row="0" FontFamily="Tw Cen MT Condensed Extra Bold" FontSize="48" Foreground="White" />
 
             <!-- First Name Input -->
-            <Border HorizontalAlignment="Center" VerticalAlignment="Top" Width="180" Height="29" Grid.Row="1" Background="#FFFFD691" CornerRadius="10" BorderBrush="Gray" BorderThickness="1">
-                <TextBox Background="{x:Null}" BorderThickness="0" TextWrapping="Wrap" Text="First Name" VerticalAlignment="Center" FontFamily="Tw Cen MT Condensed Extra Bold" Foreground="#FF233A66"/>
+            <Border HorizontalAlignment="Center" VerticalAlignment="Top" Width="180" Height="29" Grid.Row="1" Background="White" CornerRadius="10" BorderBrush="Gray" BorderThickness="1">
+                <TextBox Background="{x:Null}" BorderThickness="0" TextWrapping="Wrap" Text="First Name" VerticalAlignment="Center" FontFamily="Tw Cen MT Condensed Extra Bold" Foreground="#333333"/>
             </Border>
 
             <!-- Family Name Input -->
-            <Border HorizontalAlignment="Center" VerticalAlignment="Top" Width="180" Height="29" Grid.Row="2" Background="#FFFFD691" CornerRadius="10" BorderBrush="Gray" BorderThickness="1">
-                <TextBox Background="{x:Null}" BorderThickness="0" TextWrapping="Wrap" Text="Family Name" VerticalAlignment="Center" FontFamily="Tw Cen MT Condensed Extra Bold" Foreground="#FF233A66"/>
+            <Border HorizontalAlignment="Center" VerticalAlignment="Top" Width="180" Height="29" Grid.Row="2" Background="White" CornerRadius="10" BorderBrush="Gray" BorderThickness="1">
+                <TextBox Background="{x:Null}" BorderThickness="0" TextWrapping="Wrap" Text="Family Name" VerticalAlignment="Center" FontFamily="Tw Cen MT Condensed Extra Bold" Foreground="#333333"/>
             </Border>
 
             <!-- Email Input (Used as Username) -->
-            <Border HorizontalAlignment="Center" VerticalAlignment="Top" Width="180" Height="29" Grid.Row="3" Background="#FFFFD691" CornerRadius="10" BorderBrush="Gray" BorderThickness="1">
-                <TextBox Background="{x:Null}" BorderThickness="0" TextWrapping="Wrap" Text="Email Address" VerticalAlignment="Center" FontFamily="Tw Cen MT Condensed Extra Bold" Foreground="#FF233A66"/>
+            <Border HorizontalAlignment="Center" VerticalAlignment="Top" Width="180" Height="29" Grid.Row="3" Background="White" CornerRadius="10" BorderBrush="Gray" BorderThickness="1">
+                <TextBox Background="{x:Null}" BorderThickness="0" TextWrapping="Wrap" Text="Email Address" VerticalAlignment="Center" FontFamily="Tw Cen MT Condensed Extra Bold" Foreground="#333333"/>
             </Border>
 
             <!-- Phone Number Input -->
-            <Border HorizontalAlignment="Center" VerticalAlignment="Top" Width="180" Height="29" Grid.Row="4" Background="#FFFFD691" CornerRadius="10" BorderBrush="Gray" BorderThickness="1">
-                <TextBox Background="{x:Null}" BorderThickness="0" TextWrapping="Wrap" Text="Phone Number" VerticalAlignment="Center" FontFamily="Tw Cen MT Condensed Extra Bold" Foreground="#FF233A66"/>
+            <Border HorizontalAlignment="Center" VerticalAlignment="Top" Width="180" Height="29" Grid.Row="4" Background="White" CornerRadius="10" BorderBrush="Gray" BorderThickness="1">
+                <TextBox Background="{x:Null}" BorderThickness="0" TextWrapping="Wrap" Text="Phone Number" VerticalAlignment="Center" FontFamily="Tw Cen MT Condensed Extra Bold" Foreground="#333333"/>
             </Border>
 
             <!-- Company Name Input -->
-            <Border HorizontalAlignment="Center" VerticalAlignment="Top" Width="180" Height="29" Grid.Row="5" Background="#FFFFD691" CornerRadius="10" BorderBrush="Gray" BorderThickness="1">
-                <TextBox Background="{x:Null}" BorderThickness="0" TextWrapping="Wrap" Text="Company Name (if applicable)" VerticalAlignment="Center" FontFamily="Tw Cen MT Condensed Extra Bold" Foreground="#FF233A66"/>
+            <Border HorizontalAlignment="Center" VerticalAlignment="Top" Width="180" Height="29" Grid.Row="5" Background="White" CornerRadius="10" BorderBrush="Gray" BorderThickness="1">
+                <TextBox Background="{x:Null}" BorderThickness="0" TextWrapping="Wrap" Text="Company Name (if applicable)" VerticalAlignment="Center" FontFamily="Tw Cen MT Condensed Extra Bold" Foreground="#333333"/>
             </Border>
 
             <!-- Address Input -->
-            <Border HorizontalAlignment="Center" VerticalAlignment="Top" Width="180" Height="29" Grid.Row="6" Background="#FFFFD691" CornerRadius="10" BorderBrush="Gray" BorderThickness="1">
-                <TextBox Background="{x:Null}" BorderThickness="0" TextWrapping="Wrap" Text="Address" VerticalAlignment="Center" FontFamily="Tw Cen MT Condensed Extra Bold" Foreground="#FF233A66"/>
+            <Border HorizontalAlignment="Center" VerticalAlignment="Top" Width="180" Height="29" Grid.Row="6" Background="White" CornerRadius="10" BorderBrush="Gray" BorderThickness="1">
+                <TextBox Background="{x:Null}" BorderThickness="0" TextWrapping="Wrap" Text="Address" VerticalAlignment="Center" FontFamily="Tw Cen MT Condensed Extra Bold" Foreground="#333333"/>
             </Border>
 
             <!-- Password Input -->
-            <Border HorizontalAlignment="Center" VerticalAlignment="Top" Width="180" Height="29" Grid.Row="7" Background="#FFFFD691" CornerRadius="10" BorderBrush="Gray" BorderThickness="1">
-                <PasswordBox Background="#FFFFD691" BorderThickness="0" VerticalAlignment="Center" FontFamily="Tw Cen MT Condensed Extra Bold" Foreground="#FF233A66"/>
+            <Border HorizontalAlignment="Center" VerticalAlignment="Top" Width="180" Height="29" Grid.Row="7" Background="White" CornerRadius="10" BorderBrush="Gray" BorderThickness="1">
+                <PasswordBox Background="White" BorderThickness="0" VerticalAlignment="Center" FontFamily="Tw Cen MT Condensed Extra Bold" Foreground="#333333"/>
             </Border>
 
             <!-- Rounded Sign Up Button -->
-            <Button x:Name="SignUp" Content="Sign Up" HorizontalAlignment="Center" Grid.Row="8" VerticalAlignment="Top" Width="120" Height="40" Click="SignUp_Click" FontFamily="Tw Cen MT Condensed Extra Bold">
+            <Button x:Name="SignUp" Content="Sign Up" HorizontalAlignment="Center" Grid.Row="8" VerticalAlignment="Top" Width="120" Height="40" 
+                    Background="#F7941D" Foreground="White" Click="SignUp_Click" FontFamily="Tw Cen MT Condensed Extra Bold">
                 <Button.Template>
                     <ControlTemplate TargetType="Button">
                         <Border Background="{TemplateBinding Background}" 

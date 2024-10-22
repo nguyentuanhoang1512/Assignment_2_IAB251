@@ -5,9 +5,9 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:front_end"
         mc:Ignorable="d"
-        Title="Choose Sign Up Type" Height="440.1" Width="214.5">
+        Title="Choose Sign Up Type" Height="440.1" Width="214.5" Background="#002F6C">
 
-    <Grid HorizontalAlignment="Center" Width="250" Background="#FF233A66">
+    <Grid HorizontalAlignment="Center" Width="250">
         <Grid.RowDefinitions>
             <RowDefinition Height="100*"/>
             <RowDefinition Height="100*"/>
@@ -16,11 +16,13 @@
         </Grid.RowDefinitions>
 
         <!-- Title Label -->
-        <Label Content="Sign Up&#xD;&#xA;    As" HorizontalAlignment="Center" VerticalAlignment="Top" Grid.Row="0" 
-               FontFamily="Tw Cen MT Condensed Extra Bold" FontSize="48" Foreground="White" HorizontalContentAlignment="Center" Margin="0,36,0,0" Grid.RowSpan="2" />
+        <Label Content="Sign Up&#xA;    As" HorizontalAlignment="Center" VerticalAlignment="Top" Grid.Row="0" 
+               FontFamily="Tw Cen MT Condensed Extra Bold" FontSize="36" Foreground="White" HorizontalContentAlignment="Center" Margin="0,36,0,0" Grid.RowSpan="2" />
 
         <!-- Sign Up as Customer Button -->
-        <Button x:Name="CustomerButton" Content="Customer" HorizontalAlignment="Center" VerticalAlignment="Top" Grid.Row="1" Width="180" Height="40" Click="CustomerButton_Click" FontFamily="Tw Cen MT Condensed Extra Bold" Margin="0,66,0,0">
+        <Button x:Name="CustomerButton" Content="Customer" HorizontalAlignment="Center" VerticalAlignment="Top" Grid.Row="1" Width="180" Height="40" 
+                Background="#F7941D" Foreground="White" 
+                FontFamily="Tw Cen MT Condensed Extra Bold" Margin="0,66,0,0">
             <Button.Template>
                 <ControlTemplate TargetType="Button">
                     <Border Background="{TemplateBinding Background}" 
@@ -34,7 +36,9 @@
         </Button>
 
         <!-- Sign Up as Employee Button -->
-        <Button x:Name="EmployeeButton" Content="Employee" HorizontalAlignment="Center" VerticalAlignment="Center" Grid.Row="2" Width="180" Height="40" Click="EmployeeButton_Click" FontFamily="Tw Cen MT Condensed Extra Bold">
+        <Button x:Name="EmployeeButton" Content="Employee" HorizontalAlignment="Center" VerticalAlignment="Center" Grid.Row="2" Width="180" Height="40" 
+                Background="#F7941D" Foreground="White" 
+                FontFamily="Tw Cen MT Condensed Extra Bold">
             <Button.Template>
                 <ControlTemplate TargetType="Button">
                     <Border Background="{TemplateBinding Background}" 
@@ -48,7 +52,9 @@
         </Button>
 
         <!-- Go Back Button -->
-        <Button x:Name="GoBackButton" Content="Back" HorizontalAlignment="Center" VerticalAlignment="Center" Grid.Row="3" Width="120" Height="40" Click="GoBackButton_Click" FontFamily="Tw Cen MT Condensed Extra Bold">
+        <Button x:Name="GoBackButton" Content="Back" HorizontalAlignment="Center" VerticalAlignment="Center" Grid.Row="3" Width="120" Height="40" 
+                Background="#F7941D" Foreground="White" 
+                FontFamily="Tw Cen MT Condensed Extra Bold">
             <Button.Template>
                 <ControlTemplate TargetType="Button">
                     <Border Background="{TemplateBinding Background}" 

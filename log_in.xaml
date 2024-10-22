@@ -5,26 +5,27 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:front_end"
         mc:Ignorable="d"
-        Title="login" Height="440.1" Width="214.5">
-    <Grid HorizontalAlignment="Center" Width="221" Background="#FF233A66">
+        Title="login" Height="440.1" Width="214.5" Background="#002F6C">
+
+    <Grid HorizontalAlignment="Center" Width="221">
         <Grid.RowDefinitions>
             <RowDefinition Height="235*"/>
             <RowDefinition Height="0*"/>
             <RowDefinition Height="199*"/>
         </Grid.RowDefinitions>
 
-        <!-- First Rounded TextBox -->
-        <Border HorizontalAlignment="Center" VerticalAlignment="Top" Width="134" Height="29" Margin="0,169,0,0" Background="#FFFFD691" CornerRadius="10" BorderBrush="Gray" BorderThickness="1">
-            <TextBox Background="{x:Null}" BorderThickness="0" TextWrapping="Wrap" Text="Username" VerticalAlignment="Center" FontFamily="Tw Cen MT Condensed Extra Bold" HorizontalAlignment="Left" Foreground="#FF233A66"/>
+        <!-- First Rounded TextBox for Username -->
+        <Border HorizontalAlignment="Center" VerticalAlignment="Top" Width="134" Height="29" Margin="0,169,0,0" Background="White" CornerRadius="10" BorderBrush="Gray" BorderThickness="1">
+            <TextBox Background="{x:Null}" BorderThickness="0" TextWrapping="Wrap" Text="Username" VerticalAlignment="Center" FontFamily="Tw Cen MT Condensed Extra Bold" HorizontalAlignment="Left" Foreground="#333333"/>
         </Border>
 
-        <!-- Second Rounded TextBox -->
-        <Border HorizontalAlignment="Center" VerticalAlignment="Top" Width="134" Height="29" Margin="0,215,0,0" Background="#FFFFD691" CornerRadius="10" BorderBrush="Gray" BorderThickness="1" Grid.RowSpan="3">
-            <TextBox Background="#FFFFD691" BorderThickness="0" TextWrapping="Wrap" Text="Password" VerticalAlignment="Center" FontFamily="Tw Cen MT Condensed Extra Bold" Margin="1,0,-1,0" Foreground="#FF233A66"/>
+        <!-- Second Rounded TextBox for Password -->
+        <Border HorizontalAlignment="Center" VerticalAlignment="Top" Width="134" Height="29" Margin="0,215,0,0" Background="White" CornerRadius="10" BorderBrush="Gray" BorderThickness="1" Grid.RowSpan="3">
+            <TextBox Background="White" BorderThickness="0" TextWrapping="Wrap" Text="Password" VerticalAlignment="Center" FontFamily="Tw Cen MT Condensed Extra Bold" Margin="1,0,-1,0" Foreground="#333333"/>
         </Border>
 
         <!-- Rounded Login Button -->
-        <Button x:Name="Login" Content="Login" HorizontalAlignment="Center" Margin="0,49,0,0" Grid.Row="2" VerticalAlignment="Top" Width="98" Height="40" Click="Login_Click" FontFamily="Tw Cen MT Condensed Extra Bold">
+        <Button x:Name="Login" Content="Login" HorizontalAlignment="Center" Margin="0,49,0,0" Grid.Row="2" VerticalAlignment="Top" Width="98" Height="40" Background="#F7941D" Foreground="White" Click="Login_Click" FontFamily="Tw Cen MT Condensed Extra Bold">
             <Button.Template>
                 <ControlTemplate TargetType="Button">
                     <Border Background="{TemplateBinding Background}" 
@@ -36,8 +37,14 @@
                 </ControlTemplate>
             </Button.Template>
         </Button>
-        <Label Content="Login" HorizontalAlignment="Center" Height="72" VerticalAlignment="Center" Width="134" FontFamily="Tw Cen MT Condensed Extra Bold" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontSize="48" Foreground="White"/>
-        <TextBox HorizontalAlignment="Left" Margin="28,149,0,0" Grid.Row="2" TextWrapping="Wrap" Text="Don't have account? " VerticalAlignment="Top" Width="120" Background="#FF233A66" Foreground="#FFFEFEFE" BorderBrush="{x:Null}"/>
-        <TextBox HorizontalAlignment="Left" Margin="142,149,0,0" Grid.Row="2" TextWrapping="Wrap" Text="Sign up" VerticalAlignment="Top" Width="120" Background="#FF233A66" Foreground="#FFFFD691" BorderBrush="{x:Null}"/>
+
+        <!-- Login Title Label -->
+        <Label Content="Login" HorizontalAlignment="Center" Height="72" VerticalAlignment="Top" Width="134" FontFamily="Tw Cen MT Condensed Extra Bold" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontSize="48" Foreground="White" Margin="0,64,0,0"/>
+
+        <!-- 'Don't have an account?' Text -->
+        <TextBox HorizontalAlignment="Left" Margin="28,149,0,0" Grid.Row="2" TextWrapping="Wrap" Text="Don't have an account? " VerticalAlignment="Top" Width="120" Background="#002F6C" Foreground="White" BorderBrush="{x:Null}"/>
+
+        <!-- 'Sign up' Link -->
+        <TextBox HorizontalAlignment="Left" Margin="142,149,0,0" Grid.Row="2" TextWrapping="Wrap" Text="Sign up" VerticalAlignment="Top" Width="120" Background="#002F6C" Foreground="#F7941D" BorderBrush="{x:Null}"/>
     </Grid>
 </Window>
