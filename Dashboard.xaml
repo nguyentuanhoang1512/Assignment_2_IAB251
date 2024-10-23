@@ -1,35 +1,38 @@
 ﻿<Window x:Class="front_end.Dashboard"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        Title="Dashboard" Height="440.1" Width="214.5" Background="#002F6C">
+        Title="Dashboard" Height="440.1" Width="214.5"
+        WindowStyle="None" AllowsTransparency="True" Background="Transparent">
 
-    <!-- ScrollViewer for scrollable content -->
-    <ScrollViewer VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Disabled">
-        <Grid Background="#002F6C">
-            <Grid.RowDefinitions>
-                <RowDefinition Height="Auto"/>
-                <RowDefinition Height="Auto"/>
-                <RowDefinition Height="*"/>
-            </Grid.RowDefinitions>
+    <Border Background="#002F6C" CornerRadius="25" BorderThickness="2" BorderBrush="#F7941D" Padding="10">
+        <!-- ScrollViewer for scrollable content -->
+        <ScrollViewer VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Disabled">
+            <Grid Background="#002F6C">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
 
-            <!-- Interport Logo -->
-            <Image Source="/front_end;component/Resources/logo.png" 
-                   Width="115" Height="31" 
-                   HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10,10,0,0" Grid.Row="2"/>
+                <!-- Interport Logo -->
+                <Image Source="/front_end;component/Resources/logo.png" 
+                       Width="115" Height="31" 
+                       HorizontalAlignment="Center" VerticalAlignment="Top" Margin="0,10,0,0" Grid.Row="0"/>
 
-            <!-- Navigation Bar -->
-            <StackPanel Orientation="Horizontal" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="0,46,0,0" Grid.RowSpan="3">
-                <Button Content="Home" Width="60" Background="#F7941D" Foreground="White" FontFamily="Tw Cen MT Condensed Extra Bold" Margin="5"/>
-                <Button Content="Services" Width="60" Background="#F7941D" Foreground="White" FontFamily="Tw Cen MT Condensed Extra Bold" Margin="5"/>
-                <Button Content="About" Width="60" Background="#F7941D" Foreground="White" FontFamily="Tw Cen MT Condensed Extra Bold" Margin="5"/>
-            </StackPanel>
+                <!-- Navigation Bar -->
+                <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="0,46,0,0" Grid.Row="1">
+                    <Button Content="Home" Width="60" Background="#F7941D" Foreground="White" FontFamily="Tw Cen MT Condensed Extra Bold" Margin="5"/>
+                    <Button Content="Services" Width="60" Background="#F7941D" Foreground="White" FontFamily="Tw Cen MT Condensed Extra Bold" Margin="5"/>
+                    <Button Content="About" Width="60" Background="#F7941D" Foreground="White" FontFamily="Tw Cen MT Condensed Extra Bold" Margin="5"/>
+                </StackPanel>
 
-            <!-- Service Highlights -->
-            <StackPanel HorizontalAlignment="Left" VerticalAlignment="Top" Grid.Row="2" Margin="15,94,0,0">
-                <TextBlock Text=" Specialist Cargo Services" FontSize="14" Foreground="White" FontFamily="Tw Cen MT Condensed Extra Bold"/>
-                <TextBlock Text="12,000m² of Warehouse Space" FontSize="16" Foreground="White" FontFamily="Tw Cen MT Condensed Extra Bold"/>
-                <TextBlock Text="Undercover Container Facilities" FontSize="14" Foreground="White" FontFamily="Tw Cen MT Condensed Extra Bold" Margin="5"/>
-            </StackPanel>
-        </Grid>
-    </ScrollViewer>
+                <!-- Service Highlights -->
+                <StackPanel HorizontalAlignment="Center" VerticalAlignment="Top" Grid.Row="2" Margin="0,15,0,0">
+                    <TextBlock Text="Specialist Cargo Services" FontSize="14" Foreground="White" FontFamily="Tw Cen MT Condensed Extra Bold"/>
+                    <TextBlock Text="12,000m² of Warehouse Space" FontSize="16" Foreground="White" FontFamily="Tw Cen MT Condensed Extra Bold"/>
+                    <TextBlock Text="Undercover Container Facilities" FontSize="14" Foreground="White" FontFamily="Tw Cen MT Condensed Extra Bold" Margin="5"/>
+                </StackPanel>
+            </Grid>
+        </ScrollViewer>
+    </Border>
 </Window>

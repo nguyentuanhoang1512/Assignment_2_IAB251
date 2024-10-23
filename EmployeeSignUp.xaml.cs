@@ -10,23 +10,19 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
+using System.Windows.Navigation;
 using System.Windows.Shapes;
 
 namespace front_end
 {
     /// <summary>
-    /// Interaction logic for ChooseSignUpType.xaml
+    /// Interaction logic for EmployeeSignUp.xaml
     /// </summary>
-    public partial class ChooseSignUpType : Window
+    public partial class EmployeeSignUp : Page
     {
-        public ChooseSignUpType()
+        public EmployeeSignUp()
         {
             InitializeComponent();
-        }
-
-        private void TextBox_TextChanged(object sender, TextChangedEventArgs e)
-        {
-
         }
     }
 }

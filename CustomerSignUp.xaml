@@ -1,11 +1,10 @@
-﻿<Window x:Class="front_end.SignUp"
+﻿<Window x:Class="front_end.CustomerSignUp"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        Title="Sign Up" Height="440.1" Width="214.5"
+        Title="Customer Sign Up" Height="440.1" Width="214.5" 
         WindowStyle="None" AllowsTransparency="True" Background="Transparent">
 
     <Border Background="#002F6C" CornerRadius="25" BorderThickness="2" BorderBrush="#F7941D">
-        <!-- ScrollViewer for scrollable content -->
         <ScrollViewer VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Disabled">
             <Grid HorizontalAlignment="Center" Width="221">
                 <Grid.RowDefinitions>
@@ -16,12 +15,11 @@
                     <RowDefinition Height="21*"/>
                     <RowDefinition Height="21*"/>
                     <RowDefinition Height="21*"/>
-                    <RowDefinition Height="21*"/>
                     <RowDefinition Height="35*"/>
                 </Grid.RowDefinitions>
 
                 <!-- Title Label -->
-                <Label Content="Sign Up" HorizontalAlignment="Center" VerticalAlignment="Center" Grid.Row="0" FontFamily="Tw Cen MT Condensed Extra Bold" FontSize="48" Foreground="White" />
+                <Label Content="Customer &#xD;&#xA;Sign Up" HorizontalAlignment="Center" VerticalAlignment="Center" Grid.Row="0" FontFamily="Tw Cen MT Condensed Extra Bold" FontSize="36" Foreground="White"/>
 
                 <!-- First Name Input -->
                 <Border HorizontalAlignment="Center" VerticalAlignment="Top" Width="180" Height="29" Grid.Row="1" Background="White" CornerRadius="10" BorderBrush="Gray" BorderThickness="1">
@@ -33,7 +31,7 @@
                     <TextBox Background="{x:Null}" BorderThickness="0" TextWrapping="Wrap" Text="Family Name" VerticalAlignment="Center" FontFamily="Tw Cen MT Condensed Extra Bold" Foreground="#333333"/>
                 </Border>
 
-                <!-- Email Input (Used as Username) -->
+                <!-- Email Address Input -->
                 <Border HorizontalAlignment="Center" VerticalAlignment="Top" Width="180" Height="29" Grid.Row="3" Background="White" CornerRadius="10" BorderBrush="Gray" BorderThickness="1">
                     <TextBox Background="{x:Null}" BorderThickness="0" TextWrapping="Wrap" Text="Email Address" VerticalAlignment="Center" FontFamily="Tw Cen MT Condensed Extra Bold" Foreground="#333333"/>
                 </Border>
@@ -43,7 +41,7 @@
                     <TextBox Background="{x:Null}" BorderThickness="0" TextWrapping="Wrap" Text="Phone Number" VerticalAlignment="Center" FontFamily="Tw Cen MT Condensed Extra Bold" Foreground="#333333"/>
                 </Border>
 
-                <!-- Company Name Input -->
+                <!-- Company Name Input (Optional) -->
                 <Border HorizontalAlignment="Center" VerticalAlignment="Top" Width="180" Height="29" Grid.Row="5" Background="White" CornerRadius="10" BorderBrush="Gray" BorderThickness="1">
                     <TextBox Background="{x:Null}" BorderThickness="0" TextWrapping="Wrap" Text="Company Name (if applicable)" VerticalAlignment="Center" FontFamily="Tw Cen MT Condensed Extra Bold" Foreground="#333333"/>
                 </Border>
@@ -58,20 +56,8 @@
                     <PasswordBox Background="White" BorderThickness="0" VerticalAlignment="Center" FontFamily="Tw Cen MT Condensed Extra Bold" Foreground="#333333"/>
                 </Border>
 
-                <!-- Rounded Sign Up Button -->
-                <Button x:Name="SignUp" Content="Sign Up" HorizontalAlignment="Center" Grid.Row="8" VerticalAlignment="Top" Width="120" Height="40" 
-                        Background="#F7941D" Foreground="White" Click="SignUp_Click" FontFamily="Tw Cen MT Condensed Extra Bold">
-                    <Button.Template>
-                        <ControlTemplate TargetType="Button">
-                            <Border Background="{TemplateBinding Background}" 
-                                    BorderBrush="{TemplateBinding BorderBrush}" 
-                                    BorderThickness="2" 
-                                    CornerRadius="20">
-                                <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
-                            </Border>
-                        </ControlTemplate>
-                    </Button.Template>
-                </Button>
+                <!-- Sign Up Button -->
+                <Button Content="Sign Up" HorizontalAlignment="Center" Grid.Row="8" Width="120" Height="40" Background="#F7941D" Foreground="White" FontFamily="Tw Cen MT Condensed Extra Bold"/>
             </Grid>
         </ScrollViewer>
     </Border>

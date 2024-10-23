@@ -10,6 +10,7 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
+using System.Windows.Navigation;
 using System.Windows.Shapes;
 
 namespace front_end
@@ -17,7 +18,7 @@ namespace front_end
     /// <summary>
     /// Interaction logic for Quotations.xaml
     /// </summary>
-    public partial class Quotations : Window
+    public partial class Quotations : Page
     {
         public Quotations()
         {
