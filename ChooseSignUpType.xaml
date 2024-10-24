@@ -5,7 +5,7 @@
         WindowStyle="None" AllowsTransparency="True" Background="Transparent">
 
     <Border Background="#002F6C" CornerRadius="25" BorderThickness="2" BorderBrush="#F7941D">
-        <Grid HorizontalAlignment="Center" Width="250">
+        <Grid HorizontalAlignment="Center" Width="215" Margin="0,0,0,-2">
             <Grid.RowDefinitions>
                 <RowDefinition Height="100*"/>
                 <RowDefinition Height="100*"/>
@@ -13,9 +13,20 @@
                 <RowDefinition Height="100*"/>
             </Grid.RowDefinitions>
 
+            <Button Width="20" Height="18" 
+                    HorizontalAlignment="Left" 
+                    Background="{x:Null}" BorderBrush="{x:Null}" 
+                    BorderThickness="2" Margin="10" Padding="0" Click="GoBack_Click">
+                <Border CornerRadius="18">
+                    <TextBlock FontFamily="Segoe MDL2 Assets" Text="&#xE72B;" 
+                            Foreground="#F7941D" FontSize="16" 
+                            VerticalAlignment="Top" HorizontalAlignment="Left"/>
+                </Border>
+            </Button>
+
             <!-- Title Label -->
             <Label Content="Sign Up&#xA;    As" HorizontalAlignment="Center" VerticalAlignment="Top" Grid.Row="0" 
-                   FontFamily="Tw Cen MT Condensed Extra Bold" FontSize="36" Foreground="White" HorizontalContentAlignment="Center" Margin="0,36,0,0" Grid.RowSpan="2" />
+                   FontFamily="Tw Cen MT Condensed Extra Bold" FontSize="36" Foreground="White" HorizontalContentAlignment="Center" Margin="0,36,0,0" Grid.RowSpan="2" Width="120" />
 
             <!-- Sign Up as Customer Button -->
             <Button x:Name="CustomerButton" Content="Customer" HorizontalAlignment="Center" VerticalAlignment="Top" Grid.Row="1" Width="180" Height="40" 
@@ -52,21 +63,7 @@
                 </Button.Template>
             </Button>
 
-            <!-- Go Back Button -->
-            <Button x:Name="GoBackButton" Content="Back" HorizontalAlignment="Center" VerticalAlignment="Center" Grid.Row="3" Width="120" Height="40" 
-                    Background="#F7941D" Foreground="White" 
-                    FontFamily="Tw Cen MT Condensed Extra Bold">
-                <Button.Template>
-                    <ControlTemplate TargetType="Button">
-                        <Border Background="{TemplateBinding Background}" 
-                                BorderBrush="{TemplateBinding BorderBrush}" 
-                                BorderThickness="2" 
-                                CornerRadius="20">
-                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
-                        </Border>
-                    </ControlTemplate>
-                </Button.Template>
-            </Button>
+
         </Grid>
     </Border>
 </Window>

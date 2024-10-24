@@ -8,30 +8,58 @@
         <ScrollViewer VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Disabled">
             <Grid>
                 <StackPanel HorizontalAlignment="Center" VerticalAlignment="Top" Margin="10">
-                    <Label Content="Request Quotation" FontSize="18" Foreground="White" FontFamily="Tw Cen MT Condensed Extra Bold"/>
 
-                    <TextBox Name="SourceTextBox" Width="180" Margin="5" Text="Source" 
-                             Background="White" Foreground="#333333" 
-                             FontFamily="Tw Cen MT Condensed Extra Bold"/>
-                    <TextBox Name="DestinationTextBox" Width="180" Margin="5" Text="Destination" 
-                             Background="White" Foreground="#333333"
-                             FontFamily="Tw Cen MT Condensed Extra Bold"/>
-                    <TextBox Name="NumberOfContainersTextBox" Width="180" Margin="5" Text="Number of Containers" 
-                             Background="White" Foreground="#333333" 
-                             FontFamily="Tw Cen MT Condensed Extra Bold"/>
-                    <TextBox Name="NatureOfPackageTextBox" Width="180" Margin="5" Text="Nature of the Package" 
-                             Background="White" Foreground="#333333"
-                             FontFamily="Tw Cen MT Condensed Extra Bold"/>
-                    <TextBox Name="NatureOfJobTextBox" Width="180" Margin="5" Text="Nature of the Job" 
-                             Background="White" Foreground="#333333"
-                             FontFamily="Tw Cen MT Condensed Extra Bold" AcceptsReturn="True" Height="60"/>
+                    <Button Width="20" Height="18" 
+                    HorizontalAlignment="Left" 
+                    Background="{x:Null}" BorderBrush="{x:Null}" 
+                    BorderThickness="2" Margin="10" Padding="0" Click="GoBack_Click">
+                        <Border CornerRadius="18">
+                            <TextBlock FontFamily="Segoe MDL2 Assets" Text="&#xE72B;" 
+                            Foreground="#F7941D" FontSize="16" 
+                            VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                        </Border>
+                    </Button>
+                    <!-- Centered Label -->
+                    <Label Content="Request Quotation" 
+                           Width="180" 
+                           HorizontalAlignment="Center" 
+                           FontSize="24" 
+                           Foreground="White" 
+                           FontFamily="Tw Cen MT Condensed Extra Bold" 
+                           HorizontalContentAlignment="Center" 
+                           Margin="10"/>
 
-                    <Button Content="Submit" Width="120" Height="30" Margin="10" 
-                            Background="#F7941D" Foreground="White" 
-                            FontFamily="Tw Cen MT Condensed Extra Bold"/>
+                    <!-- Rounded Source Input -->
+                    <Border HorizontalAlignment="Center" VerticalAlignment="Top" Width="180" Height="29" Background="White" CornerRadius="10" BorderBrush="Gray" BorderThickness="1" Margin="5">
+                        <TextBox Name="SourceTextBox" BorderThickness="0" TextWrapping="Wrap" Text="Source" VerticalAlignment="Center" FontFamily="Tw Cen MT Condensed Extra Bold" Foreground="#333333"/>
+                    </Border>
+
+                    <!-- Rounded Destination Input -->
+                    <Border HorizontalAlignment="Center" VerticalAlignment="Top" Width="180" Height="29" Background="White" CornerRadius="10" BorderBrush="Gray" BorderThickness="1" Margin="5">
+                        <TextBox Name="DestinationTextBox" BorderThickness="0" TextWrapping="Wrap" Text="Destination" VerticalAlignment="Center" FontFamily="Tw Cen MT Condensed Extra Bold" Foreground="#333333"/>
+                    </Border>
+
+                    <!-- Rounded Number of Containers Input -->
+                    <Border HorizontalAlignment="Center" VerticalAlignment="Top" Width="180" Height="29" Background="White" CornerRadius="10" BorderBrush="Gray" BorderThickness="1" Margin="5">
+                        <TextBox Name="NumberOfContainersTextBox" BorderThickness="0" TextWrapping="Wrap" Text="Number of Containers" VerticalAlignment="Center" FontFamily="Tw Cen MT Condensed Extra Bold" Foreground="#333333"/>
+                    </Border>
+
+                    <!-- Rounded Nature of Package Input -->
+                    <Border HorizontalAlignment="Center" VerticalAlignment="Top" Width="180" Height="29" Background="White" CornerRadius="10" BorderBrush="Gray" BorderThickness="1" Margin="5">
+                        <TextBox Name="NatureOfPackageTextBox" BorderThickness="0" TextWrapping="Wrap" Text="Nature of the Package" VerticalAlignment="Center" FontFamily="Tw Cen MT Condensed Extra Bold" Foreground="#333333"/>
+                    </Border>
+
+                    <!-- Rounded Nature of Job Input -->
+                    <Border HorizontalAlignment="Center" VerticalAlignment="Top" Width="180" Height="60" Background="White" CornerRadius="10" BorderBrush="Gray" BorderThickness="1" Margin="5">
+                        <TextBox Name="NatureOfJobTextBox" BorderThickness="0" TextWrapping="Wrap" Text="Nature of the Job" VerticalAlignment="Center" FontFamily="Tw Cen MT Condensed Extra Bold" Foreground="#333333" AcceptsReturn="True"/>
+                    </Border>
+
+                    <!-- Rounded Submit Button -->
+                    <Border CornerRadius="20" Width="120" Height="40" Margin="10">
+                        <Button Content="Submit" Background="#F7941D" Foreground="White" FontFamily="Tw Cen MT Condensed Extra Bold" BorderThickness="0"/>
+                    </Border>
                 </StackPanel>
             </Grid>
         </ScrollViewer>
     </Border>
 </Window>
-
