@@ -1,13 +1,7 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using as2;
+using IAB251_A2.Models;
 
-using System;
-
-namespace as2
+namespace IAB251_A2.Services
 {
     public class QuotationRequest
     {
@@ -35,10 +29,10 @@ namespace as2
             Console.WriteLine("Quotation Request Submitted Successfully.");
             Console.WriteLine($"Request ID: {RequestID}");
             Console.WriteLine($"Customer: {Customer.FirstName} {Customer.LastName}");
-            Console.WriteLine($"Email: {Customer.EmailAddress}");
-            Console.WriteLine($"Phone: {Customer.phoneNumber}");
-            Console.WriteLine($"Company: {Customer.companyName}");
-            Console.WriteLine($"Address: {Customer.address}, {Customer.contry}");
+            Console.WriteLine($"Email: {Customer.Email}"); 
+            Console.WriteLine($"Phone: {Customer.PhoneNumber}"); 
+            Console.WriteLine($"Company: {Customer.CompanyName}");
+            Console.WriteLine($"Address: {Customer.Address}, {Customer.Country}");
             Console.WriteLine($"Source: {Source}");
             Console.WriteLine($"Destination: {Destination}");
             Console.WriteLine($"Number of Containers: {NumberOfContainers}");
@@ -69,5 +63,4 @@ namespace as2
             return $"Import: {IsImport}, Export: {IsExport}, Packing: {IsPackingRequired}, Unpacking: {IsUnpackingRequired}, Quarantine: {HasQuarantineRequirements}";
         }
     }
-
 }
