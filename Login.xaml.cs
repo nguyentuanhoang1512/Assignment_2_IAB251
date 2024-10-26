@@ -23,6 +23,7 @@ namespace front_end
         {
             InitializeComponent();
             _authService = new AuthenticationService(new UserService());
+
             AddPlaceholderText(UsernameTextBox, null);
         }
 

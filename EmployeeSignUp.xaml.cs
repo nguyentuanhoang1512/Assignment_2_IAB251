@@ -48,7 +48,7 @@ namespace front_end
 
         private void RegisterButton_Click(object sender, RoutedEventArgs e)
         {
-            // Collect data from the textboxes and ComboBox
+
             string firstName = FirstNameTextBox.Text.Trim();
             string lastName = LastNameTextBox.Text.Trim();
             string email = EmailTextBox.Text.Trim();
@@ -58,18 +58,17 @@ namespace front_end
             string address = AddressTextBox.Text.Trim();
             string password = PasswordBox.Password;
 
-            // Ensure fields are not empty and data is correct
             if (!phoneParsed)
             {
                 MessageBox.Show("Invalid phone number. Please enter a valid number.");
                 return;
             }
 
-            // Register employee
             _userController.RegisterEmployee(firstName, lastName, email, phoneNumber, employeeType, address, password);
             MessageBox.Show("Employee registered successfully!");
 
-            // Close or reset the form
+            var customerLogin = new login();
+            customerLogin.Show();
             this.Close();
         }
     }

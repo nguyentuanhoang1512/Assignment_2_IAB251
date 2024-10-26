@@ -31,32 +31,32 @@
 
                     <!-- Rounded Source Input -->
                     <Border HorizontalAlignment="Center" VerticalAlignment="Top" Width="180" Height="29" Background="White" CornerRadius="10" BorderBrush="Gray" BorderThickness="1" Margin="5">
-                        <TextBox Name="SourceTextBox" BorderThickness="0" TextWrapping="Wrap" Text="Source" VerticalAlignment="Center" FontFamily="Tw Cen MT Condensed Extra Bold" Foreground="#333333"/>
+                        <TextBox Name="SourceTextBox" BorderThickness="0" TextWrapping="Wrap" Tag="Source" GotFocus="ClearText" LostFocus="AddPlaceholderText" VerticalAlignment="Center" FontFamily="Tw Cen MT Condensed Extra Bold" Foreground="#333333"/>
                     </Border>
 
                     <!-- Rounded Destination Input -->
                     <Border HorizontalAlignment="Center" VerticalAlignment="Top" Width="180" Height="29" Background="White" CornerRadius="10" BorderBrush="Gray" BorderThickness="1" Margin="5">
-                        <TextBox Name="DestinationTextBox" BorderThickness="0" TextWrapping="Wrap" Text="Destination" VerticalAlignment="Center" FontFamily="Tw Cen MT Condensed Extra Bold" Foreground="#333333"/>
+                        <TextBox Name="DestinationTextBox" BorderThickness="0" TextWrapping="Wrap" Tag="Destination" GotFocus="ClearText" LostFocus="AddPlaceholderText" VerticalAlignment="Center" FontFamily="Tw Cen MT Condensed Extra Bold" Foreground="#333333"/>
                     </Border>
 
                     <!-- Rounded Number of Containers Input -->
                     <Border HorizontalAlignment="Center" VerticalAlignment="Top" Width="180" Height="29" Background="White" CornerRadius="10" BorderBrush="Gray" BorderThickness="1" Margin="5">
-                        <TextBox Name="NumberOfContainersTextBox" BorderThickness="0" TextWrapping="Wrap" Text="Number of Containers" VerticalAlignment="Center" FontFamily="Tw Cen MT Condensed Extra Bold" Foreground="#333333"/>
+                        <TextBox Name="NumberOfContainersTextBox" BorderThickness="0" TextWrapping="Wrap" Tag="Number of Containers" GotFocus="ClearText" LostFocus="AddPlaceholderText" VerticalAlignment="Center" FontFamily="Tw Cen MT Condensed Extra Bold" Foreground="#333333"/>
                     </Border>
 
                     <!-- Rounded Nature of Package Input -->
                     <Border HorizontalAlignment="Center" VerticalAlignment="Top" Width="180" Height="29" Background="White" CornerRadius="10" BorderBrush="Gray" BorderThickness="1" Margin="5">
-                        <TextBox Name="NatureOfPackageTextBox" BorderThickness="0" TextWrapping="Wrap" Text="Nature of the Package" VerticalAlignment="Center" FontFamily="Tw Cen MT Condensed Extra Bold" Foreground="#333333"/>
+                        <TextBox Name="NatureOfPackageTextBox" BorderThickness="0" TextWrapping="Wrap" Tag="Nature of the Package" GotFocus="ClearText" LostFocus="AddPlaceholderText" VerticalAlignment="Center" FontFamily="Tw Cen MT Condensed Extra Bold" Foreground="#333333"/>
                     </Border>
 
                     <!-- Rounded Nature of Job Input -->
                     <Border HorizontalAlignment="Center" VerticalAlignment="Top" Width="180" Height="60" Background="White" CornerRadius="10" BorderBrush="Gray" BorderThickness="1" Margin="5">
-                        <TextBox Name="NatureOfJobTextBox" BorderThickness="0" TextWrapping="Wrap" Text="Nature of the Job" VerticalAlignment="Center" FontFamily="Tw Cen MT Condensed Extra Bold" Foreground="#333333" AcceptsReturn="True"/>
+                        <TextBox Name="NatureOfJobTextBox" BorderThickness="0" TextWrapping="Wrap" Tag="Nature of the Job" GotFocus="ClearText" LostFocus="AddPlaceholderText" VerticalAlignment="Center" FontFamily="Tw Cen MT Condensed Extra Bold" Foreground="#333333" AcceptsReturn="True"/>
                     </Border>
 
                     <!-- Rounded Submit Button -->
                     <Border CornerRadius="20" Width="120" Height="40" Margin="10">
-                        <Button Content="Submit" Background="#F7941D" Foreground="White" FontFamily="Tw Cen MT Condensed Extra Bold" BorderThickness="0"/>
+                        <Button Content="Submit" Background="#F7941D" Foreground="White" FontFamily="Tw Cen MT Condensed Extra Bold" BorderThickness="0" Click ="Submit_Click"/>
                     </Border>
                 </StackPanel>
             </Grid>

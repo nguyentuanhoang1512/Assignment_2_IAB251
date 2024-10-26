@@ -30,13 +30,14 @@ namespace front_end
 
             if (exitConfirmation.IsConfirmed)
             {
-                Application.Current.Shutdown();
+                var login = new login();
+                login.Show();
+                this.Close();
             }
         }
 
         private void ViewPendingQuotations_Click(object sender, RoutedEventArgs e)
         {
-            // Open the window to view pending quotations
             var pendingQuotationsWindow = new Quotations();
             pendingQuotationsWindow.Show();
         }

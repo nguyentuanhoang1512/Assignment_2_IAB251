@@ -12,26 +12,25 @@ namespace IAB251_A2.Controllers
 
         public bool Login(string email, string password)
         {
-            var user = Customers.Cast<User>().FirstOrDefault(c => c.Email == email) ??
-           Employees.Cast<User>().FirstOrDefault(e => e.Email == email);
-
-            if (user != null && user.Password == password)
+            var customer = Customers.FirstOrDefault(c => c.Email == email && c.Password == password);
+            if (customer != null)
             {
-                Console.WriteLine($"{user.FirstName} logged in successfully.");
+                Console.WriteLine($"{customer.FirstName} logged in successfully as a Customer.");
                 return true;
             }
 
-            Console.WriteLine("Login failed: Invalid credentials.");
-            return false;
-
-            if (user != null && user.Password == password)
+            var employee = Employees.FirstOrDefault(e => e.Email == email && e.Password == password);
+            if (employee != null)
             {
-                Console.WriteLine($"{user.FirstName} logged in successfully.");
+                Console.WriteLine($"{employee.FirstName} logged in successfully as an Employee.");
                 return true;
             }
+
             Console.WriteLine("Login failed: Invalid credentials.");
             return false;
         }
+
+
 
         public void RegisterCustomer(string firstName, string lastName, string email, int phoneNumber, string companyName, string address, string password)
         {

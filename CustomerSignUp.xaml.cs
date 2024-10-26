@@ -42,7 +42,6 @@ namespace front_end
             this.Close();
         }
 
-        // Clear placeholder on focus
         private void ClearText(object sender, RoutedEventArgs e)
         {
             TextBox textBox = sender as TextBox;
@@ -53,7 +52,6 @@ namespace front_end
             }
         }
 
-        // Add placeholder text on losing focus if empty
         private void AddPlaceholderText(object sender, RoutedEventArgs e)
         {
             TextBox textBox = sender as TextBox;
@@ -84,7 +82,10 @@ namespace front_end
             }
 
             userController.RegisterCustomer(firstName, lastName, email, phone, companyName, address, password);
-            MessageBox.Show("Customer registered successfully.");
+
+            var customerLogin = new login();
+            customerLogin.Show();
+            this.Close();
         }
     }
 }

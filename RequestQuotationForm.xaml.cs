@@ -21,9 +21,32 @@ namespace front_end
         public RequestQuotationForm()
         {
             InitializeComponent();
+            AddPlaceholderText(SourceTextBox, null);
+            AddPlaceholderText(DestinationTextBox,null);
+            AddPlaceholderText(NumberOfContainersTextBox, null);
+            AddPlaceholderText(NatureOfPackageTextBox, null);
+            AddPlaceholderText(NatureOfJobTextBox, null);
         }
 
-        // GoBack button event handler
+        private void ClearText(object sender, RoutedEventArgs e)
+        {
+            if (sender is TextBox textBox && textBox.Text == textBox.Tag?.ToString())
+            {
+                textBox.Text = "";
+                textBox.Foreground = new SolidColorBrush(Colors.Black);
+            }
+        }
+
+        private void AddPlaceholderText(object sender, RoutedEventArgs e)
+        {
+            TextBox textBox = sender as TextBox;
+            if (textBox != null && string.IsNullOrWhiteSpace(textBox.Text))
+            {
+                textBox.Text = textBox.Tag.ToString();
+                textBox.Foreground = new SolidColorBrush(Colors.Gray);
+            }
+        }
+
         private void GoBack_Click(object sender, RoutedEventArgs e)
         {
             var dashboard = new CustomerDashboard(); // Replace with actual previous window if different
@@ -31,7 +54,6 @@ namespace front_end
             this.Close();
         }
 
-        // Submit button event handler
         private void Submit_Click(object sender, RoutedEventArgs e)
         {
             string source = SourceTextBox.Text;
@@ -40,7 +62,6 @@ namespace front_end
             string natureOfPackage = NatureOfPackageTextBox.Text;
             string natureOfJob = NatureOfJobTextBox.Text;
 
-            // Basic validation (Example: checking if fields are not empty)
             if (string.IsNullOrWhiteSpace(source) || string.IsNullOrWhiteSpace(destination) ||
                 string.IsNullOrWhiteSpace(numberOfContainers) || string.IsNullOrWhiteSpace(natureOfPackage) ||
                 string.IsNullOrWhiteSpace(natureOfJob))
@@ -49,8 +70,10 @@ namespace front_end
                 return;
             }
 
-            // Further processing or saving the data as per your application logic
             MessageBox.Show("Quotation request submitted successfully!");
+            var customerDashboard = new CustomerDashboard();
+            customerDashboard.Show();
+            this.Close();
         }
     }
 }

@@ -32,7 +32,6 @@ namespace front_end
 
         private void CustomerButton_Click(object sender, RoutedEventArgs e)
         {
-            // Open Customer Sign Up Page
             var customerSignUp = new CustomerSignUp();
             customerSignUp.Show();
             this.Close();
@@ -40,7 +39,6 @@ namespace front_end
 
         private void EmployeeButton_Click(object sender, RoutedEventArgs e)
         {
-            // Open Employee Sign Up Page
             var employeeSignUp = new EmployeeSignUp();
             employeeSignUp.Show();
             this.Close();

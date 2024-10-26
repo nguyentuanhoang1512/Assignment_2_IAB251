@@ -31,22 +31,24 @@ namespace front_end
 
             if (exitConfirmation.IsConfirmed)
             {
-                Application.Current.Shutdown();
+                var login = new login();
+                login.Show();
+                this.Close();
             }
         }
 
         private void RequestQuotation_Click(object sender, RoutedEventArgs e)
         {
-            // Open the request quotation form window
             var requestQuotationForm = new RequestQuotationForm();
             requestQuotationForm.Show();
+            this.Close();
         }
 
         private void ViewQuotationStatus_Click(object sender, RoutedEventArgs e)
         {
-            // Open the quotation status view window
             var quotationStatusView = new Quotations();
             quotationStatusView.Show();
+            this.Close();
         }
     }
 }

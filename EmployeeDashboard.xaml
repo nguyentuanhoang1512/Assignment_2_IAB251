@@ -18,10 +18,9 @@
                             VerticalAlignment="Center" HorizontalAlignment="Center"/>
                         </Border>
                     </Button>
-                    
-                    <Image Source="/front_end;component/Resources/logo.png" 
-                     Width="92" Height="50" 
-                     />
+
+                    <Image Source="Resources/logo.png" Width="150" Height="50"/>
+
 
 
                     <!-- Title Label -->
