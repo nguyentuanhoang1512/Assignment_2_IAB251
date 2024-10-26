@@ -11,13 +11,14 @@
                     <Button Width="20" Height="18" 
                     HorizontalAlignment="Left" 
                     Background="{x:Null}" BorderBrush="{x:Null}" 
-                    BorderThickness="2" Margin="10" Padding="0" Click="GoBack_Click">
+                    BorderThickness="2" Margin="10" Padding="0" Click="Exit_Click">
                         <Border CornerRadius="18">
                             <TextBlock FontFamily="Segoe MDL2 Assets" Text="&#xE72B;" 
                             Foreground="#F7941D" FontSize="16" 
                             VerticalAlignment="Center" HorizontalAlignment="Center"/>
                         </Border>
                     </Button>
+                    
                     <Image Source="/front_end;component/Resources/logo.png" 
                      Width="92" Height="50" 
                      />
@@ -32,11 +33,14 @@
 
                     <!-- View Pending Quotations Button -->
                     <Button Content="View Pending Quotations" 
-                            Width="150" Height="40" 
-                            Margin="10" 
-                            Background="#F7941D" 
-                            Foreground="White" 
-                            FontFamily="Tw Cen MT Condensed Extra Bold"/>
+        Width="150" Height="40" 
+        Margin="10" 
+        Background="#F7941D" 
+        Foreground="White" 
+        FontFamily="Tw Cen MT Condensed Extra Bold"
+        Click="ViewPendingQuotations_Click"/>
+                    <!-- Repeat similarly for other buttons -->
+
 
                     <!-- Access Rate Schedule Button -->
                     <Button Content="Access Rate Schedule" 

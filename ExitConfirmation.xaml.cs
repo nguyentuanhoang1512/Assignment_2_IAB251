@@ -12,16 +12,28 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 
+
 namespace front_end
 {
-    /// <summary>
-    /// Interaction logic for Dashboard.xaml
-    /// </summary>
-    public partial class Dashboard : Window
+    public partial class ExitConfirmation : Window
     {
-        public Dashboard()
+        public bool IsConfirmed { get; private set; } = false;
+
+        public ExitConfirmation()
         {
             InitializeComponent();
         }
+
+        private void YesButton_Click(object sender, RoutedEventArgs e)
+        {
+            IsConfirmed = true;
+            this.Close();
+        }
+
+        private void NoButton_Click(object sender, RoutedEventArgs e)
+        {
+            this.Close();
+        }
     }
 }
+

@@ -13,16 +13,78 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
+using System;
+using IAB251_A2.Models;
+using IAB251_A2.Controllers;
+
 namespace front_end
 {
-    /// <summary>
-    /// Interaction logic for CustomerSignUp.xaml
-    /// </summary>
-    public partial class CustomerSignUp : Page
+    public partial class CustomerSignUp : Window
     {
+        private UserController userController = new UserController();
+
         public CustomerSignUp()
         {
             InitializeComponent();
+            AddPlaceholderText(FirstNameTextBox, null);
+            AddPlaceholderText(LastNameTextBox, null);
+            AddPlaceholderText(EmailTextBox, null);
+            AddPlaceholderText(PhoneTextBox, null);
+            AddPlaceholderText(CompanyNameTextBox, null);
+            AddPlaceholderText(AddressTextBox, null);
+        }
+
+
+        private void GoBack_Click(object sender, RoutedEventArgs e)
+        {
+            var previousWindow = new ChooseSignUpType();
+            previousWindow.Show();
+            this.Close();
+        }
+
+        // Clear placeholder on focus
+        private void ClearText(object sender, RoutedEventArgs e)
+        {
+            TextBox textBox = sender as TextBox;
+            if (textBox.Text == textBox.Tag.ToString())
+            {
+                textBox.Text = "";
+                textBox.Foreground = new SolidColorBrush(Colors.Black);
+            }
+        }
+
+        // Add placeholder text on losing focus if empty
+        private void AddPlaceholderText(object sender, RoutedEventArgs e)
+        {
+            TextBox textBox = sender as TextBox;
+            if (string.IsNullOrWhiteSpace(textBox.Text))
+            {
+                textBox.Text = textBox.Tag.ToString();
+                textBox.Foreground = new SolidColorBrush(Colors.Gray);
+            }
+        }
+
+        private void RegisterButton_Click(object sender, RoutedEventArgs e)
+        {
+            string firstName = FirstNameTextBox.Text;
+            string lastName = LastNameTextBox.Text;
+            string email = EmailTextBox.Text;
+            int phone;
+            bool isPhoneValid = int.TryParse(PhoneTextBox.Text, out phone);
+            string companyName = CompanyNameTextBox.Text;
+            string address = AddressTextBox.Text;
+            string password = PasswordBox.Password;
+
+            if (string.IsNullOrWhiteSpace(firstName) || string.IsNullOrWhiteSpace(lastName) ||
+                string.IsNullOrWhiteSpace(email) || string.IsNullOrWhiteSpace(address) ||
+                string.IsNullOrWhiteSpace(password) || !isPhoneValid)
+            {
+                MessageBox.Show("Please fill all required fields with valid data.");
+                return;
+            }
+
+            userController.RegisterCustomer(firstName, lastName, email, phone, companyName, address, password);
+            MessageBox.Show("Customer registered successfully.");
         }
     }
 }

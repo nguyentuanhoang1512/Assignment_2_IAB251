@@ -31,7 +31,8 @@
             <!-- Sign Up as Customer Button -->
             <Button x:Name="CustomerButton" Content="Customer" HorizontalAlignment="Center" VerticalAlignment="Top" Grid.Row="1" Width="180" Height="40" 
                     Background="#F7941D" 
-                    FontFamily="Tw Cen MT Condensed Extra Bold" Margin="0,66,0,0" Foreground="White">
+                    FontFamily="Tw Cen MT Condensed Extra Bold" Margin="0,66,0,0" Foreground="White"
+                    Click = "CustomerButton_Click">
                 <Button.Template>
                     <ControlTemplate TargetType="Button">
                         <Border Background="{TemplateBinding Background}" 
@@ -50,7 +51,8 @@
             <!-- Sign Up as Employee Button -->
             <Button x:Name="EmployeeButton" Content="Employee" HorizontalAlignment="Center" VerticalAlignment="Center" Grid.Row="2" Width="180" Height="40" 
                     Background="#F7941D" Foreground="White" 
-                    FontFamily="Tw Cen MT Condensed Extra Bold">
+                    FontFamily="Tw Cen MT Condensed Extra Bold"
+                    Click="EmployeeButton_Click">
                 <Button.Template>
                     <ControlTemplate TargetType="Button">
                         <Border Background="{TemplateBinding Background}" 

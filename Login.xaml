@@ -13,12 +13,12 @@
 
             <!-- First Rounded TextBox for Username -->
             <Border HorizontalAlignment="Center" VerticalAlignment="Top" Width="134" Height="29" Margin="0,169,0,0" Background="White" CornerRadius="10" BorderBrush="Gray" BorderThickness="1">
-                <TextBox Background="{x:Null}" BorderThickness="0" TextWrapping="Wrap" Text="Username" VerticalAlignment="Center" FontFamily="Tw Cen MT Condensed Extra Bold" HorizontalAlignment="Left" Foreground="#333333"/>
+                <TextBox x:Name="UsernameTextBox" Background="{x:Null}" BorderThickness="0" TextWrapping="Wrap" Tag="Username" VerticalAlignment="Center" GotFocus="ClearText" LostFocus="AddPlaceholderText" FontFamily="Tw Cen MT Condensed Extra Bold" HorizontalAlignment="Left" Foreground="#333333"/>
             </Border>
 
-            <!-- Second Rounded TextBox for Password -->
+            <!-- Second Rounded PasswordBox for Password -->
             <Border HorizontalAlignment="Center" VerticalAlignment="Top" Width="134" Height="29" Margin="0,215,0,0" Background="White" CornerRadius="10" BorderBrush="Gray" BorderThickness="1" Grid.RowSpan="3">
-                <TextBox Background="White" BorderThickness="0" TextWrapping="Wrap" Text="Password" VerticalAlignment="Center" FontFamily="Tw Cen MT Condensed Extra Bold" Margin="1,0,-1,0" Foreground="#333333"/>
+                <PasswordBox x:Name="PasswordTextBox" Background="White" BorderThickness="0" VerticalAlignment="Center" FontFamily="Tw Cen MT Condensed Extra Bold" Margin="1,0,-1,0" Foreground="#333333"/>
             </Border>
 
             <!-- Rounded Login Button -->
@@ -39,10 +39,10 @@
             <Label Content="Login" HorizontalAlignment="Center" Height="72" VerticalAlignment="Top" Width="134" FontFamily="Tw Cen MT Condensed Extra Bold" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontSize="48" Foreground="White" Margin="0,64,0,0"/>
 
             <!-- 'Don't have an account?' Text -->
-            <TextBox HorizontalAlignment="Left" Margin="22,131,0,0" Grid.Row="2" TextWrapping="Wrap" Text="Don't have an account? " VerticalAlignment="Top" Width="132" Background="#002F6C" Foreground="White" BorderBrush="{x:Null}" RenderTransformOrigin="0.557,0.531"/>
+            <TextBlock HorizontalAlignment="Left" Margin="22,131,0,0" Grid.Row="2" TextWrapping="Wrap" Text="Don't have an account? " VerticalAlignment="Top" Width="132" Background="#002F6C" Foreground="White" />
 
-            <!-- 'Sign up' Link -->
-            <TextBox HorizontalAlignment="Left" Margin="154,131,0,0" Grid.Row="2" TextWrapping="Wrap" Text="Sign up" VerticalAlignment="Top" Width="47" Background="#002F6C" Foreground="#F7941D" BorderBrush="{x:Null}"/>
+            <!-- 'Sign up' Link as TextBlock with Click Event -->
+            <TextBlock HorizontalAlignment="Left" Margin="154,131,0,0" Grid.Row="2" TextWrapping="Wrap" Text="Sign up" VerticalAlignment="Top" Width="47" Background="#002F6C" Foreground="#F7941D" MouseDown="SignUp_Click"/>
         </Grid>
     </Border>
 </Window>

@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.8.34330.188
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "front_end", "front_end.csproj", "{8AB02E80-C08C-429A-95DE-7237A78ED44E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "IAB251_A2", "IAB251_A2.csproj", "{8AB02E80-C08C-429A-95DE-7237A78ED44E}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

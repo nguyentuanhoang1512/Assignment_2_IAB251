@@ -13,16 +13,33 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
+
 namespace front_end
 {
-    /// <summary>
-    /// Interaction logic for EmployeeDashboard.xaml
-    /// </summary>
-    public partial class EmployeeDashboard : Page
+    public partial class EmployeeDashboard : Window
     {
         public EmployeeDashboard()
         {
             InitializeComponent();
         }
+
+        private void Exit_Click(object sender, RoutedEventArgs e)
+        {
+            var exitConfirmation = new ExitConfirmation();
+            exitConfirmation.ShowDialog();
+
+            if (exitConfirmation.IsConfirmed)
+            {
+                Application.Current.Shutdown();
+            }
+        }
+
+        private void ViewPendingQuotations_Click(object sender, RoutedEventArgs e)
+        {
+            // Open the window to view pending quotations
+            var pendingQuotationsWindow = new Quotations();
+            pendingQuotationsWindow.Show();
+        }
+
     }
 }

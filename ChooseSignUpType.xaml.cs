@@ -12,11 +12,10 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 
+
+
 namespace front_end
 {
-    /// <summary>
-    /// Interaction logic for ChooseSignUpType.xaml
-    /// </summary>
     public partial class ChooseSignUpType : Window
     {
         public ChooseSignUpType()
@@ -24,9 +23,27 @@ namespace front_end
             InitializeComponent();
         }
 
-        private void TextBox_TextChanged(object sender, TextChangedEventArgs e)
+        private void GoBack_Click(object sender, RoutedEventArgs e)
         {
+            var previousWindow = new login(); 
+            previousWindow.Show();
+            this.Close();
+        }
 
+        private void CustomerButton_Click(object sender, RoutedEventArgs e)
+        {
+            // Open Customer Sign Up Page
+            var customerSignUp = new CustomerSignUp();
+            customerSignUp.Show();
+            this.Close();
+        }
+
+        private void EmployeeButton_Click(object sender, RoutedEventArgs e)
+        {
+            // Open Employee Sign Up Page
+            var employeeSignUp = new EmployeeSignUp();
+            employeeSignUp.Show();
+            this.Close();
         }
     }
 }

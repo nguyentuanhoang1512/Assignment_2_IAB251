@@ -23,5 +23,30 @@ namespace front_end
         {
             InitializeComponent();
         }
+
+        private void Exit_Click(object sender, RoutedEventArgs e)
+        {
+            var exitConfirmation = new ExitConfirmation();
+            exitConfirmation.ShowDialog();
+
+            if (exitConfirmation.IsConfirmed)
+            {
+                Application.Current.Shutdown();
+            }
+        }
+
+        private void RequestQuotation_Click(object sender, RoutedEventArgs e)
+        {
+            // Open the request quotation form window
+            var requestQuotationForm = new RequestQuotationForm();
+            requestQuotationForm.Show();
+        }
+
+        private void ViewQuotationStatus_Click(object sender, RoutedEventArgs e)
+        {
+            // Open the quotation status view window
+            var quotationStatusView = new Quotations();
+            quotationStatusView.Show();
+        }
     }
 }
