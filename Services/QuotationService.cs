@@ -8,8 +8,12 @@ namespace IAB251_A2.Services
 {
     public class QuotationService
     {
+        private static QuotationService _instance;
+        public static QuotationService Instance => _instance ??= new QuotationService();
+
         private List<Quotation> quotations = new List<Quotation>();
 
+        private QuotationService() { }
 
         public string SubmitQuotation(Quotation quotation)
         {
@@ -20,18 +24,10 @@ namespace IAB251_A2.Services
             return "Quotation submitted successfully!";
         }
 
-
-        public List<Quotation> GetQuotationsByCustomer(string customerEmail)
-        {
-            return quotations.Where(q => q.CustomerEmail == customerEmail).ToList();
-        }
-
-
         public List<Quotation> GetPendingQuotations()
         {
             return quotations.Where(q => q.Status == "Pending").ToList();
         }
-
 
         public void UpdateQuotationStatus(int requestId, string status)
         {
@@ -42,5 +38,4 @@ namespace IAB251_A2.Services
             }
         }
     }
-
 }

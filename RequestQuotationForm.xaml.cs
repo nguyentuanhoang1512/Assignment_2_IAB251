@@ -1,4 +1,6 @@
-﻿using System;
+﻿using IAB251_A2.Models;
+using IAB251_A2.Services;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -16,8 +18,10 @@ using System.Windows.Shapes;
 
 namespace front_end
 {
+    
     public partial class RequestQuotationForm : Window
     {
+        private readonly QuotationService quotationService = QuotationService.Instance;
         public RequestQuotationForm()
         {
             InitializeComponent();
@@ -56,24 +60,21 @@ namespace front_end
 
         private void Submit_Click(object sender, RoutedEventArgs e)
         {
-            string source = SourceTextBox.Text;
-            string destination = DestinationTextBox.Text;
-            string numberOfContainers = NumberOfContainersTextBox.Text;
-            string natureOfPackage = NatureOfPackageTextBox.Text;
-            string natureOfJob = NatureOfJobTextBox.Text;
-
-            if (string.IsNullOrWhiteSpace(source) || string.IsNullOrWhiteSpace(destination) ||
-                string.IsNullOrWhiteSpace(numberOfContainers) || string.IsNullOrWhiteSpace(natureOfPackage) ||
-                string.IsNullOrWhiteSpace(natureOfJob))
+            var newQuotation = new Quotation
             {
-                MessageBox.Show("Please fill in all fields.");
-                return;
-            }
+                Source = SourceTextBox.Text,
+                Destination = DestinationTextBox.Text,
+                NumberOfContainers = int.Parse(NumberOfContainersTextBox.Text),
+                NatureOfPackage = NatureOfPackageTextBox.Text,
+                NatureOfJob = NatureOfJobTextBox.Text
+            };
 
+            quotationService.SubmitQuotation(newQuotation);
             MessageBox.Show("Quotation request submitted successfully!");
             var customerDashboard = new CustomerDashboard();
             customerDashboard.Show();
             this.Close();
         }
+
     }
 }

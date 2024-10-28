@@ -64,16 +64,30 @@ namespace IAB251_A2.Controllers
             Console.WriteLine("Employee registered successfully.");
         }
 
-        public void SubmitQuotationRequest(string requestID, Customer customer, string source, string destination, int numberOfContainers, string natureOfPackage, JobDetails job)
+        public void SubmitQuotationRequest(string requestID, Customer customer, string source, string destination, int numberOfContainers, string natureOfPackage, string job)
         {
-            QuotationRequest quotation = new QuotationRequest(requestID, customer, source, destination, numberOfContainers, natureOfPackage, job);
-            quotation.SubmitQuotationRequest();
+            var quotation = new Quotation
+            {
+                RequestID = int.Parse(requestID),
+                CustomerEmail = customer.Email,
+                Source = source,
+                Destination = destination,
+                NumberOfContainers = numberOfContainers,
+                NatureOfPackage = natureOfPackage,
+                NatureOfJob = job,
+                Status = "Pending",
+                DateIssued = DateTime.Now
+            };
+
+            // Assuming QuotationService is used to add the quotation
+            QuotationService.Instance.SubmitQuotation(quotation);
         }
 
-        public List<QuotationRequest> GetAllQuotations()
+
+        public List<Quotation> GetAllQuotations()
         {
 
-            return new List<QuotationRequest>();
+            return new List<Quotation>();
         }
     }
 }
