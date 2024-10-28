@@ -40,6 +40,7 @@ namespace front_end
         {
             var pendingQuotationsWindow = new Quotations();
             pendingQuotationsWindow.Show();
+            this.Close();
         }
 
     }

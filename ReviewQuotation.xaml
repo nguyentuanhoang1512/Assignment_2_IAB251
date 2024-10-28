@@ -1,7 +1,7 @@
-﻿<Window x:Class="front_end.Quotations"
+﻿<Window x:Class="front_end.ReviewQuotations"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        Title="Quotations Made" Height="450" Width="250"
+        Title="Pending Quotations" Height="450" Width="250"
         WindowStyle="None" AllowsTransparency="True" Background="Transparent">
 
     <Border Background="#002F6C" CornerRadius="25" BorderThickness="2" BorderBrush="#F7941D">
@@ -36,12 +36,22 @@
                     </Grid>
 
                     <!-- List of Quotations -->
-                    <ListView x:Name="QuotationListView" Width="180" Height="300" Margin="5" ItemsSource="{Binding QuotationsList}">
+                    <ListView x:Name="QuotationListView" Width="180" Height="300" Margin="5">
                         <ListView.View>
                             <GridView>
                                 <GridViewColumn Header="Request ID" DisplayMemberBinding="{Binding RequestID}" Width="60"/>
-                                <GridViewColumn Header="Date Issued" DisplayMemberBinding="{Binding DateIssued}" Width="80"/>
+                                <GridViewColumn Header="Date" DisplayMemberBinding="{Binding DateIssued}" Width="60"/>
                                 <GridViewColumn Header="Status" DisplayMemberBinding="{Binding Status}" Width="60"/>
+                                <GridViewColumn Header="Action" Width="60">
+                                    <GridViewColumn.CellTemplate>
+                                        <DataTemplate>
+                                            <StackPanel Orientation="Horizontal">
+                                                <Button Content="✓" Width="20" Height="20" Margin="2" Background="#F7941D" Foreground="White" Click="AcceptQuotation_Click"/>
+                                                <Button Content="✗" Width="20" Height="20" Margin="2" Background="#F7941D" Foreground="White" Click="RejectQuotation_Click"/>
+                                            </StackPanel>
+                                        </DataTemplate>
+                                    </GridViewColumn.CellTemplate>
+                                </GridViewColumn>
                             </GridView>
                         </ListView.View>
                     </ListView>

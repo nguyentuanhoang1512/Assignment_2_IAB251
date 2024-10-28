@@ -24,6 +24,12 @@ namespace front_end
     {
         public ObservableCollection<Quotation> QuotationsList { get; set; }
 
+        private void LoadQuotations()
+        {
+            QuotationsList = new ObservableCollection<Quotation>(_quotationService.GetQuotations());
+            QuotationListView.ItemsSource = QuotationsList;
+        }
+
         public Quotations()
         {
             InitializeComponent();
