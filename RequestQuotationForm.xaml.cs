@@ -55,13 +55,26 @@ namespace front_end
 
         private void GoBack_Click(object sender, RoutedEventArgs e)
         {
-            var dashboard = new CustomerDashboard(); // Replace with actual previous window if different
+            var dashboard = new CustomerDashboard(); 
             dashboard.Show();
             this.Close();
         }
 
         private void Submit_Click(object sender, RoutedEventArgs e)
         {
+            if (string.IsNullOrWhiteSpace(SourceTextBox.Text) ||
+                string.IsNullOrWhiteSpace(DestinationTextBox.Text) ||
+                string.IsNullOrWhiteSpace(NumberOfContainersTextBox.Text) ||
+                string.IsNullOrWhiteSpace(NatureOfPackageTextBox.Text) ||
+                string.IsNullOrWhiteSpace(QuarantineTextBox.Text) ||
+                string.IsNullOrWhiteSpace(CargoStorageTextBox.Text) ||
+                string.IsNullOrWhiteSpace(WarehousingTextBox.Text) ||
+                ImportExportComboBox.SelectedItem == null ||
+                PackingUnpackingComboBox.SelectedItem == null)
+            {
+                MessageBox.Show("Please fill in all fields before submitting.");
+                return;
+            }
             var newQuotation = new Quotation
             {
                 Source = SourceTextBox.Text,

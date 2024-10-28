@@ -8,41 +8,30 @@
         <ScrollViewer VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Disabled">
             <Grid>
                 <StackPanel HorizontalAlignment="Center" VerticalAlignment="Top" Margin="10">
-                    <!-- Title Section -->
-                    c:\users\dell\desktop\iab251\back_end\reviewquotation.xaml
-                    c:\users\dell\desktop\iab251\back_end\reviewquotation.xaml.cs
-                    <Grid>
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="Auto"/>
-                            <ColumnDefinition Width="*"/>
-                        </Grid.ColumnDefinitions>
+                    <!-- Back Button -->
+                    <Button Width="20" Height="18" 
+                            HorizontalAlignment="Left" Background="{x:Null}" BorderBrush="{x:Null}" 
+                            Margin="10" Padding="0" Click="GoBack_Click">
+                        <Border CornerRadius="18">
+                            <TextBlock FontFamily="Segoe MDL2 Assets" Text="&#xE72B;" 
+                                       Foreground="#F7941D" FontSize="16" 
+                                       VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                        </Border>
+                    </Button>
+                    <Label Content="Pending Quotations" 
+                           FontSize="24" Foreground="White" 
+                           FontFamily="Tw Cen MT Condensed Extra Bold" 
+                           />
 
-                        <!-- Back Button -->
-                        <Button Grid.Column="0" Width="20" Height="18" 
-                                HorizontalAlignment="Left" Background="{x:Null}" BorderBrush="{x:Null}" 
-                                Margin="10" Padding="0" Click="GoBack_Click">
-                            <Border CornerRadius="18">
-                                <TextBlock FontFamily="Segoe MDL2 Assets" Text="&#xE72B;" 
-                                           Foreground="#F7941D" FontSize="16" 
-                                           VerticalAlignment="Center" HorizontalAlignment="Center"/>
-                            </Border>
-                        </Button>
-
-                        <!-- Quotations Label -->
-                        <Label Grid.Column="1" Content="Pending Quotations" 
-                               FontSize="24" Foreground="White" 
-                               FontFamily="Tw Cen MT Condensed Extra Bold" 
-                               VerticalAlignment="Center" HorizontalAlignment="Left" 
-                               Margin="1,0,0,0"/>
-                    </Grid>
+                    <!-- Title Label -->
 
                     <!-- List of Quotations -->
-                    <ListView x:Name="QuotationListView" Width="180" Height="300" Margin="5">
+                    <ListView x:Name="QuotationListView" Width="188" Height="316">
                         <ListView.View>
                             <GridView>
-                                <GridViewColumn Header="Request ID" DisplayMemberBinding="{Binding RequestID}" Width="60"/>
+                                <GridViewColumn Header="ID" DisplayMemberBinding="{Binding RequestID}" Width="30"/>
+                                <GridViewColumn Header="Source" DisplayMemberBinding="{Binding Source}" Width="60"/>
                                 <GridViewColumn Header="Destination" DisplayMemberBinding="{Binding Destination}" Width="60"/>
-                                <GridViewColumn Header="Date Issued" DisplayMemberBinding="{Binding DateIssued}" Width="80"/>
                                 <GridViewColumn Header="Date" DisplayMemberBinding="{Binding DateIssued}" Width="60"/>
                                 <GridViewColumn Header="Status" DisplayMemberBinding="{Binding Status}" Width="60"/>
                                 <GridViewColumn Header="Action" Width="60">
