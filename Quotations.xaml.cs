@@ -17,12 +17,23 @@ using System.Collections.ObjectModel;
 
 using IAB251_A2.Models;
 using IAB251_A2.Services;
+using IAB251_A2.Services;
+using System.Collections.ObjectModel;
+using System.Windows;
 
 namespace front_end
 {
     public partial class Quotations : Window
     {
+        private readonly QuotationService _quotationService = QuotationService.Instance;
         public ObservableCollection<Quotation> QuotationsList { get; set; }
+
+        public Quotations()
+        {
+            InitializeComponent();
+            _quotationService.QuotationsUpdated += RefreshQuotations;
+            LoadQuotations();
+        }
 
         private void LoadQuotations()
         {
@@ -30,11 +41,16 @@ namespace front_end
             QuotationListView.ItemsSource = QuotationsList;
         }
 
-        public Quotations()
+        private void RefreshQuotations()
         {
-            InitializeComponent();
-            QuotationsList = new ObservableCollection<Quotation>(QuotationService.Instance.GetPendingQuotations());
-            DataContext = this;
+            Dispatcher.Invoke(() =>
+            {
+                QuotationsList.Clear();
+                foreach (var quote in _quotationService.GetQuotations())
+                {
+                    QuotationsList.Add(quote);
+                }
+            });
         }
 
         private void GoBack_Click(object sender, RoutedEventArgs e)

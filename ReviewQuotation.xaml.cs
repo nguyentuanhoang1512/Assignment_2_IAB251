@@ -20,30 +20,32 @@ namespace front_end
 {
     public partial class ReviewQuotations : Window
     {
-        private readonly QuotationService _quotationService;
+        private readonly QuotationService _quotationService = QuotationService.Instance;
         public ObservableCollection<Quotation> QuotationsList { get; set; }
 
         public ReviewQuotations()
         {
             InitializeComponent();
-            _quotationService = QuotationService.Instance;
-
-            // Load pending quotations
+            _quotationService.QuotationsUpdated += RefreshQuotations;
             LoadPendingQuotations();
         }
 
         private void LoadPendingQuotations()
         {
-            var pendingQuotations = _quotationService.GetPendingQuotations();
-            QuotationsList = new ObservableCollection<Quotation>(pendingQuotations);
+            QuotationsList = new ObservableCollection<Quotation>(_quotationService.GetPendingQuotations());
             QuotationListView.ItemsSource = QuotationsList;
         }
 
-        private void GoBack_Click(object sender, RoutedEventArgs e)
+        private void RefreshQuotations()
         {
-            var EmployeeDashboard = new EmployeeDashboard();
-            EmployeeDashboard.Show();
-            this.Close();
+            Dispatcher.Invoke(() =>
+            {
+                QuotationsList.Clear();
+                foreach (var quote in _quotationService.GetPendingQuotations())
+                {
+                    QuotationsList.Add(quote);
+                }
+            });
         }
 
         private void AcceptQuotation_Click(object sender, RoutedEventArgs e)
@@ -52,10 +54,8 @@ namespace front_end
             {
                 _quotationService.UpdateQuotationStatus(selectedQuotation.RequestID, "Accepted");
                 MessageBox.Show("Quotation Accepted");
-                LoadPendingQuotations(); 
             }
         }
-
 
         private void RejectQuotation_Click(object sender, RoutedEventArgs e)
         {
@@ -63,12 +63,14 @@ namespace front_end
             {
                 _quotationService.UpdateQuotationStatus(selectedQuotation.RequestID, "Rejected");
                 MessageBox.Show("Quotation Rejected");
-                LoadPendingQuotations();
             }
-            else
-            {
-                MessageBox.Show("Please select a quotation to reject.");
-            }
+        }
+
+        private void GoBack_Click(object sender, RoutedEventArgs e)
+        {
+            var EmployeeDashboard = new EmployeeDashboard();
+            EmployeeDashboard.Show();
+            this.Close();
         }
     }
 }

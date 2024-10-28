@@ -29,7 +29,9 @@ namespace front_end
             AddPlaceholderText(DestinationTextBox,null);
             AddPlaceholderText(NumberOfContainersTextBox, null);
             AddPlaceholderText(NatureOfPackageTextBox, null);
-            AddPlaceholderText(NatureOfJobTextBox, null);
+            AddPlaceholderText(QuarantineTextBox, null);
+            AddPlaceholderText(CargoStorageTextBox, null);
+            AddPlaceholderText(WarehousingTextBox, null);
         }
 
         private void ClearText(object sender, RoutedEventArgs e)
@@ -66,7 +68,11 @@ namespace front_end
                 Destination = DestinationTextBox.Text,
                 NumberOfContainers = int.Parse(NumberOfContainersTextBox.Text),
                 NatureOfPackage = NatureOfPackageTextBox.Text,
-                NatureOfJob = NatureOfJobTextBox.Text
+                ImportExport = (ImportExportComboBox.SelectedItem as ComboBoxItem)?.Content.ToString() ?? "",
+                PackingUnpacking = (PackingUnpackingComboBox.SelectedItem as ComboBoxItem)?.Content.ToString() ?? "",
+                QuarantineRequirements = QuarantineTextBox.Text,
+                CargoStorage = CargoStorageTextBox.Text,
+                WarehousingDetails = WarehousingTextBox.Text
             };
 
             quotationService.SubmitQuotation(newQuotation);

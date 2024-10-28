@@ -38,8 +38,8 @@ namespace front_end
 
         private void ViewPendingQuotations_Click(object sender, RoutedEventArgs e)
         {
-            var pendingQuotationsWindow = new Quotations();
-            pendingQuotationsWindow.Show();
+            var ReviewQuotations = new ReviewQuotations();
+            ReviewQuotations.Show();
             this.Close();
         }
 

@@ -17,14 +17,14 @@ namespace IAB251_A2.Services
             // Mock data for testing
             customers = new List<Customer>
             {
-                new Customer { FirstName = "John", LastName = "Doe", Email = "john.doe", Password = "123", PhoneNumber = 1234567890, CompanyName = "JD Inc.", Address = "123 Main St" },
+                new Customer { FirstName = "John", LastName = "Doe", Email = "john", Password = "123", PhoneNumber = 1234567890, CompanyName = "JD Inc.", Address = "123 Main St" },
                 new Customer { FirstName = "Jane", LastName = "Smith", Email = "jane.smith@example.com", Password = "password123", PhoneNumber = 98, CompanyName = "Smith & Co.", Address = "456 Market St" }
             };
 
             employees = new List<Employee>
             {
                 new Employee { FirstName = "Alice", LastName = "Johnson", Email = "alice.j@example.com", Password = "password123", PhoneNumber = 555, EmployeeType = "Admin", Address = "789 Park Ave" },
-                new Employee { FirstName = "Bob", LastName = "Brown", Email = "bob.b@example.com", Password = "password123", PhoneNumber = 55576, EmployeeType = "Quotation Officer", Address = "101 River Rd" }
+                new Employee { FirstName = "Bob", LastName = "Brown", Email = "bob", Password = "123", PhoneNumber = 55576, EmployeeType = "Quotation Officer", Address = "101 River Rd" }
             };
         }
 
