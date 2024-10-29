@@ -25,6 +25,26 @@ namespace IAB251_A2.Models
     public class Employee : User
     {
         public string EmployeeType { get; set; }
+
+
+        //Applying Discount to quote and updating the cost/price
+        private void ApplyDiscount(Quotation quotation, double discount)
+        {
+            quotation.Cost = quotation.Cost * (1 - discount);
+            Console.WriteLine($"Discount has been applyied! Quotation cost: {quotation.Cost}");
+        }
+        //Check Discount to calculate the correct percentage
+        private void UpdateDiscount(Quotation quotation)
+        {
+            Console.WriteLine("Calculating discount...");
+            if ( (quotation.NumberOfContainers > 5) && (quotation.QuarantineFlag || quotation.FumigationFlag) ) {
+                ApplyDiscount(quotation, 0.025); //2.5%
+            } else if ( (quotation.NumberOfContainers > 5) && (quotation.QuarantineFlag && quotation.FumigationFlag) ) {
+                ApplyDiscount(quotation, 0.05);  //5%
+            } else if ((quotation.NumberOfContainers > 5) && (quotation.QuarantineFlag && quotation.FumigationFlag)) {
+                ApplyDiscount(quotation, 0.1);   //10%
+            }
+        }
     }
 
 }
