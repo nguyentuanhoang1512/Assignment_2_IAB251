@@ -10,9 +10,16 @@ namespace IAB251_A2.Services
     {
         private static QuotationService _instance;
         public static QuotationService Instance => _instance ??= new QuotationService();
+        private UserService _userService = new UserService();
         private List<Quotation> quotations = new List<Quotation>();
 
         public event Action QuotationsUpdated;
+
+
+        public Customer GetCustomerByEmail(string email)
+        {
+            return _userService.GetAllCustomers().FirstOrDefault(c => c.Email == email);
+        }
 
         public void UpdateQuotationStatus(int requestId, string status)
         {
@@ -37,4 +44,7 @@ namespace IAB251_A2.Services
         public List<Quotation> GetQuotations() => quotations;
         public List<Quotation> GetPendingQuotations() => quotations.Where(q => q.Status == "Pending").ToList();
     }
+
+
+
 }

@@ -16,16 +16,19 @@ using System.Windows.Shapes;
 using System;
 using IAB251_A2.Models;
 using IAB251_A2.Controllers;
+using IAB251_A2.Services;
+using System.Net;
 
 namespace front_end
 {
     public partial class CustomerSignUp : Window
     {
-        private UserController userController = new UserController();
+        private UserController userController;
 
         public CustomerSignUp()
         {
             InitializeComponent();
+            userController = new UserController(new UserService());
             AddPlaceholderText(FirstNameTextBox, null);
             AddPlaceholderText(LastNameTextBox, null);
             AddPlaceholderText(EmailTextBox, null);
@@ -64,24 +67,29 @@ namespace front_end
 
         private void RegisterButton_Click(object sender, RoutedEventArgs e)
         {
-            string firstName = FirstNameTextBox.Text;
-            string lastName = LastNameTextBox.Text;
-            string email = EmailTextBox.Text;
             int phone;
             bool isPhoneValid = int.TryParse(PhoneTextBox.Text, out phone);
-            string companyName = CompanyNameTextBox.Text;
-            string address = AddressTextBox.Text;
-            string password = PasswordBox.Password;
 
-            if (string.IsNullOrWhiteSpace(firstName) || string.IsNullOrWhiteSpace(lastName) ||
-                string.IsNullOrWhiteSpace(email) || string.IsNullOrWhiteSpace(address) ||
-                string.IsNullOrWhiteSpace(password) || !isPhoneValid)
+            var customer = new Customer
+            {
+                FirstName = FirstNameTextBox.Text,
+                LastName = LastNameTextBox.Text,
+                Email = EmailTextBox.Text,
+                PhoneNumber = int.Parse(PhoneTextBox.Text),
+                CompanyName = CompanyNameTextBox.Text,
+                Address = AddressTextBox.Text,
+                Password = PasswordBox.Password
+            };
+
+            if (string.IsNullOrWhiteSpace(customer.FirstName) || string.IsNullOrWhiteSpace(customer.LastName) ||
+                string.IsNullOrWhiteSpace(customer.Email) || string.IsNullOrWhiteSpace(customer.Address) ||
+                string.IsNullOrWhiteSpace(customer.Password) || !isPhoneValid)
             {
                 MessageBox.Show("Please fill all required fields with valid data.");
                 return;
             }
-
-            userController.RegisterCustomer(firstName, lastName, email, phone, companyName, address, password);
+            string result = userController.RegisterCustomer(customer);
+            MessageBox.Show(result);
 
             var customerLogin = new login();
             customerLogin.Show();

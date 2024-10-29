@@ -21,10 +21,13 @@ namespace front_end
     
     public partial class RequestQuotationForm : Window
     {
+        private Customer _loggedInCustomer;
         private readonly QuotationService quotationService = QuotationService.Instance;
-        public RequestQuotationForm()
+        public RequestQuotationForm(Customer loggedInCustomer)
         {
             InitializeComponent();
+
+            _loggedInCustomer = loggedInCustomer;
             AddPlaceholderText(SourceTextBox, null);
             AddPlaceholderText(DestinationTextBox,null);
             AddPlaceholderText(NumberOfContainersTextBox, null);
@@ -90,8 +93,8 @@ namespace front_end
 
             quotationService.SubmitQuotation(newQuotation);
             MessageBox.Show("Quotation request submitted successfully!");
-            var customerDashboard = new CustomerDashboard();
-            customerDashboard.Show();
+            var requestQuotationForm = new RequestQuotationForm(_loggedInCustomer);
+            requestQuotationForm.Show();
             this.Close();
         }
 

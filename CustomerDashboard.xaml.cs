@@ -1,4 +1,5 @@
-﻿using System;
+﻿using IAB251_A2.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -19,10 +20,23 @@ namespace front_end
     /// </summary>
     public partial class CustomerDashboard : Window
     {
-        public CustomerDashboard()
+        private Customer _currentCustomer;
+
+        private readonly Customer _loggedInCustomer;
+
+        public CustomerDashboard(Customer loggedInCustomer = null)
         {
             InitializeComponent();
+            _loggedInCustomer = loggedInCustomer;
+
+            if (_loggedInCustomer?.Messages?.Any() == true)
+            {
+                var message = string.Join("\n", _loggedInCustomer.Messages);
+                MessageBox.Show(message, "Notifications");
+                _loggedInCustomer.Messages.Clear();
+            }
         }
+
 
         private void Exit_Click(object sender, RoutedEventArgs e)
         {
@@ -39,7 +53,7 @@ namespace front_end
 
         private void RequestQuotation_Click(object sender, RoutedEventArgs e)
         {
-            var requestQuotationForm = new RequestQuotationForm();
+            var requestQuotationForm = new RequestQuotationForm(_loggedInCustomer);
             requestQuotationForm.Show();
             this.Close();
         }
@@ -49,6 +63,17 @@ namespace front_end
             var quotationStatusView = new Quotations();
             quotationStatusView.Show();
             this.Close();
+        }
+
+
+        private void DisplayMessages()
+        {
+            if (_currentCustomer.Messages.Any())
+            {
+                string messages = string.Join("\n", _currentCustomer.Messages);
+                MessageBox.Show($"You have messages:\n{messages}");
+                _currentCustomer.Messages.Clear(); // Optional: Clear messages after displaying
+            }
         }
     }
 }

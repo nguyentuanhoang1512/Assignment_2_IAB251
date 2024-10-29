@@ -11,6 +11,8 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using IAB251_A2.Controllers;
+using IAB251_A2.Models;
 using IAB251_A2.Services;
 
 namespace front_end
@@ -18,14 +20,18 @@ namespace front_end
     public partial class login : Window
     {
         private readonly AuthenticationService _authService;
+        private readonly UserController userController;
 
         public login()
         {
             InitializeComponent();
-            _authService = new AuthenticationService(new UserService());
-
+            var userService = new UserService();
+            _authService = new AuthenticationService(userService);
+            userController = new UserController(userService);
             AddPlaceholderText(UsernameTextBox, null);
         }
+
+
 
         private void ClearText(object sender, RoutedEventArgs e)
         {
@@ -53,19 +59,28 @@ namespace front_end
             string email = UsernameTextBox.Text.Trim();
             string password = PasswordTextBox.Password.Trim();
 
+            var user = _authService.Login(email, password);
 
-            string loginResult = _authService.Login(email, password);
-
-            if (loginResult.StartsWith("Customer"))
+            if (user is Customer customer)
             {
-                MessageBox.Show(loginResult);
-                var customerDashboard = new CustomerDashboard();
+                MessageBox.Show($"Welcome, {customer.FirstName}");
+
+                // Display any messages if present
+                if (customer.Messages.Count > 0)
+                {
+                    string messages = string.Join("\n", customer.Messages);
+                    MessageBox.Show($"Messages:\n{messages}");
+                    customer.Messages.Clear();  
+                }
+
+                var customerDashboard = new CustomerDashboard(customer);
                 customerDashboard.Show();
                 this.Close();
             }
-            else if (loginResult.StartsWith("Employee"))
+
+            else if (user is Employee employee)
             {
-                MessageBox.Show(loginResult);
+                MessageBox.Show($"Welcome, {employee.FirstName}");
                 var employeeDashboard = new EmployeeDashboard();
                 employeeDashboard.Show();
                 this.Close();
@@ -75,6 +90,7 @@ namespace front_end
                 MessageBox.Show("Invalid username or password. Please try again.");
             }
         }
+
 
 
         private void SignUp_Click(object sender, RoutedEventArgs e)
