@@ -1,4 +1,5 @@
-﻿using System;
+﻿using IAB251_A2.Services;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -11,6 +12,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using System.Windows.Controls;
 
 namespace front_end
 {
@@ -19,6 +21,8 @@ namespace front_end
     /// </summary>
     public partial class CustomerDashboard : Window
     {
+        private readonly AuthenticationService _authService;
+
         public CustomerDashboard()
         {
             InitializeComponent();
@@ -32,7 +36,7 @@ namespace front_end
             if (exitConfirmation.IsConfirmed)
             {
                 var login = new login();
-                login.Show();
+                //login.Show();
                 this.Close();
             }
         }

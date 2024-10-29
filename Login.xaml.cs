@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -10,20 +11,23 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
+using System.Windows.Navigation;
 using System.Windows.Shapes;
+using IAB251_A2;
 using IAB251_A2.Services;
+using System.Windows.Controls;
 
 namespace front_end
 {
-    public partial class login : Window
+    public partial class login : Page
     {
         private readonly AuthenticationService _authService;
 
+        
         public login()
         {
             InitializeComponent();
             _authService = new AuthenticationService(new UserService());
-
             AddPlaceholderText(UsernameTextBox, null);
         }
 
@@ -59,16 +63,14 @@ namespace front_end
             if (loginResult.StartsWith("Customer"))
             {
                 MessageBox.Show(loginResult);
-                var customerDashboard = new CustomerDashboard();
-                customerDashboard.Show();
-                this.Close();
+                var mainWindow = Application.Current.MainWindow as MainWindow;
+                mainWindow.MainFrame.Navigate(new CustomerDashboard()); // Navigate to CustomerDashboard page
             }
             else if (loginResult.StartsWith("Employee"))
             {
                 MessageBox.Show(loginResult);
-                var employeeDashboard = new EmployeeDashboard();
-                employeeDashboard.Show();
-                this.Close();
+                var mainWindow = Application.Current.MainWindow as MainWindow;
+                mainWindow.MainFrame.Navigate(new EmployeeDashboard()); // Navigate to EmployeeDashboard page
             }
             else
             {
@@ -79,9 +81,17 @@ namespace front_end
 
         private void SignUp_Click(object sender, RoutedEventArgs e)
         {
-            var signUpTypeWindow = new ChooseSignUpType();
-            signUpTypeWindow.Show();
-            this.Close();
+
+            var mainWindow = Application.Current.MainWindow as MainWindow;
+            if (mainWindow != null)
+            {
+                mainWindow.MainFrame.Navigate(new front_end.CustomerSignUp()); // Navigate to sign-up page
+            }
         }
+
+
+
+        
     }
+  
 }

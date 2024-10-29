@@ -26,14 +26,14 @@ namespace front_end
         private void GoBack_Click(object sender, RoutedEventArgs e)
         {
             var previousWindow = new login(); 
-            previousWindow.Show();
+            //previousWindow.Show();
             this.Close();
         }
 
         private void CustomerButton_Click(object sender, RoutedEventArgs e)
         {
             var customerSignUp = new CustomerSignUp();
-            customerSignUp.Show();
+            //customerSignUp.Show();
             this.Close();
         }
 

@@ -19,7 +19,7 @@ using IAB251_A2.Controllers;
 
 namespace front_end
 {
-    public partial class CustomerSignUp : Window
+    public partial class CustomerSignUp : Page
     {
         private UserController userController = new UserController();
 
@@ -37,9 +37,15 @@ namespace front_end
 
         private void GoBack_Click(object sender, RoutedEventArgs e)
         {
-            var previousWindow = new ChooseSignUpType();
-            previousWindow.Show();
-            this.Close();
+            // Check if NavigationService can go back
+            if (NavigationService.CanGoBack)
+            {
+                NavigationService.GoBack();
+            }
+            else
+            {
+                MessageBox.Show("No previous page in the history.");
+            }
         }
 
         private void ClearText(object sender, RoutedEventArgs e)
@@ -84,8 +90,8 @@ namespace front_end
             userController.RegisterCustomer(firstName, lastName, email, phone, companyName, address, password);
 
             var customerLogin = new login();
-            customerLogin.Show();
-            this.Close();
+            //customerLogin.Show();
+            //this.Close();
         }
     }
 }

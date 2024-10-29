@@ -31,7 +31,7 @@ namespace front_end
             if (exitConfirmation.IsConfirmed)
             {
                 var login = new login();
-                login.Show();
+                //login.Show();
                 this.Close();
             }
         }

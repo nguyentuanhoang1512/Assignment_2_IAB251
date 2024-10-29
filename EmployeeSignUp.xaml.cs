@@ -68,7 +68,7 @@ namespace front_end
             MessageBox.Show("Employee registered successfully!");
 
             var customerLogin = new login();
-            customerLogin.Show();
+            //customerLogin.Show();
             this.Close();
         }
     }
