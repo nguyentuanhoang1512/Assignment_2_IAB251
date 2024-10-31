@@ -17,25 +17,33 @@ using System.Collections.ObjectModel;
 
 using IAB251_A2.Models;
 using IAB251_A2.Services;
+using IAB251_A2.Controllers;
+using IAB251_A2;
 
 namespace front_end
 {
-    public partial class Quotations : Window
+    
+    public partial class Quotations : Page
     {
         public ObservableCollection<Quotation> QuotationsList { get; set; }
 
-        public Quotations()
+        private UserController userController;
+        public Quotations(UserController userController)
         {
             InitializeComponent();
+            this.userController = userController;
             QuotationsList = new ObservableCollection<Quotation>(QuotationService.Instance.GetPendingQuotations());
             DataContext = this;
         }
 
         private void GoBack_Click(object sender, RoutedEventArgs e)
         {
-            var customerDashboard = new CustomerDashboard();
-            customerDashboard.Show();
-            this.Close();
+            var mainWindow = Application.Current.MainWindow as MainWindow;
+            if (mainWindow != null)
+            {
+                mainWindow.MainFrame.Navigate(new front_end.EmployeeDashboard(userController)); 
+            }
+
         }
     }
 

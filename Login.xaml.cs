@@ -16,6 +16,8 @@ using System.Windows.Shapes;
 using IAB251_A2;
 using IAB251_A2.Services;
 using System.Windows.Controls;
+using IAB251_A2.Models;
+using IAB251_A2.Controllers;
 
 namespace front_end
 {
@@ -23,10 +25,12 @@ namespace front_end
     {
         private readonly AuthenticationService _authService;
 
-        
-        public login()
+        private UserController userController;
+
+        public login(UserController userController)
         {
             InitializeComponent();
+            this.userController = userController;
             _authService = new AuthenticationService(new UserService());
             AddPlaceholderText(UsernameTextBox, null);
         }
@@ -58,19 +62,23 @@ namespace front_end
             string password = PasswordTextBox.Password.Trim();
 
 
-            string loginResult = _authService.Login(email, password);
+            bool isAuthenticated = userController.Login(email, password);
 
-            if (loginResult.StartsWith("Customer"))
+            if (isAuthenticated)
             {
-                MessageBox.Show(loginResult);
+                // Check if user is a customer or employee based on properties in UserController
                 var mainWindow = Application.Current.MainWindow as MainWindow;
-                mainWindow.MainFrame.Navigate(new CustomerDashboard()); // Navigate to CustomerDashboard page
-            }
-            else if (loginResult.StartsWith("Employee"))
-            {
-                MessageBox.Show(loginResult);
-                var mainWindow = Application.Current.MainWindow as MainWindow;
-                mainWindow.MainFrame.Navigate(new EmployeeDashboard()); // Navigate to EmployeeDashboard page
+                if (mainWindow != null)
+                {
+                    if (userController.IsCustomer)
+                    {
+                        mainWindow.MainFrame.Navigate(new front_end.CustomerDashboard(userController));
+                    }
+                    else if (userController.IsEmployee)
+                    {
+                        mainWindow.MainFrame.Navigate(new front_end.EmployeeDashboard(userController));
+                    }
+                }
             }
             else
             {
@@ -85,7 +93,7 @@ namespace front_end
             var mainWindow = Application.Current.MainWindow as MainWindow;
             if (mainWindow != null)
             {
-                mainWindow.MainFrame.Navigate(new front_end.CustomerSignUp()); // Navigate to sign-up page
+                mainWindow.MainFrame.Navigate(new front_end.ChooseSignUpType(userController)); // Navigate to sign-up page
             }
         }
 

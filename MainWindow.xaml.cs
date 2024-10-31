@@ -1,4 +1,5 @@
-﻿using System;
+﻿using IAB251_A2.Controllers;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -14,12 +15,16 @@ using System.Windows.Shapes;
 
 namespace IAB251_A2
 {
+
     public partial class MainWindow : Window
     {
+        private UserController userController;
+
         public MainWindow()
         {
             InitializeComponent();
-            MainFrame.Navigate(new front_end.login()); // Load the login page initially
+            this.userController = new UserController();
+            MainFrame.Navigate(new front_end.login(userController)); // Load the login page initially
         }
     }
 }

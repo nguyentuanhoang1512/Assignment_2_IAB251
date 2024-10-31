@@ -2,17 +2,19 @@
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Media;
+using IAB251_A2;
 using IAB251_A2.Controllers;
 
 namespace front_end
 {
-    public partial class EmployeeSignUp : Window
+    public partial class EmployeeSignUp : Page
     {
-        private UserController _userController;
+        private UserController userController;
 
-        public EmployeeSignUp()
+        public EmployeeSignUp(UserController userController)
         {
             InitializeComponent();
+            this.userController = userController;
             AddPlaceholderText(FirstNameTextBox, null);
             AddPlaceholderText(LastNameTextBox, null);
             AddPlaceholderText(EmailTextBox, null);
@@ -41,9 +43,11 @@ namespace front_end
 
         private void GoBack_Click(object sender, RoutedEventArgs e)
         {
-            var previousWindow = new ChooseSignUpType();
-            previousWindow.Show();
-            this.Close();
+            var mainWindow = Application.Current.MainWindow as MainWindow;
+            if (mainWindow != null)
+            {
+                mainWindow.MainFrame.Navigate(new front_end.ChooseSignUpType(userController)); // Navigate to sign-up page
+            }
         }
 
         private void RegisterButton_Click(object sender, RoutedEventArgs e)
@@ -64,12 +68,15 @@ namespace front_end
                 return;
             }
 
-            _userController.RegisterEmployee(firstName, lastName, email, phoneNumber, employeeType, address, password);
+            userController.RegisterEmployee(firstName, lastName, email, phoneNumber, employeeType, address, password);
             MessageBox.Show("Employee registered successfully!");
 
-            var customerLogin = new login();
-            //customerLogin.Show();
-            this.Close();
+            var mainWindow = Application.Current.MainWindow as MainWindow;
+            if (mainWindow != null)
+            {
+                mainWindow.MainFrame.Navigate(new front_end.EmployeeDashboard(userController)); // Navigate to sign-up page
+            }
+
         }
     }
 }

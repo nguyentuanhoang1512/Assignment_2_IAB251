@@ -16,16 +16,19 @@ using System.Windows.Shapes;
 using System;
 using IAB251_A2.Models;
 using IAB251_A2.Controllers;
+using IAB251_A2;
 
 namespace front_end
 {
+    
     public partial class CustomerSignUp : Page
     {
-        private UserController userController = new UserController();
+        private UserController userController;
 
-        public CustomerSignUp()
+        public CustomerSignUp(UserController userController)
         {
             InitializeComponent();
+            this.userController = userController;
             AddPlaceholderText(FirstNameTextBox, null);
             AddPlaceholderText(LastNameTextBox, null);
             AddPlaceholderText(EmailTextBox, null);
@@ -37,14 +40,10 @@ namespace front_end
 
         private void GoBack_Click(object sender, RoutedEventArgs e)
         {
-            // Check if NavigationService can go back
-            if (NavigationService.CanGoBack)
+            var mainWindow = Application.Current.MainWindow as MainWindow;
+            if (mainWindow != null)
             {
-                NavigationService.GoBack();
-            }
-            else
-            {
-                MessageBox.Show("No previous page in the history.");
+                mainWindow.MainFrame.Navigate(new front_end.ChooseSignUpType(userController));
             }
         }
 
@@ -89,9 +88,13 @@ namespace front_end
 
             userController.RegisterCustomer(firstName, lastName, email, phone, companyName, address, password);
 
-            var customerLogin = new login();
-            //customerLogin.Show();
-            //this.Close();
+
+            var mainWindow = Application.Current.MainWindow as MainWindow;
+
+            if (mainWindow != null)
+            {
+                mainWindow.MainFrame.Navigate(new front_end.login(userController)); // Navigate to sign-up page
+            }
         }
     }
 }

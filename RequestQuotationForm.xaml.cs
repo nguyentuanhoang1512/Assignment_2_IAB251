@@ -1,4 +1,6 @@
-﻿using IAB251_A2.Models;
+﻿using IAB251_A2;
+using IAB251_A2.Controllers;
+using IAB251_A2.Models;
 using IAB251_A2.Services;
 using System;
 using System.Collections.Generic;
@@ -19,12 +21,15 @@ using System.Windows.Shapes;
 namespace front_end
 {
     
-    public partial class RequestQuotationForm : Window
+    public partial class RequestQuotationForm : Page
     {
         private readonly QuotationService quotationService = QuotationService.Instance;
-        public RequestQuotationForm()
+        private UserController userController;
+
+        public RequestQuotationForm(UserController userController)
         {
             InitializeComponent();
+            this.userController = new UserController(); 
             AddPlaceholderText(SourceTextBox, null);
             AddPlaceholderText(DestinationTextBox,null);
             AddPlaceholderText(NumberOfContainersTextBox, null);
@@ -53,9 +58,12 @@ namespace front_end
 
         private void GoBack_Click(object sender, RoutedEventArgs e)
         {
-            var dashboard = new CustomerDashboard(); // Replace with actual previous window if different
-            dashboard.Show();
-            this.Close();
+            var mainWindow = Application.Current.MainWindow as MainWindow;
+            if (mainWindow != null)
+            {
+                mainWindow.MainFrame.Navigate(new front_end.CustomerDashboard(userController)); // Navigate to sign-up page
+            }
+
         }
 
         private void Submit_Click(object sender, RoutedEventArgs e)
@@ -71,9 +79,13 @@ namespace front_end
 
             quotationService.SubmitQuotation(newQuotation);
             MessageBox.Show("Quotation request submitted successfully!");
-            var customerDashboard = new CustomerDashboard();
-            customerDashboard.Show();
-            this.Close();
+
+            var mainWindow = Application.Current.MainWindow as MainWindow;
+            if (mainWindow != null)
+            {
+                mainWindow.MainFrame.Navigate(new front_end.EmployeeDashboard(userController)); // Navigate to sign-up page
+            }
+
         }
 
     }

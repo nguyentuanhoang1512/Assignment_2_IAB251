@@ -6,10 +6,13 @@
         xmlns:local="clr-namespace:IAB251_A2"
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
-    <Grid>
-        <Frame x:Name="MainFrame" 
-               NavigationUIVisibility="Hidden"
-               HorizontalAlignment="Stretch" 
-               VerticalAlignment="Stretch"/>
-    </Grid>
+    <Border Background="#002F6C" BorderThickness="2" BorderBrush="#F7941D">
+        <Grid>
+            <Frame x:Name="MainFrame" 
+            NavigationUIVisibility="Hidden"
+            HorizontalAlignment="Stretch" 
+            VerticalAlignment="Stretch"/>
+        </Grid>
+    </Border>
+   
 </Window>

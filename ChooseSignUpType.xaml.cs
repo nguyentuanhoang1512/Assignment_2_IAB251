@@ -1,4 +1,6 @@
-﻿using System;
+﻿using IAB251_A2;
+using IAB251_A2.Controllers;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -16,32 +18,40 @@ using System.Windows.Shapes;
 
 namespace front_end
 {
-    public partial class ChooseSignUpType : Window
+    public partial class ChooseSignUpType : Page
     {
-        public ChooseSignUpType()
+        private UserController userController;
+        public ChooseSignUpType(UserController userController)
         {
             InitializeComponent();
+            this.userController = userController;
         }
 
         private void GoBack_Click(object sender, RoutedEventArgs e)
         {
-            var previousWindow = new login(); 
-            //previousWindow.Show();
-            this.Close();
+            var mainWindow = Application.Current.MainWindow as MainWindow;
+            if (mainWindow != null)
+            {
+                mainWindow.MainFrame.Navigate(new front_end.login(userController)); // Navigate to sign-up page
+            }
         }
 
         private void CustomerButton_Click(object sender, RoutedEventArgs e)
         {
-            var customerSignUp = new CustomerSignUp();
-            //customerSignUp.Show();
-            this.Close();
+            var mainWindow = Application.Current.MainWindow as MainWindow;
+            if (mainWindow != null)
+            {
+                mainWindow.MainFrame.Navigate(new front_end.CustomerSignUp(userController)); // Navigate to sign-up page
+            }
         }
 
         private void EmployeeButton_Click(object sender, RoutedEventArgs e)
         {
-            var employeeSignUp = new EmployeeSignUp();
-            employeeSignUp.Show();
-            this.Close();
+            var mainWindow = Application.Current.MainWindow as MainWindow;
+            if (mainWindow != null)
+            {
+                mainWindow.MainFrame.Navigate(new front_end.EmployeeSignUp(userController)); // Navigate to sign-up page
+            }
         }
     }
 }

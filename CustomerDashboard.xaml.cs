@@ -13,19 +13,24 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using System.Windows.Controls;
+using IAB251_A2.Controllers;
+using IAB251_A2;
 
 namespace front_end
 {
     /// <summary>
     /// Interaction logic for CustomerDashboard.xaml
     /// </summary>
-    public partial class CustomerDashboard : Window
+    public partial class CustomerDashboard : Page
     {
         private readonly AuthenticationService _authService;
 
-        public CustomerDashboard()
+        private UserController userController;
+        public CustomerDashboard(UserController userController)
         {
             InitializeComponent();
+            this.userController = userController;
+
         }
 
         private void Exit_Click(object sender, RoutedEventArgs e)
@@ -35,24 +40,31 @@ namespace front_end
 
             if (exitConfirmation.IsConfirmed)
             {
-                var login = new login();
-                //login.Show();
-                this.Close();
+                var mainWindow = Application.Current.MainWindow as MainWindow;
+                if (mainWindow != null)
+                {
+                    mainWindow.MainFrame.Navigate(new front_end.login(userController)); // Navigate to sign-up page
+                }
             }
         }
 
         private void RequestQuotation_Click(object sender, RoutedEventArgs e)
         {
-            var requestQuotationForm = new RequestQuotationForm();
-            requestQuotationForm.Show();
-            this.Close();
+            var mainWindow = Application.Current.MainWindow as MainWindow;
+            if (mainWindow != null)
+            {
+                mainWindow.MainFrame.Navigate(new front_end.RequestQuotationForm(userController)); // Navigate to sign-up page
+            }
+
         }
 
         private void ViewQuotationStatus_Click(object sender, RoutedEventArgs e)
         {
-            var quotationStatusView = new Quotations();
-            quotationStatusView.Show();
-            this.Close();
+            var mainWindow = Application.Current.MainWindow as MainWindow;
+            if (mainWindow != null)
+            {
+                mainWindow.MainFrame.Navigate(new front_end.Quotations(userController)); // Navigate to sign-up page
+            }
         }
     }
 }

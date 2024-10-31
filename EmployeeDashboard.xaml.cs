@@ -1,4 +1,6 @@
-﻿using System;
+﻿using IAB251_A2;
+using IAB251_A2.Controllers;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -16,11 +18,13 @@ using System.Windows.Shapes;
 
 namespace front_end
 {
-    public partial class EmployeeDashboard : Window
+    public partial class EmployeeDashboard : Page
     {
-        public EmployeeDashboard()
+        private UserController userController;
+        public EmployeeDashboard(UserController userController)
         {
             InitializeComponent();
+            this.userController = userController;
         }
 
         private void Exit_Click(object sender, RoutedEventArgs e)
@@ -30,16 +34,21 @@ namespace front_end
 
             if (exitConfirmation.IsConfirmed)
             {
-                var login = new login();
-                //login.Show();
-                this.Close();
+                var mainWindow = Application.Current.MainWindow as MainWindow;
+                if (mainWindow != null)
+                {
+                    mainWindow.MainFrame.Navigate(new front_end.login(userController)); 
+                }
             }
         }
 
         private void ViewPendingQuotations_Click(object sender, RoutedEventArgs e)
         {
-            var pendingQuotationsWindow = new Quotations();
-            pendingQuotationsWindow.Show();
+            var mainWindow = Application.Current.MainWindow as MainWindow;
+            if (mainWindow != null)
+            {
+                mainWindow.MainFrame.Navigate(new front_end.Quotations(userController));
+            }
         }
 
     }

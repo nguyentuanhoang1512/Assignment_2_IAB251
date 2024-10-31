@@ -1,8 +1,7 @@
-﻿<Window x:Class="front_end.CustomerDashboard"
+﻿<Page x:Class="front_end.CustomerDashboard"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        Title="Customer Dashboard" Height="440.1" Width="214.5"
-        WindowStyle="None" AllowsTransparency="True" Background="Transparent">
+        Title="Customer Dashboard" Height="400" Width="780">
 
     <Border Background="#002F6C" CornerRadius="25" BorderThickness="2" BorderBrush="#F7941D">
         <ScrollViewer VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Disabled">
@@ -50,4 +49,4 @@
             </Grid>
         </ScrollViewer>
     </Border>
-</Window>
+</Page>

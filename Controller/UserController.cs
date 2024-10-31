@@ -10,22 +10,40 @@ namespace IAB251_A2.Controllers
         private List<Customer> Customers = new List<Customer>();
         private List<Employee> Employees = new List<Employee>();
 
+        // Read-only properties for Customers and Employees
+        public List<Customer> CustomerList => Customers;
+        public List<Employee> EmployeeList => Employees;
+
+        // Properties to indicate the role of the logged-in user
+        public bool IsCustomer { get; private set; }
+        public bool IsEmployee { get; private set; }
+
+
         public bool Login(string email, string password)
         {
+            // Reset role flags
+            IsCustomer = false;
+            IsEmployee = false;
+
+            // Check if the user is a customer
             var customer = Customers.FirstOrDefault(c => c.Email == email && c.Password == password);
             if (customer != null)
             {
                 Console.WriteLine($"{customer.FirstName} logged in successfully as a Customer.");
+                IsCustomer = true;
                 return true;
             }
 
+            // Check if the user is an employee
             var employee = Employees.FirstOrDefault(e => e.Email == email && e.Password == password);
             if (employee != null)
             {
                 Console.WriteLine($"{employee.FirstName} logged in successfully as an Employee.");
+                IsEmployee = true;
                 return true;
             }
 
+            // If no match, login failed
             Console.WriteLine("Login failed: Invalid credentials.");
             return false;
         }
@@ -89,5 +107,7 @@ namespace IAB251_A2.Controllers
 
             return new List<Quotation>();
         }
+
+        
     }
 }

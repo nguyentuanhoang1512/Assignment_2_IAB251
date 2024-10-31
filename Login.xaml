@@ -1,50 +1,72 @@
 ﻿<Page x:Class="front_end.login"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        Title="Login" Width="750" Height="400" >
+        Title="Login" Height="400" Width="780" >
 
-    <Border Background="#002F6C" CornerRadius="25" BorderThickness="2" BorderBrush="#F7941D">
-        <Grid HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
 
-            <Grid.RowDefinitions>
-                <RowDefinition Height="Auto"/>
-                <!-- Adjusted for content size -->
-                <RowDefinition Height="*"/>
-                <!-- Takes remaining space -->
-            </Grid.RowDefinitions>
+    <Grid HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Background="#002F6C">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <!-- Adjusted for content size -->
+            <RowDefinition Height="*"/>
+            <!-- Takes remaining space -->
+        </Grid.RowDefinitions>
 
-            <!-- First Rounded TextBox for Username -->
-            <Border HorizontalAlignment="Center" VerticalAlignment="Top" Width="134" Height="29" Margin="0,169,0,0" Background="White" CornerRadius="10" BorderBrush="Gray" BorderThickness="1">
-                <TextBox x:Name="UsernameTextBox" Background="{x:Null}" BorderThickness="0" TextWrapping="Wrap" Tag="Username" VerticalAlignment="Center" GotFocus="ClearText" LostFocus="AddPlaceholderText" FontFamily="Tw Cen MT Condensed Extra Bold" HorizontalAlignment="Left" Foreground="#333333"/>
-            </Border>
+        <!-- First Rounded TextBox for Username -->
+        <Border HorizontalAlignment="Left" VerticalAlignment="Top" Width="470" Height="40" Margin="140,5,0,0" Background="White" CornerRadius="10" BorderBrush="Gray" BorderThickness="1" Grid.Row="1">
+            <TextBox x:Name="UsernameTextBox" Background="{x:Null}" BorderThickness="0" TextWrapping="Wrap" Tag="Username" VerticalAlignment="Center" GotFocus="ClearText"
+                     LostFocus="AddPlaceholderText" FontFamily="Tw Cen MT Condensed Extra Bold" HorizontalAlignment="Left" Foreground="#333333"
+                     FontSize="24"/>
+        </Border>
 
-            <!-- Second Rounded PasswordBox for Password -->
-            <Border HorizontalAlignment="Center" VerticalAlignment="Top" Width="134" Height="29" Margin="0,215,0,0" Background="White" CornerRadius="10" BorderBrush="Gray" BorderThickness="1" Grid.RowSpan="3">
-                <PasswordBox x:Name="PasswordTextBox" Background="White" BorderThickness="0" VerticalAlignment="Center" FontFamily="Tw Cen MT Condensed Extra Bold" Margin="1,0,-1,0" Foreground="#333333"/>
-            </Border>
+        <!-- Second Rounded PasswordBox for Password -->
+        <Border HorizontalAlignment="Left" VerticalAlignment="Top" Width="470" Height="40" Margin="140,64,0,0" Background="White" CornerRadius="10" BorderBrush="Gray" BorderThickness="1" Grid.Row="1">
+            <PasswordBox x:Name="PasswordTextBox" Background="White" BorderThickness="0" VerticalAlignment="Center" FontFamily="Tw Cen MT Condensed Extra Bold" Margin="1,0,-1,0" Foreground="#333333" FontSize="24"/>
+        </Border>
 
-            <!-- Rounded Login Button -->
-            <Button x:Name="Login" Content="Login" HorizontalAlignment="Center" Margin="0,68,0,0" Grid.Row="1" VerticalAlignment="Top" Width="98" Height="40" Background="#F7941D" Foreground="White" Click="Login_Click" FontFamily="Tw Cen MT Condensed Extra Bold">
-                <Button.Template>
-                    <ControlTemplate TargetType="Button">
-                        <Border Background="{TemplateBinding Background}" 
+        <!-- Rounded Login Button -->
+        <Button x:Name="Login" Content="Login" HorizontalAlignment="Left" Margin="300,132,0,0" Grid.Row="1" VerticalAlignment="Top" Width="150" Height="49" 
+                Background="#F7941D" Foreground="White" Click="Login_Click" FontFamily="Tw Cen MT Condensed Extra Bold" FontSize="24">
+            <Button.Template>
+                <ControlTemplate TargetType="Button">
+                    <Border Background="{TemplateBinding Background}" 
+                            x:Name="border"
                                 BorderBrush="{TemplateBinding BorderBrush}" 
                                 BorderThickness="2" 
                                 CornerRadius="20">
-                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
-                        </Border>
-                    </ControlTemplate>
-                </Button.Template>
-            </Button>
+                        <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                    </Border>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter TargetName="border" Property="Background" Value="Black"/>
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Button.Template>
+        </Button>
 
-            <!-- Login Title Label -->
-            <Label Content="Login" HorizontalAlignment="Center" Height="72" VerticalAlignment="Top" Width="134" FontFamily="Tw Cen MT Condensed Extra Bold" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontSize="48" Foreground="White" Margin="0,64,0,0"/>
+        <!-- Login Title Label -->
+        <Label Content="Login" HorizontalAlignment="Center" Height="72" VerticalAlignment="Top" Width="134" FontFamily="Tw Cen MT Condensed Extra Bold" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontSize="48" Foreground="White" Margin="0,64,0,0"/>
 
-            <!-- 'Don't have an account?' Text -->
-            <TextBlock HorizontalAlignment="Left" Margin="22,131,0,0" Grid.Row="2" TextWrapping="Wrap" Text="Don't have an account? " VerticalAlignment="Top" Width="132" Background="#002F6C" Foreground="White" />
+        <!-- 'Don't have an account?' Text -->
+        <TextBlock HorizontalAlignment="Left" Margin="219,204,0,0" Grid.Row="1" TextWrapping="Wrap" Text="Don't have an account? " VerticalAlignment="Top" Width="231" Background="#002F6C" Foreground="White" FontSize="20"/>
 
-            <!-- 'Sign up' Link as TextBlock with Click Event -->
-            <TextBlock HorizontalAlignment="Left" Margin="154,131,0,0" Grid.Row="2" TextWrapping="Wrap" Text="Sign up" VerticalAlignment="Top" Width="47" Background="#002F6C" Foreground="#F7941D" MouseDown="SignUp_Click"/>
-        </Grid>
-    </Border>
+        <Button Content="Sign up" HorizontalAlignment="Left" Margin="450,204,0,0" Grid.Row="1"
+        Width="88" Background="Transparent" BorderThickness="0" 
+        Foreground="#F7941D" FontSize="20" FontWeight="Bold" 
+        Click="SignUp_Click" VerticalAlignment="Top">
+            <Button.Template>
+                <ControlTemplate TargetType="Button">
+                    <TextBlock Text="{TemplateBinding Content}"  x:Name="text"
+                       HorizontalAlignment="Center" VerticalAlignment="Center"
+                       Foreground="{TemplateBinding Foreground}" />
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter TargetName="text" Property="Foreground" Value="red"/>
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Button.Template>
+        </Button>
+    </Grid>
 </Page>

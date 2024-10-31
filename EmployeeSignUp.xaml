@@ -1,8 +1,7 @@
-﻿<Window x:Class="front_end.EmployeeSignUp"
+﻿<Page x:Class="front_end.EmployeeSignUp"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        Title="Employee Registration" Height="440.1" Width="214.5" 
-        WindowStyle="None" AllowsTransparency="True" Background="Transparent">
+        Title="Employee Registration" Height="400" Width="780" >
 
     <Border Background="#002F6C" CornerRadius="25" BorderThickness="2" BorderBrush="#F7941D">
         <Grid HorizontalAlignment="Center">
@@ -71,4 +70,4 @@
             </StackPanel>
         </Grid>
     </Border>
-</Window>
+</Page>
