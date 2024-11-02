@@ -32,7 +32,7 @@ namespace front_end
             var mainWindow = Application.Current.MainWindow as MainWindow;
             if (mainWindow != null)
             {
-                mainWindow.MainFrame.Navigate(new front_end.login(userController)); // Navigate to sign-up page
+                mainWindow.MainFrame.Navigate(new front_end.login()); // Navigate to sign-up page
             }
         }
 

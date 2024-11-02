@@ -1,8 +1,7 @@
-﻿<Window x:Class="front_end.ReviewQuotations"
+﻿<Page x:Class="front_end.ReviewQuotations"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        Title="Pending Quotations" Height="440.1" Width="214.5"
-        WindowStyle="None" AllowsTransparency="True" Background="Transparent">
+        Title="Pending Quotations" Height="440.1" Width="214.5">
 
     <Border Background="#002F6C" CornerRadius="25" BorderThickness="2" BorderBrush="#F7941D">
         <ScrollViewer VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Disabled">
@@ -51,4 +50,4 @@
             </Grid>
         </ScrollViewer>
     </Border>
-</Window>
+</Page>

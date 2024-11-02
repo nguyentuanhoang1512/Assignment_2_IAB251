@@ -25,15 +25,16 @@ namespace front_end
     {
         private Customer _loggedInCustomer;
         private readonly QuotationService quotationService = QuotationService.Instance;
+
+        private UserController userController;
         public RequestQuotationForm(Customer loggedInCustomer)
         {
             InitializeComponent();
-            this.userController = new UserController(); 
             _loggedInCustomer = loggedInCustomer;
             AddPlaceholderText(SourceTextBox, null);
             AddPlaceholderText(DestinationTextBox,null);
             AddPlaceholderText(NumberOfContainersTextBox, null);
-            AddPlaceholderText(NatureOfPackageTextBox, null);
+            // AddPlaceholderText(NatureOfJobTextBox, null);
             AddPlaceholderText(QuarantineTextBox, null);
             AddPlaceholderText(CargoStorageTextBox, null);
             AddPlaceholderText(WarehousingTextBox, null);
@@ -63,7 +64,7 @@ namespace front_end
             var mainWindow = Application.Current.MainWindow as MainWindow;
             if (mainWindow != null)
             {
-                mainWindow.MainFrame.Navigate(new front_end.CustomerDashboard(userController)); // Navigate to sign-up page
+                mainWindow.MainFrame.Navigate(new front_end.CustomerDashboard()); // Navigate to sign-up page
             }
 
         }
@@ -102,7 +103,7 @@ namespace front_end
             var mainWindow = Application.Current.MainWindow as MainWindow;
             if (mainWindow != null)
             {
-                mainWindow.MainFrame.Navigate(new front_end.EmployeeDashboard(userController)); // Navigate to sign-up page
+                mainWindow.MainFrame.Navigate(new front_end.CustomerDashboard()); // Navigate to sign-up page
             }
 
         }

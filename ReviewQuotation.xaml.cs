@@ -18,7 +18,7 @@ using System.Collections.ObjectModel;
 
 namespace front_end
 {
-    public partial class ReviewQuotations : Window
+    public partial class ReviewQuotations : Page
     {
         private readonly QuotationService _quotationService = QuotationService.Instance;
         public ObservableCollection<Quotation> QuotationsList { get; set; }
@@ -80,8 +80,7 @@ namespace front_end
         private void GoBack_Click(object sender, RoutedEventArgs e)
         {
             var EmployeeDashboard = new EmployeeDashboard();
-            EmployeeDashboard.Show();
-            this.Close();
+            
         }
     }
 }

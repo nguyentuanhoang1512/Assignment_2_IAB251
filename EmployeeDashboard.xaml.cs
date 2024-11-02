@@ -21,10 +21,9 @@ namespace front_end
     public partial class EmployeeDashboard : Page
     {
         private UserController userController;
-        public EmployeeDashboard(UserController userController)
+        public EmployeeDashboard()
         {
             InitializeComponent();
-            this.userController = userController;
         }
 
         private void Exit_Click(object sender, RoutedEventArgs e)
@@ -37,7 +36,7 @@ namespace front_end
                 var mainWindow = Application.Current.MainWindow as MainWindow;
                 if (mainWindow != null)
                 {
-                    mainWindow.MainFrame.Navigate(new front_end.login(userController)); 
+                    mainWindow.MainFrame.Navigate(new front_end.login()); 
                 }
             }
         }
@@ -47,7 +46,7 @@ namespace front_end
             var mainWindow = Application.Current.MainWindow as MainWindow;
             if (mainWindow != null)
             {
-                mainWindow.MainFrame.Navigate(new front_end.Quotations(userController));
+                mainWindow.MainFrame.Navigate(new front_end.Quotations());
             }
         }
         private void ViewRateSchedule_Click(object sender, RoutedEventArgs e)

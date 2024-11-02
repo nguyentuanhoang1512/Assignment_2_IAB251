@@ -100,7 +100,7 @@ namespace front_end
 
             if (mainWindow != null)
             {
-                mainWindow.MainFrame.Navigate(new front_end.login(userController)); // Navigate to sign-up page
+                mainWindow.MainFrame.Navigate(new front_end.login()); // Navigate to sign-up page
             }
         }
     }

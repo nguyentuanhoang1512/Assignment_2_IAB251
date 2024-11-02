@@ -28,12 +28,9 @@ namespace front_end
         private readonly AuthenticationService _authService;
         private readonly UserController userController;
 
-        private UserController userController;
-
-        public login(UserController userController)
+        public login()
         {
             InitializeComponent();
-            this.userController = userController;
             var userService = new UserService();
             _authService = new AuthenticationService(userService);
             
@@ -83,13 +80,13 @@ namespace front_end
                     customer.Messages.Clear();  
                 }
 
-                mainWindow.MainFrame.Navigate(new front_end.CustomerDashboard(userController));
+                mainWindow.MainFrame.Navigate(new front_end.CustomerDashboard());
             }
 
             else if (user is Employee employee)
             {
                 MessageBox.Show($"Welcome, {employee.FirstName}");
-                mainWindow.MainFrame.Navigate(new front_end.EmployeeDashboard(userController));
+                mainWindow.MainFrame.Navigate(new front_end.EmployeeDashboard());
             }
             else
             {

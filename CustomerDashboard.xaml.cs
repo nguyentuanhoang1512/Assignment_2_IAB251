@@ -25,7 +25,7 @@ namespace front_end
     public partial class CustomerDashboard : Page
     {
         private Customer _currentCustomer;
-
+        private User user;
         private readonly Customer _loggedInCustomer;
 
         public CustomerDashboard(Customer loggedInCustomer = null)
@@ -41,6 +41,10 @@ namespace front_end
             }
         }
 
+        public CustomerDashboard(User user)
+        {
+            this.user = user;
+        }
 
         private void Exit_Click(object sender, RoutedEventArgs e)
         {
@@ -52,7 +56,7 @@ namespace front_end
                 var mainWindow = Application.Current.MainWindow as MainWindow;
                 if (mainWindow != null)
                 {
-                    mainWindow.MainFrame.Navigate(new front_end.login(userController)); // Navigate to sign-up page
+                    mainWindow.MainFrame.Navigate(new front_end.login()); // Navigate to sign-up page
                 }
             }
         }
@@ -62,7 +66,7 @@ namespace front_end
             var mainWindow = Application.Current.MainWindow as MainWindow;
             if (mainWindow != null)
             {
-                mainWindow.MainFrame.Navigate(new front_end.RequestQuotationForm(userController)); // Navigate to sign-up page
+                mainWindow.MainFrame.Navigate(new front_end.RequestQuotationForm(_loggedInCustomer)); // Navigate to sign-up page
             }
 
         }
@@ -72,7 +76,7 @@ namespace front_end
             var mainWindow = Application.Current.MainWindow as MainWindow;
             if (mainWindow != null)
             {
-                mainWindow.MainFrame.Navigate(new front_end.Quotations(userController)); // Navigate to sign-up page
+                mainWindow.MainFrame.Navigate(new front_end.Quotations()); // Navigate to sign-up page
             }
         }
 

@@ -23,8 +23,7 @@ namespace IAB251_A2
         public MainWindow()
         {
             InitializeComponent();
-            this.userController = new UserController();
-            MainFrame.Navigate(new front_end.login(userController)); // Load the login page initially
+            MainFrame.Navigate(new front_end.login()); // Load the login page initially
         }
     }
 }

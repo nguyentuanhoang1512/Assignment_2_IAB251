@@ -31,8 +31,7 @@ namespace front_end
         private readonly QuotationService _quotationService = QuotationService.Instance;
         public ObservableCollection<Quotation> QuotationsList { get; set; }
 
-        private UserController userController;
-        public Quotations(UserController userController)
+        public Quotations()
         {
             InitializeComponent();
             _quotationService.QuotationsUpdated += RefreshQuotations;
@@ -59,12 +58,8 @@ namespace front_end
 
         private void GoBack_Click(object sender, RoutedEventArgs e)
         {
-            var mainWindow = Application.Current.MainWindow as MainWindow;
-            if (mainWindow != null)
-            {
-                mainWindow.MainFrame.Navigate(new front_end.EmployeeDashboard(userController)); 
-            }
-
+            var navigationService = NavigationService.GetNavigationService(this);
+            navigationService.GoBack();
         }
     }
 
