@@ -50,6 +50,13 @@ namespace front_end
                 mainWindow.MainFrame.Navigate(new front_end.Quotations(userController));
             }
         }
-
+        private void ViewRateSchedule_Click(object sender, RoutedEventArgs e)
+        {
+            var mainWindow = Application.Current.MainWindow as MainWindow;
+            if (mainWindow != null)
+            {
+                mainWindow.MainFrame.Navigate(new front_end.RateSchedulePage());
+            }
+        }
     }
 }
