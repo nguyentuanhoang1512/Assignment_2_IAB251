@@ -5,12 +5,6 @@
 
 
     <Grid HorizontalAlignment="Center"   Background="#002F6C" Width="760">
-        <Grid.RowDefinitions>
-            <RowDefinition Height="100*"/>
-            <RowDefinition Height="100*"/>
-            <RowDefinition Height="100*"/>
-            <RowDefinition Height="100*"/>
-        </Grid.RowDefinitions>
 
         <Button x:Name="GoBackButton" Click="GoBack_Click" Margin="0,0,709,50" Background="Transparent" BorderThickness="0">
             <Image Source="Resources/back.png" Width="48" Height="47" />
