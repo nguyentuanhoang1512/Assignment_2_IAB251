@@ -17,6 +17,8 @@ using System;
 using IAB251_A2.Models;
 using IAB251_A2.Controllers;
 using IAB251_A2;
+using IAB251_A2.Services;
+using System.Net;
 
 namespace front_end
 {
@@ -69,24 +71,29 @@ namespace front_end
 
         private void RegisterButton_Click(object sender, RoutedEventArgs e)
         {
-            string firstName = FirstNameTextBox.Text;
-            string lastName = LastNameTextBox.Text;
-            string email = EmailTextBox.Text;
             int phone;
             bool isPhoneValid = int.TryParse(PhoneTextBox.Text, out phone);
-            string companyName = CompanyNameTextBox.Text;
-            string address = AddressTextBox.Text;
-            string password = PasswordBox.Password;
 
-            if (string.IsNullOrWhiteSpace(firstName) || string.IsNullOrWhiteSpace(lastName) ||
-                string.IsNullOrWhiteSpace(email) || string.IsNullOrWhiteSpace(address) ||
-                string.IsNullOrWhiteSpace(password) || !isPhoneValid)
+            var customer = new Customer
+            {
+                FirstName = FirstNameTextBox.Text,
+                LastName = LastNameTextBox.Text,
+                Email = EmailTextBox.Text,
+                PhoneNumber = int.Parse(PhoneTextBox.Text),
+                CompanyName = CompanyNameTextBox.Text,
+                Address = AddressTextBox.Text,
+                Password = PasswordBox.Password
+            };
+
+            if (string.IsNullOrWhiteSpace(customer.FirstName) || string.IsNullOrWhiteSpace(customer.LastName) ||
+                string.IsNullOrWhiteSpace(customer.Email) || string.IsNullOrWhiteSpace(customer.Address) ||
+                string.IsNullOrWhiteSpace(customer.Password) || !isPhoneValid)
             {
                 MessageBox.Show("Please fill all required fields with valid data.");
                 return;
             }
-
-            userController.RegisterCustomer(firstName, lastName, email, phone, companyName, address, password);
+            string result = userController.RegisterCustomer(customer);
+            MessageBox.Show(result);
 
 
             var mainWindow = Application.Current.MainWindow as MainWindow;

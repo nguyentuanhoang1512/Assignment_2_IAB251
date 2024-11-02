@@ -16,6 +16,11 @@ namespace IAB251_A2.Models
         public string NatureOfPackage { get; set; }
         public string NatureOfJob { get; set; }
         public string Status { get; set; }
+        public string ImportExport { get; set; }       
+        public string PackingUnpacking { get; set; }   
+        public string QuarantineRequirements { get; set; } 
+        public string CargoStorage { get; set; }       
+        public string WarehousingDetails { get; set; }
         public DateTime DateIssued { get; set; }
     }
 }

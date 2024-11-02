@@ -14,6 +14,8 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using IAB251_A2;
+using IAB251_A2.Controllers;
+using IAB251_A2.Models;
 using IAB251_A2.Services;
 using System.Windows.Controls;
 using IAB251_A2.Models;
@@ -24,6 +26,7 @@ namespace front_end
     public partial class login : Page
     {
         private readonly AuthenticationService _authService;
+        private readonly UserController userController;
 
         private UserController userController;
 
@@ -31,9 +34,13 @@ namespace front_end
         {
             InitializeComponent();
             this.userController = userController;
-            _authService = new AuthenticationService(new UserService());
+            var userService = new UserService();
+            _authService = new AuthenticationService(userService);
+            
             AddPlaceholderText(UsernameTextBox, null);
         }
+
+
 
         private void ClearText(object sender, RoutedEventArgs e)
         {
@@ -61,30 +68,35 @@ namespace front_end
             string email = UsernameTextBox.Text.Trim();
             string password = PasswordTextBox.Password.Trim();
 
+            var user = _authService.Login(email, password);
+            var mainWindow = Application.Current.MainWindow as MainWindow;
 
-            bool isAuthenticated = userController.Login(email, password);
-
-            if (isAuthenticated)
+            if (user is Customer customer)
             {
-                // Check if user is a customer or employee based on properties in UserController
-                var mainWindow = Application.Current.MainWindow as MainWindow;
-                if (mainWindow != null)
+                MessageBox.Show($"Welcome, {customer.FirstName}");
+
+                // Display any messages if present
+                if (customer.Messages.Count > 0)
                 {
-                    if (userController.IsCustomer)
-                    {
-                        mainWindow.MainFrame.Navigate(new front_end.CustomerDashboard(userController));
-                    }
-                    else if (userController.IsEmployee)
-                    {
-                        mainWindow.MainFrame.Navigate(new front_end.EmployeeDashboard(userController));
-                    }
+                    string messages = string.Join("\n", customer.Messages);
+                    MessageBox.Show($"Messages:\n{messages}");
+                    customer.Messages.Clear();  
                 }
+
+                mainWindow.MainFrame.Navigate(new front_end.CustomerDashboard(userController));
+            }
+
+            else if (user is Employee employee)
+            {
+                MessageBox.Show($"Welcome, {employee.FirstName}");
+                mainWindow.MainFrame.Navigate(new front_end.EmployeeDashboard(userController));
             }
             else
             {
                 MessageBox.Show("Invalid username or password. Please try again.");
             }
         }
+
 
 
         private void SignUp_Click(object sender, RoutedEventArgs e)

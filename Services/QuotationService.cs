@@ -10,23 +10,15 @@ namespace IAB251_A2.Services
     {
         private static QuotationService _instance;
         public static QuotationService Instance => _instance ??= new QuotationService();
-
+        private UserService _userService = new UserService();
         private List<Quotation> quotations = new List<Quotation>();
 
-        private QuotationService() { }
+        public event Action QuotationsUpdated;
 
-        public string SubmitQuotation(Quotation quotation)
-        {
-            quotation.RequestID = quotations.Count + 1;
-            quotation.Status = "Pending";
-            quotation.DateIssued = DateTime.Now;
-            quotations.Add(quotation);
-            return "Quotation submitted successfully!";
-        }
 
-        public List<Quotation> GetPendingQuotations()
+        public Customer GetCustomerByEmail(string email)
         {
-            return quotations.Where(q => q.Status == "Pending").ToList();
+            return _userService.GetAllCustomers().FirstOrDefault(c => c.Email == email);
         }
 
         public void UpdateQuotationStatus(int requestId, string status)
@@ -35,7 +27,24 @@ namespace IAB251_A2.Services
             if (quotation != null)
             {
                 quotation.Status = status;
+                QuotationsUpdated?.Invoke();
             }
         }
+
+        public string SubmitQuotation(Quotation quotation)
+        {
+            quotation.RequestID = quotations.Count + 1;
+            quotation.Status = "Pending";
+            quotation.DateIssued = DateTime.Now;
+            quotations.Add(quotation);
+            QuotationsUpdated?.Invoke(); // Notify on new quotation
+            return "Quotation submitted successfully!";
+        }
+
+        public List<Quotation> GetQuotations() => quotations;
+        public List<Quotation> GetPendingQuotations() => quotations.Where(q => q.Status == "Pending").ToList();
     }
+
+
+
 }

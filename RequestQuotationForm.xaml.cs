@@ -23,18 +23,20 @@ namespace front_end
     
     public partial class RequestQuotationForm : Page
     {
+        private Customer _loggedInCustomer;
         private readonly QuotationService quotationService = QuotationService.Instance;
-        private UserController userController;
-
-        public RequestQuotationForm(UserController userController)
+        public RequestQuotationForm(Customer loggedInCustomer)
         {
             InitializeComponent();
             this.userController = new UserController(); 
+            _loggedInCustomer = loggedInCustomer;
             AddPlaceholderText(SourceTextBox, null);
             AddPlaceholderText(DestinationTextBox,null);
             AddPlaceholderText(NumberOfContainersTextBox, null);
             AddPlaceholderText(NatureOfPackageTextBox, null);
-            AddPlaceholderText(NatureOfJobTextBox, null);
+            AddPlaceholderText(QuarantineTextBox, null);
+            AddPlaceholderText(CargoStorageTextBox, null);
+            AddPlaceholderText(WarehousingTextBox, null);
         }
 
         private void ClearText(object sender, RoutedEventArgs e)
@@ -68,13 +70,30 @@ namespace front_end
 
         private void Submit_Click(object sender, RoutedEventArgs e)
         {
+            if (string.IsNullOrWhiteSpace(SourceTextBox.Text) ||
+                string.IsNullOrWhiteSpace(DestinationTextBox.Text) ||
+                string.IsNullOrWhiteSpace(NumberOfContainersTextBox.Text) ||
+                string.IsNullOrWhiteSpace(NatureOfPackageTextBox.Text) ||
+                string.IsNullOrWhiteSpace(QuarantineTextBox.Text) ||
+                string.IsNullOrWhiteSpace(CargoStorageTextBox.Text) ||
+                string.IsNullOrWhiteSpace(WarehousingTextBox.Text) ||
+                ImportExportComboBox.SelectedItem == null ||
+                PackingUnpackingComboBox.SelectedItem == null)
+            {
+                MessageBox.Show("Please fill in all fields before submitting.");
+                return;
+            }
             var newQuotation = new Quotation
             {
                 Source = SourceTextBox.Text,
                 Destination = DestinationTextBox.Text,
                 NumberOfContainers = int.Parse(NumberOfContainersTextBox.Text),
                 NatureOfPackage = NatureOfPackageTextBox.Text,
-                NatureOfJob = NatureOfJobTextBox.Text
+                ImportExport = (ImportExportComboBox.SelectedItem as ComboBoxItem)?.Content.ToString() ?? "",
+                PackingUnpacking = (PackingUnpackingComboBox.SelectedItem as ComboBoxItem)?.Content.ToString() ?? "",
+                QuarantineRequirements = QuarantineTextBox.Text,
+                CargoStorage = CargoStorageTextBox.Text,
+                WarehousingDetails = WarehousingTextBox.Text
             };
 
             quotationService.SubmitQuotation(newQuotation);

@@ -1,4 +1,5 @@
 ﻿using IAB251_A2.Services;
+﻿using IAB251_A2.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -23,15 +24,23 @@ namespace front_end
     /// </summary>
     public partial class CustomerDashboard : Page
     {
-        private readonly AuthenticationService _authService;
+        private Customer _currentCustomer;
 
-        private UserController userController;
-        public CustomerDashboard(UserController userController)
+        private readonly Customer _loggedInCustomer;
+
+        public CustomerDashboard(Customer loggedInCustomer = null)
         {
             InitializeComponent();
-            this.userController = userController;
+            _loggedInCustomer = loggedInCustomer;
 
+            if (_loggedInCustomer?.Messages?.Any() == true)
+            {
+                var message = string.Join("\n", _loggedInCustomer.Messages);
+                MessageBox.Show(message, "Notifications");
+                _loggedInCustomer.Messages.Clear();
+            }
         }
+
 
         private void Exit_Click(object sender, RoutedEventArgs e)
         {
@@ -64,6 +73,17 @@ namespace front_end
             if (mainWindow != null)
             {
                 mainWindow.MainFrame.Navigate(new front_end.Quotations(userController)); // Navigate to sign-up page
+            }
+        }
+
+
+        private void DisplayMessages()
+        {
+            if (_currentCustomer.Messages.Any())
+            {
+                string messages = string.Join("\n", _currentCustomer.Messages);
+                MessageBox.Show($"You have messages:\n{messages}");
+                _currentCustomer.Messages.Clear(); // Optional: Clear messages after displaying
             }
         }
     }

@@ -19,21 +19,42 @@ using IAB251_A2.Models;
 using IAB251_A2.Services;
 using IAB251_A2.Controllers;
 using IAB251_A2;
+using IAB251_A2.Services;
+using System.Collections.ObjectModel;
+using System.Windows;
 
 namespace front_end
 {
     
     public partial class Quotations : Page
     {
+        private readonly QuotationService _quotationService = QuotationService.Instance;
         public ObservableCollection<Quotation> QuotationsList { get; set; }
 
         private UserController userController;
         public Quotations(UserController userController)
         {
             InitializeComponent();
-            this.userController = userController;
-            QuotationsList = new ObservableCollection<Quotation>(QuotationService.Instance.GetPendingQuotations());
-            DataContext = this;
+            _quotationService.QuotationsUpdated += RefreshQuotations;
+            LoadQuotations();
+        }
+
+        private void LoadQuotations()
+        {
+            QuotationsList = new ObservableCollection<Quotation>(_quotationService.GetQuotations());
+            QuotationListView.ItemsSource = QuotationsList;
+        }
+
+        private void RefreshQuotations()
+        {
+            Dispatcher.Invoke(() =>
+            {
+                QuotationsList.Clear();
+                foreach (var quote in _quotationService.GetQuotations())
+                {
+                    QuotationsList.Add(quote);
+                }
+            });
         }
 
         private void GoBack_Click(object sender, RoutedEventArgs e)

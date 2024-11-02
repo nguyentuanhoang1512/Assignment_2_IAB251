@@ -20,6 +20,7 @@ namespace IAB251_A2.Models
     {
         public string CompanyName { get; set; }
         public string Country { get; set; }
+        public List<string> Messages { get; set; } = new List<string>();
     }
 
     public class Employee : User

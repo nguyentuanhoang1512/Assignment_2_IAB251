@@ -18,6 +18,11 @@ namespace IAB251_A2.Controllers
         public bool IsCustomer { get; private set; }
         public bool IsEmployee { get; private set; }
 
+        private readonly UserService _userService;
+        public UserController(UserService userService)
+        {
+            _userService = userService;
+        }
 
         public bool Login(string email, string password)
         {
@@ -48,22 +53,9 @@ namespace IAB251_A2.Controllers
             return false;
         }
 
-
-
-        public void RegisterCustomer(string firstName, string lastName, string email, int phoneNumber, string companyName, string address, string password)
+        public string RegisterCustomer(Customer customer)
         {
-            var customer = new Customer
-            {
-                FirstName = firstName,
-                LastName = lastName,
-                Email = email,
-                PhoneNumber = phoneNumber,
-                CompanyName = companyName,
-                Address = address,
-                Password = password
-            };
-            Customers.Add(customer);
-            Console.WriteLine("Customer registered successfully.");
+            return _userService.RegisterCustomer(customer);
         }
 
         public void RegisterEmployee(string firstName, string lastName, string email, int phoneNumber, string employeeType, string address, string password)
@@ -78,6 +70,7 @@ namespace IAB251_A2.Controllers
                 Address = address,
                 Password = password
             };
+            _userService.RegisterEmployee(employee);
             Employees.Add(employee);
             Console.WriteLine("Employee registered successfully.");
         }
