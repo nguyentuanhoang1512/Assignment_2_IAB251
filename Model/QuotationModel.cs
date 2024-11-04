@@ -39,7 +39,7 @@ namespace IAB251_A2.Models
 
         public double price { get; set; }
 
-        public ContainerSize SizeOfContainer { get; set; }
+        public int SizeOfContainer { get; set; }
 
     }
 

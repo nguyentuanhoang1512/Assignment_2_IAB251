@@ -34,31 +34,46 @@
 
         <!-- Input fields -->
 
-        <Border HorizontalAlignment="Left" VerticalAlignment="Top" Width="200" Height="35" Background="White" CornerRadius="10" BorderBrush="Gray" BorderThickness="1" Margin="171,65,0,0">
+        <Border HorizontalAlignment="Left" VerticalAlignment="Top" Width="200" Height="35" Background="White" CornerRadius="10" BorderBrush="Gray" BorderThickness="1" Margin="95,65,0,0">
             <TextBox Name="SourceTextBox" BorderThickness="0" TextWrapping="Wrap" Tag="Source" GotFocus="ClearText" LostFocus="AddPlaceholderText" VerticalAlignment="Center" FontFamily="Tw Cen MT Condensed Extra Bold" Foreground="#333333"/>
         </Border>
 
-        <Border HorizontalAlignment="Left" VerticalAlignment="Top" Width="200" Height="35" Background="White" CornerRadius="10" BorderBrush="Gray" BorderThickness="1" Margin="171,112,0,0">
+        <Border HorizontalAlignment="Left" VerticalAlignment="Top" Width="200" Height="35" Background="White" CornerRadius="10" BorderBrush="Gray" BorderThickness="1" Margin="95,113,0,0">
             <TextBox Name="DestinationTextBox" BorderThickness="0" TextWrapping="Wrap" Tag="Destination" GotFocus="ClearText" LostFocus="AddPlaceholderText" VerticalAlignment="Center" FontFamily="Tw Cen MT Condensed Extra Bold" Foreground="#333333"/>
         </Border>
 
-        <Border HorizontalAlignment="Left" VerticalAlignment="Top" Width="200" Height="35" Background="White" CornerRadius="10" BorderBrush="Gray" BorderThickness="1" Margin="171,165,0,0">
+        <Border HorizontalAlignment="Left" VerticalAlignment="Top" Width="200" Height="35" Background="White" CornerRadius="10" BorderBrush="Gray" BorderThickness="1" Margin="95,165,0,0">
             <TextBox Name="NumberOfContainersTextBox" BorderThickness="0" TextWrapping="Wrap" Tag="Number of Containers" GotFocus="ClearText" LostFocus="AddPlaceholderText" VerticalAlignment="Center" FontFamily="Tw Cen MT Condensed Extra Bold" Foreground="#333333"/>
         </Border>
 
-        <Border HorizontalAlignment="Left" VerticalAlignment="Top" Width="200" Height="35" Background="White" CornerRadius="10" BorderBrush="Gray" BorderThickness="1" Margin="171,211,0,0">
+        <Border HorizontalAlignment="Left" VerticalAlignment="Top" Width="200" Height="35" Background="White" CornerRadius="10" BorderBrush="Gray" BorderThickness="1" Margin="95,213,0,0">
             <TextBox Name="NatureOfPackageTextBox" BorderThickness="0" TextWrapping="Wrap" Tag="Nature of the Package" GotFocus="ClearText" LostFocus="AddPlaceholderText" VerticalAlignment="Center" FontFamily="Tw Cen MT Condensed Extra Bold" Foreground="#333333"/>
         </Border>
 
+        
+
+
+        <!-- TextBox fields for Quarantine Requirements, Cargo Storage, Warehousing -->
+        <Border HorizontalAlignment="Left" Width="199" Background="White" CornerRadius="10" Margin="96,259,0,106">
+            <TextBox Name="WarehousingTextBox" BorderThickness="0" TextWrapping="Wrap" Tag="Warehousing" GotFocus="ClearText" LostFocus="AddPlaceholderText" VerticalAlignment="Center" FontFamily="Tw Cen MT Condensed Extra Bold" Foreground="#333333" />
+        </Border>
+        <Border HorizontalAlignment="Left" Width="198" Background="White" CornerRadius="10" Margin="314,65,0,299">
+            <TextBox Name="QuarantineTextBox" BorderThickness="0" TextWrapping="Wrap" Tag="Nature of the Package" GotFocus="ClearText" LostFocus="AddPlaceholderText" VerticalAlignment="Center" FontFamily="Tw Cen MT Condensed Extra Bold" Foreground="#333333" />
+        </Border>
+        <Border HorizontalAlignment="Left" Width="199" Background="White" CornerRadius="10" Margin="314,114,0,252">
+            <TextBox Name="CargoStorageTextBox" BorderThickness="0" TextWrapping="Wrap" Tag="Nature of the Package" GotFocus="ClearText" LostFocus="AddPlaceholderText" VerticalAlignment="Center" FontFamily="Tw Cen MT Condensed Extra Bold" Foreground="#333333" />
+        </Border>
+        
+
         <!-- ComboBox for Nature of Job -->
 
-        <ComboBox Name="ImportExportComboBox" HorizontalAlignment="Left" Width="199" Background="White" Margin="412,259,0,106">
+        <ComboBox Name="ImportExportComboBox" HorizontalAlignment="Left" Width="199" Background="White" Margin="316,261,0,104">
             <ComboBoxItem Content="Select action" IsSelected="True" IsEnabled="False"/>
             <ComboBoxItem Content="Import"/>
             <ComboBoxItem Content="Export"/>
         </ComboBox>
 
-        <ComboBox Name="ContainerSizeTextBox" HorizontalAlignment="Left" Width="199" Background="White" Margin="413,165,0,200">
+        <ComboBox Name="ContainerSizeTextBox" HorizontalAlignment="Left" Width="199" Background="White" Margin="314,165,0,200">
             <ComboBoxItem Content="Select container size" IsSelected="True" IsEnabled="False"/>
             <ComboBoxItem Content="20 feet"/>
             <ComboBoxItem Content="40 feet"/>
@@ -67,30 +82,31 @@
 
         <!-- ComboBox for Packing/Unpacking -->
 
-        <ComboBox Name="PackingUnpackingComboBox" HorizontalAlignment="Left" Width="199" Background="White" Margin="413,213,0,151">
+        <ComboBox Name="PackingUnpackingComboBox" HorizontalAlignment="Left" Width="199" Background="White" Margin="316,212,0,152">
             <ComboBoxItem Content="Select packing information" IsSelected="True" IsEnabled="False"/>
             <ComboBoxItem Content="Packing"/>
             <ComboBoxItem Content="Unpacking"/>
         </ComboBox>
-
-
-        <!-- TextBox fields for Quarantine Requirements, Cargo Storage, Warehousing -->
-        <Border HorizontalAlignment="Left" Width="198" Background="White" CornerRadius="10" Margin="413,65,0,299">
-            <TextBox Name="QuarantineTextBox" BorderThickness="0" TextWrapping="Wrap" Tag="Nature of the Package" GotFocus="ClearText" LostFocus="AddPlaceholderText" VerticalAlignment="Center" FontFamily="Tw Cen MT Condensed Extra Bold" Foreground="#333333" />
-        </Border>
-        <Border HorizontalAlignment="Left" Width="199" Background="White" CornerRadius="10" Margin="413,113,0,253">
-            <TextBox Name="CargoStorageTextBox" BorderThickness="0" TextWrapping="Wrap" Tag="Nature of the Package" GotFocus="ClearText" LostFocus="AddPlaceholderText" VerticalAlignment="Center" FontFamily="Tw Cen MT Condensed Extra Bold" Foreground="#333333" />
-        </Border>
-        <Border HorizontalAlignment="Left" Width="199" Background="White" CornerRadius="10" Margin="172,259,0,106">
-            <TextBox Name="WarehousingTextBox" BorderThickness="0" TextWrapping="Wrap" Tag="Warehousing" GotFocus="ClearText" LostFocus="AddPlaceholderText" VerticalAlignment="Center" FontFamily="Tw Cen MT Condensed Extra Bold" Foreground="#333333" />
-        </Border>
 
         <!-- Submit Button -->
 
         <Button Content="Submit" Background="#F7941D" Foreground="White" 
                     FontFamily="Tw Cen MT Condensed Extra Bold" BorderThickness="0" Click="Submit_Click" Margin="316,324,316,29" FontSize="36"/>
 
+        <StackPanel Margin="536,65,46,80" Background="White">
+            <TextBlock Text=" Select the actions you request:" FontWeight="Bold" Margin="0,10,0,5" HorizontalAlignment="Center"/>
+
+            <CheckBox x:Name="cbWalfBooking" Content="Walf Booking" Margin="5"/>
+            <CheckBox x:Name="cbLiftOn" Content="Lift on" Margin="5"/>
+            <CheckBox x:Name="cbLiftOff" Content="Lift Off" Margin="5"/>
+            <CheckBox x:Name="cbFumigation" Content="Fumigation" Margin="5"/>
+            <CheckBox x:Name="cbLCLDelivery" Content="LCL Delivery" Margin="5"/>
+            <CheckBox x:Name="cbTailgateInspection" Content="Tailgate Inspection" Margin="5"/>
+            <CheckBox x:Name="cbStorageFee" Content="Storage" Margin="5"/>
+            <CheckBox x:Name="cbWalfInspection" Content="Walf Inspection" Margin="5"/>
+        </StackPanel>
 
     </Grid>
+    
 
 </Page>

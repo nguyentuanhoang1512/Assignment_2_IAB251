@@ -26,11 +26,14 @@ namespace front_end
         public ObservableCollection<Quotation> QuotationsList { get; set; }
 
         private UserController _userController;
-        public ReviewQuotations(UserController userControler)
+
+        private Employee _loggedInEmployee;
+        public ReviewQuotations(Employee employee,  UserController userControler)
         {
             InitializeComponent();
             _quotationService.QuotationsUpdated += RefreshQuotations;
             this._userController = userControler;
+            this._loggedInEmployee = employee;
             LoadPendingQuotations();
         }
 
@@ -86,9 +89,19 @@ namespace front_end
             var mainWindow = Application.Current.MainWindow as MainWindow;
             if (mainWindow != null)
             {
-                mainWindow.MainFrame.Navigate(new front_end.EmployeeDashboard(_userController));
+                mainWindow.MainFrame.Navigate(new front_end.EmployeeDashboard(_userController, _loggedInEmployee));
             }
 
+        }
+
+        private void QuotationListView_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            if (QuotationListView.SelectedItem is Quotation selectedQuotation)
+            {
+                // Navigate to the detailed page for the selected quotation
+                var quotationDetailPage = new QuotationDetailPage(selectedQuotation, _userController);
+                NavigationService.Navigate(quotationDetailPage);
+            }
         }
     }
 }

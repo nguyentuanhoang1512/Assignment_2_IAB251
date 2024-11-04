@@ -60,7 +60,7 @@ namespace front_end
             var mainWindow = Application.Current.MainWindow as MainWindow;
             if (mainWindow != null)
             {
-                mainWindow.MainFrame.Navigate(new front_end.ReviewQuotations(_userController));
+                mainWindow.MainFrame.Navigate(new front_end.ReviewQuotations(_loggedInEmployee, _userController));
             }
         }
         private void ViewRateSchedule_Click(object sender, RoutedEventArgs e)
@@ -68,7 +68,7 @@ namespace front_end
             var mainWindow = Application.Current.MainWindow as MainWindow;
             if (mainWindow != null)
             {
-                mainWindow.MainFrame.Navigate(new front_end.RateSchedulePage());
+                mainWindow.MainFrame.Navigate(new front_end.RateSchedulePage(_loggedInEmployee, _userController));
             }
         }
     }
