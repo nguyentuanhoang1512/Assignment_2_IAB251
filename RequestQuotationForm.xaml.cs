@@ -25,19 +25,22 @@ namespace front_end
     {
         private Customer _loggedInCustomer;
         private readonly QuotationService quotationService = QuotationService.Instance;
+        private UserController _userController;
 
-        private UserController userController;
-        public RequestQuotationForm(Customer loggedInCustomer)
+        public RequestQuotationForm(Customer loggedInCustomer, UserController userController)
         {
             InitializeComponent();
             _loggedInCustomer = loggedInCustomer;
+            this._userController = userController;
             AddPlaceholderText(SourceTextBox, null);
-            AddPlaceholderText(DestinationTextBox,null);
+            AddPlaceholderText(DestinationTextBox, null);
             AddPlaceholderText(NumberOfContainersTextBox, null);
             // AddPlaceholderText(NatureOfJobTextBox, null);
             AddPlaceholderText(QuarantineTextBox, null);
             AddPlaceholderText(CargoStorageTextBox, null);
             AddPlaceholderText(WarehousingTextBox, null);
+            AddPlaceholderText(ContainerSizeTextBox, null);
+            _userController = userController;
         }
 
         private void ClearText(object sender, RoutedEventArgs e)
@@ -64,7 +67,7 @@ namespace front_end
             var mainWindow = Application.Current.MainWindow as MainWindow;
             if (mainWindow != null)
             {
-                mainWindow.MainFrame.Navigate(new front_end.CustomerDashboard()); // Navigate to sign-up page
+                mainWindow.MainFrame.Navigate(new front_end.CustomerDashboard(_userController)); // Navigate to sign-up page
             }
 
         }
@@ -84,6 +87,16 @@ namespace front_end
                 MessageBox.Show("Please fill in all fields before submitting.");
                 return;
             }
+            ContainerSize result;
+            if (ContainerSizeTextBox.Text == "20 feet")
+            {
+                result = 0;
+            }
+            else
+            {
+                result = (ContainerSize)1;
+            }
+
             var newQuotation = new Quotation
             {
                 Source = SourceTextBox.Text,
@@ -94,7 +107,8 @@ namespace front_end
                 PackingUnpacking = (PackingUnpackingComboBox.SelectedItem as ComboBoxItem)?.Content.ToString() ?? "",
                 QuarantineRequirements = QuarantineTextBox.Text,
                 CargoStorage = CargoStorageTextBox.Text,
-                WarehousingDetails = WarehousingTextBox.Text
+                WarehousingDetails = WarehousingTextBox.Text,
+                SizeOfContainer = result
             };
 
             quotationService.SubmitQuotation(newQuotation);
@@ -103,7 +117,7 @@ namespace front_end
             var mainWindow = Application.Current.MainWindow as MainWindow;
             if (mainWindow != null)
             {
-                mainWindow.MainFrame.Navigate(new front_end.CustomerDashboard()); // Navigate to sign-up page
+                mainWindow.MainFrame.Navigate(new front_end.CustomerDashboard(_userController)); // Navigate to sign-up page
             }
 
         }

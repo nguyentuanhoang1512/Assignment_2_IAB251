@@ -7,12 +7,12 @@
 
     <Grid Background="#002F6C">
 
-
+   
         <Button x:Name="GoBackButton" Click="Exit_Click" Margin="0,0,709,350" Background="Transparent" BorderThickness="0" RenderTransformOrigin="0.5,0.5">
             <Image Source="Resources/back.png" Width="50" Height="50" />
-        </Button>
+        </Button  >
         <Image Source="Resources/logo.png" Margin="254,83,254,216"/>
-
+ 
 
         <Label Content="Welcome to Interport" 
                            FontSize="36" 

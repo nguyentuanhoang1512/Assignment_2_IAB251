@@ -1,5 +1,6 @@
 ﻿using IAB251_A2;
 using IAB251_A2.Controllers;
+using IAB251_A2.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -20,10 +21,23 @@ namespace front_end
 {
     public partial class EmployeeDashboard : Page
     {
-        private UserController userController;
-        public EmployeeDashboard()
+        private UserController _userController;
+        private readonly Employee _loggedInEmployee;
+
+        public EmployeeDashboard(UserController userController, Employee loggedInEmployee = null)
         {
             InitializeComponent();
+            _loggedInEmployee = loggedInEmployee;
+            this._userController = userController;
+
+            if (_loggedInEmployee is Employee employee && employee.EmployeeType == "Quotation Officer")
+            {
+                ViewRateScheduleButton.IsEnabled = true;
+            }
+            else
+            {
+                ViewRateScheduleButton.IsEnabled = false;
+            }
         }
 
         private void Exit_Click(object sender, RoutedEventArgs e)
@@ -36,7 +50,7 @@ namespace front_end
                 var mainWindow = Application.Current.MainWindow as MainWindow;
                 if (mainWindow != null)
                 {
-                    mainWindow.MainFrame.Navigate(new front_end.login()); 
+                    mainWindow.MainFrame.Navigate(new front_end.login(_userController)); 
                 }
             }
         }
@@ -46,7 +60,7 @@ namespace front_end
             var mainWindow = Application.Current.MainWindow as MainWindow;
             if (mainWindow != null)
             {
-                mainWindow.MainFrame.Navigate(new front_end.Quotations());
+                mainWindow.MainFrame.Navigate(new front_end.ReviewQuotations(_userController));
             }
         }
         private void ViewRateSchedule_Click(object sender, RoutedEventArgs e)

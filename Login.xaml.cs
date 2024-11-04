@@ -26,14 +26,17 @@ namespace front_end
     public partial class login : Page
     {
         private readonly AuthenticationService _authService;
-        private readonly UserController userController;
+        private readonly UserController _userController; 
 
-        public login()
+        public login(UserController userController)
         {
             InitializeComponent();
             var userService = new UserService();
-            _authService = new AuthenticationService(userService);
+            this._userController = userController; // Use the controller passed from MainWindow
+            _authService = new AuthenticationService(userController.UserService);
             
+
+
             AddPlaceholderText(UsernameTextBox, null);
         }
 
@@ -80,13 +83,13 @@ namespace front_end
                     customer.Messages.Clear();  
                 }
 
-                mainWindow.MainFrame.Navigate(new front_end.CustomerDashboard());
+                mainWindow.MainFrame.Navigate(new front_end.CustomerDashboard(_userController, customer));
             }
 
             else if (user is Employee employee)
             {
                 MessageBox.Show($"Welcome, {employee.FirstName}");
-                mainWindow.MainFrame.Navigate(new front_end.EmployeeDashboard());
+                mainWindow.MainFrame.Navigate(new front_end.EmployeeDashboard(_userController, employee));
             }
             else
             {
@@ -102,7 +105,7 @@ namespace front_end
             var mainWindow = Application.Current.MainWindow as MainWindow;
             if (mainWindow != null)
             {
-                mainWindow.MainFrame.Navigate(new front_end.ChooseSignUpType(userController)); // Navigate to sign-up page
+                mainWindow.MainFrame.Navigate(new front_end.ChooseSignUpType(_userController)); // Navigate to sign-up page
             }
         }
 

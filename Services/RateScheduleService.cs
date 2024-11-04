@@ -13,8 +13,20 @@ namespace IAB251_A2.Services
 
         public List<RateSchedule> GetAllRateSchedules()
         {
-            // Fetch rate schedules, e.g., from a database or mock data
-            return new List<RateSchedule>();
+            return new List<RateSchedule>
+        {
+            new RateSchedule
+            {
+                Origin = "New York",
+                Destination = "London",
+                RatePerContainer = 1500.00m,
+                Currency = "USD",
+                EffectiveDate = DateTime.Now.AddDays(-30),
+                ExpiryDate = DateTime.Now.AddMonths(1)
+            },
+            // Add more mock data or fetch from a real data source
+        };
         }
     }
+
 }

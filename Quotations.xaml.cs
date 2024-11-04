@@ -31,10 +31,12 @@ namespace front_end
         private readonly QuotationService _quotationService = QuotationService.Instance;
         public ObservableCollection<Quotation> QuotationsList { get; set; }
 
-        public Quotations()
+        private UserController _userController;
+        public Quotations(UserController userController)
         {
             InitializeComponent();
             _quotationService.QuotationsUpdated += RefreshQuotations;
+            this._userController = userController;
             LoadQuotations();
         }
 
@@ -61,6 +63,17 @@ namespace front_end
             var navigationService = NavigationService.GetNavigationService(this);
             navigationService.GoBack();
         }
+        private void QuotationListView_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            if (QuotationListView.SelectedItem is Quotation selectedQuotation)
+            {
+                // Navigate to the detailed page for the selected quotation
+                var quotationDetailPage = new QuotationDetailPage(selectedQuotation, _userController);
+                NavigationService.Navigate(quotationDetailPage);
+            }
+        }
+
     }
+
 
 }

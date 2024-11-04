@@ -42,6 +42,7 @@ namespace front_end
 
         private void GoBack_Click(object sender, RoutedEventArgs e)
         {
+
             var mainWindow = Application.Current.MainWindow as MainWindow;
             if (mainWindow != null)
             {
@@ -73,13 +74,14 @@ namespace front_end
         {
             int phone;
             bool isPhoneValid = int.TryParse(PhoneTextBox.Text, out phone);
+            var userService = new UserService();
 
             var customer = new Customer
             {
                 FirstName = FirstNameTextBox.Text,
                 LastName = LastNameTextBox.Text,
                 Email = EmailTextBox.Text,
-                PhoneNumber = int.Parse(PhoneTextBox.Text),
+                PhoneNumber = phone,
                 CompanyName = CompanyNameTextBox.Text,
                 Address = AddressTextBox.Text,
                 Password = PasswordBox.Password
@@ -100,7 +102,7 @@ namespace front_end
 
             if (mainWindow != null)
             {
-                mainWindow.MainFrame.Navigate(new front_end.login()); // Navigate to sign-up page
+                mainWindow.MainFrame.Navigate(new front_end.login(userController)); // Navigate to sign-up page
             }
         }
     }

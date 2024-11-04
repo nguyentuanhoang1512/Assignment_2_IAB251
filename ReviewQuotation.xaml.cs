@@ -15,6 +15,8 @@ using System.Windows.Shapes;
 using IAB251_A2.Models;
 using IAB251_A2.Services;
 using System.Collections.ObjectModel;
+using IAB251_A2.Controllers;
+using IAB251_A2;
 
 namespace front_end
 {
@@ -23,10 +25,12 @@ namespace front_end
         private readonly QuotationService _quotationService = QuotationService.Instance;
         public ObservableCollection<Quotation> QuotationsList { get; set; }
 
-        public ReviewQuotations()
+        private UserController _userController;
+        public ReviewQuotations(UserController userControler)
         {
             InitializeComponent();
             _quotationService.QuotationsUpdated += RefreshQuotations;
+            this._userController = userControler;
             LoadPendingQuotations();
         }
 
@@ -79,8 +83,12 @@ namespace front_end
 
         private void GoBack_Click(object sender, RoutedEventArgs e)
         {
-            var EmployeeDashboard = new EmployeeDashboard();
-            
+            var mainWindow = Application.Current.MainWindow as MainWindow;
+            if (mainWindow != null)
+            {
+                mainWindow.MainFrame.Navigate(new front_end.EmployeeDashboard(_userController));
+            }
+
         }
     }
 }

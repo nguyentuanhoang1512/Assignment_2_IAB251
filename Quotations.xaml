@@ -1,53 +1,53 @@
 ﻿<Page x:Class="front_end.Quotations"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        Title="Quotations Made" Height="440.1" Width="214.5">
+        Title="Quotations Made" Height="400" Width="780">
 
-    <Border Background="#002F6C" CornerRadius="25" BorderThickness="2" BorderBrush="#F7941D">
-        <ScrollViewer VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Disabled">
-            <Grid>
-                <StackPanel HorizontalAlignment="Center" VerticalAlignment="Top" Margin="10">
+    <Grid Background="#002F6C">
 
-                    <!-- Title Section -->
-                    <Grid>
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="Auto"/>
-                            <ColumnDefinition Width="*"/>
-                        </Grid.ColumnDefinitions>
 
-                        <!-- Back Button -->
-                        <Button Grid.Column="0" Width="20" Height="18" 
-                                HorizontalAlignment="Left" Background="{x:Null}" BorderBrush="{x:Null}" 
-                                Margin="10" Padding="0" Click="GoBack_Click">
-                            <Border CornerRadius="18">
-                                <TextBlock FontFamily="Segoe MDL2 Assets" Text="&#xE72B;" 
-                                           Foreground="#F7941D" FontSize="16" 
-                                           VerticalAlignment="Center" HorizontalAlignment="Center"/>
-                            </Border>
-                        </Button>
+        <!-- Title Section -->
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
 
-                        <!-- Quotations Label -->
-                        <Label Grid.Column="1" Content="Quotations" 
+            <!-- Back Button -->
+            <Button  x:Name="GoBackButton" Click="GoBack_Click" Margin="0,0,716,347" Background="Transparent" BorderThickness="0" RenderTransformOrigin="0.5,0.5">
+                <Border CornerRadius="18">
+                    <Image Source="Resources/back.png" Width="50" Height="50" RenderTransformOrigin="0.5,0.5" >
+                        <Image.RenderTransform>
+                            <TransformGroup>
+                                <ScaleTransform/>
+                                <SkewTransform AngleY="0.367"/>
+                                <RotateTransform/>
+                                <TranslateTransform Y="0.16"/>
+                            </TransformGroup>
+                        </Image.RenderTransform>
+                    </Image>
+                </Border>
+            </Button>
+
+            <!-- Quotations Label -->
+            <Label Grid.Column="1" Content="Quotations" 
                                FontSize="24" Foreground="White" 
                                FontFamily="Tw Cen MT Condensed Extra Bold" 
                                VerticalAlignment="Center" HorizontalAlignment="Left" 
                                Margin="1,0,0,0"/>
-                    </Grid>
+        </Grid>
 
-                    <!-- List of Quotations -->
-                    <ListView x:Name="QuotationListView" Width="180" Height="300" Margin="5" ItemsSource="{Binding QuotationsList}">
-                        <ListView.View>
-                            <GridView>
-                                <GridViewColumn Header="ID" DisplayMemberBinding="{Binding RequestID}" Width="30"/>
-                                <GridViewColumn Header="Source" DisplayMemberBinding="{Binding Source}" Width="60"/>
-                                <GridViewColumn Header="Destination" DisplayMemberBinding="{Binding Destination}" Width="60"/>
-                                <GridViewColumn Header="Date Issued" DisplayMemberBinding="{Binding DateIssued}" Width="80"/>
-                                <GridViewColumn Header="Status" DisplayMemberBinding="{Binding Status}" Width="50"/>
-                            </GridView>
-                        </ListView.View>
-                    </ListView>
-                </StackPanel>
-            </Grid>
-        </ScrollViewer>
-    </Border>
+        <!-- List of Quotations -->
+        <ListView x:Name="QuotationListView" Height="300" Margin="216,50,270,50" ItemsSource="{Binding QuotationsList}" SelectionChanged="QuotationListView_SelectionChanged">
+            <ListView.View>
+                <GridView>
+                    <GridViewColumn Header="ID" DisplayMemberBinding="{Binding RequestID}" Width="30"/>
+                    <GridViewColumn Header="Source" DisplayMemberBinding="{Binding Source}" Width="60"/>
+                    <GridViewColumn Header="Destination" DisplayMemberBinding="{Binding Destination}" Width="60"/>
+                    <GridViewColumn Header="Date Issued" DisplayMemberBinding="{Binding DateIssued}" Width="80"/>
+                    <GridViewColumn Header="Status" DisplayMemberBinding="{Binding Status}" Width="50"/>
+                </GridView>
+            </ListView.View>
+        </ListView>
+    </Grid>
 </Page>

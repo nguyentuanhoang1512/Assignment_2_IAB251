@@ -8,14 +8,18 @@
     <Grid  Background="#002F6C">
 
 
-        <Button Width="20" Height="18" 
-                            HorizontalAlignment="Left" 
-                            Background="{x:Null}" BorderBrush="{x:Null}" 
-                            BorderThickness="2" Margin="10" Padding="0" Click="GoBack_Click">
+        <Button  x:Name="GoBackButton" Click="GoBack_Click" Margin="0,0,716,350" Background="Transparent" BorderThickness="0" RenderTransformOrigin="0.5,0.5">
             <Border CornerRadius="18">
-                <TextBlock FontFamily="Segoe MDL2 Assets" Text="&#xE72B;" 
-                                       Foreground="#F7941D" FontSize="16" 
-                                       VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                <Image Source="Resources/back.png" Width="64" Height="50" RenderTransformOrigin="0.5,0.5" >
+                    <Image.RenderTransform>
+                        <TransformGroup>
+                            <ScaleTransform/>
+                            <SkewTransform AngleY="0.367"/>
+                            <RotateTransform/>
+                            <TranslateTransform Y="0.16"/>
+                        </TransformGroup>
+                    </Image.RenderTransform>
+                </Image>
             </Border>
         </Button>
 
@@ -49,25 +53,33 @@
 
         <!-- ComboBox for Nature of Job -->
 
-        <ComboBox Name="ImportExportComboBox" HorizontalAlignment="Left" Width="199" Background="White" Margin="413,231,0,134">
+        <ComboBox Name="ImportExportComboBox" HorizontalAlignment="Left" Width="199" Background="White" Margin="412,259,0,106">
+            <ComboBoxItem Content="Select action" IsSelected="True" IsEnabled="False"/>
             <ComboBoxItem Content="Import"/>
             <ComboBoxItem Content="Export"/>
+        </ComboBox>
+
+        <ComboBox Name="ContainerSizeTextBox" HorizontalAlignment="Left" Width="199" Background="White" Margin="413,165,0,200">
+            <ComboBoxItem Content="Select container size" IsSelected="True" IsEnabled="False"/>
+            <ComboBoxItem Content="20 feet"/>
+            <ComboBoxItem Content="40 feet"/>
         </ComboBox>
 
 
         <!-- ComboBox for Packing/Unpacking -->
 
-        <ComboBox Name="PackingUnpackingComboBox" HorizontalAlignment="Left" Width="199" Background="White" Margin="413,182,0,182">
+        <ComboBox Name="PackingUnpackingComboBox" HorizontalAlignment="Left" Width="199" Background="White" Margin="413,213,0,151">
+            <ComboBoxItem Content="Select packing information" IsSelected="True" IsEnabled="False"/>
             <ComboBoxItem Content="Packing"/>
             <ComboBoxItem Content="Unpacking"/>
         </ComboBox>
 
 
         <!-- TextBox fields for Quarantine Requirements, Cargo Storage, Warehousing -->
-        <Border HorizontalAlignment="Left" Width="198" Background="White" CornerRadius="10" Margin="413,82,0,282">
+        <Border HorizontalAlignment="Left" Width="198" Background="White" CornerRadius="10" Margin="413,65,0,299">
             <TextBox Name="QuarantineTextBox" BorderThickness="0" TextWrapping="Wrap" Tag="Nature of the Package" GotFocus="ClearText" LostFocus="AddPlaceholderText" VerticalAlignment="Center" FontFamily="Tw Cen MT Condensed Extra Bold" Foreground="#333333" />
         </Border>
-        <Border HorizontalAlignment="Left" Width="199" Background="White" CornerRadius="10" Margin="413,130,0,236">
+        <Border HorizontalAlignment="Left" Width="199" Background="White" CornerRadius="10" Margin="413,113,0,253">
             <TextBox Name="CargoStorageTextBox" BorderThickness="0" TextWrapping="Wrap" Tag="Nature of the Package" GotFocus="ClearText" LostFocus="AddPlaceholderText" VerticalAlignment="Center" FontFamily="Tw Cen MT Condensed Extra Bold" Foreground="#333333" />
         </Border>
         <Border HorizontalAlignment="Left" Width="199" Background="White" CornerRadius="10" Margin="172,259,0,106">

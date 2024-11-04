@@ -24,6 +24,9 @@ namespace IAB251_A2.Controllers
             _userService = userService;
         }
 
+        // Add a public getter to expose the private _userService
+        public UserService UserService => _userService;
+
         public bool Login(string email, string password)
         {
             // Reset role flags

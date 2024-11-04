@@ -1,0 +1,112 @@
+﻿<Page x:Class="front_end.QuotationDetailPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      Title="Quotation Details" Height="400" Width="780">
+
+    <Grid>
+    <StackPanel Background="#002F6C">
+
+        <TextBlock Text="Quotation Details" FontSize="36" Margin="0,10,0,20" Width="270" Foreground="White" FontWeight="Bold" />
+
+        <Grid Width="720" Background="White">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="auto" />
+                <!-- Field names column -->
+                <ColumnDefinition Width="auto" />
+
+                <ColumnDefinition Width="auto" />
+                <ColumnDefinition Width="auto" />
+                
+                <!-- Field values column -->
+            </Grid.ColumnDefinitions>
+
+            <!-- Define rows explicitly -->
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+            </Grid.RowDefinitions>
+
+            <!-- Request ID -->
+            <TextBlock Text="Request ID:" FontWeight="Bold" Grid.Column="0" Grid.Row="0" Margin="0,5"/>
+            <TextBlock Text="{Binding RequestID}" Grid.Column="1" Grid.Row="0" Margin="0,5"/>
+
+            <!-- Group Customer Email and Status in the same row -->
+            <TextBlock Text="Customer Email:" FontWeight="Bold" Grid.Column="2" Grid.Row="0" Margin="0,5"/>
+            <TextBlock Text="{Binding CustomerEmail}" Grid.Column="3" Grid.Row="0" Margin="0,5"/>
+
+            <TextBlock Text="Status:" FontWeight="Bold" Grid.Column="0" Grid.Row="1" Margin="0,5"/>
+            <TextBlock Text="{Binding Status}" Grid.Column="1" Grid.Row="1" Margin="0,5"/>
+
+            <!-- Source and Destination on the same row -->
+            <TextBlock Text="Source:" FontWeight="Bold" Grid.Column="2" Grid.Row="1" Margin="0,5"/>
+            <TextBlock Text="{Binding Source}" Grid.Column="3" Grid.Row="1" Margin="0,5"/>
+
+            <TextBlock Text="Destination:" FontWeight="Bold" Grid.Column="0" Grid.Row="2" Margin="0,5"/>
+            <TextBlock Text="{Binding Destination}" Grid.Column="1" Grid.Row="2" Margin="0,5"/>
+
+            <!-- Number of Containers and Nature of Package in the same row -->
+            <TextBlock Text="Number of Containers:" FontWeight="Bold" Grid.Column="0" Grid.Row="3" Margin="0,5"/>
+            <TextBlock Text="{Binding NumberOfContainers}" Grid.Column="1" Grid.Row="3" Margin="0,5"/>
+
+            <TextBlock Text="Nature of Package:" FontWeight="Bold" Grid.Column="2" Grid.Row="3" Margin="0,5"/>
+            <TextBlock Text="{Binding NatureOfPackage}" Grid.Column="3" Grid.Row="3" Margin="0,5"/>
+
+            <!-- Nature of Jobs -->
+            <TextBlock Text="Nature of Jobs:" FontWeight="Bold" Grid.Column="0" Grid.Row="5" Margin="0,5"/>
+            <ItemsControl ItemsSource="{Binding NatureOfJobs}" Grid.Column="1" Grid.Row="5" Margin="0,5"/>
+
+            <!-- Import/Export and Packing/Unpacking in the same row -->
+            <TextBlock Text="Import/Export:" FontWeight="Bold" Grid.Column="0" Grid.Row="6" Margin="0,5"/>
+            <TextBlock Text="{Binding ImportExport}" Grid.Column="1" Grid.Row="6" Margin="0,5"/>
+
+            <TextBlock Text="Packing/Unpacking:" FontWeight="Bold" Grid.Column="2" Grid.Row="6" Margin="0,5"/>
+            <TextBlock Text="{Binding PackingUnpacking}" Grid.Column="3" Grid.Row="6" Margin="0,5"/>
+
+            <!-- Quarantine Requirements -->
+            <TextBlock Text="Quarantine Requirements:" FontWeight="Bold" Grid.Column="0" Grid.Row="7" Margin="0,5"/>
+            <TextBlock Text="{Binding QuarantineRequirements}" Grid.Column="1" Grid.Row="7" Margin="0,5"/>
+
+            <!-- Cargo Storage and Warehousing Details in the same row -->
+            <TextBlock Text="Cargo Storage:" FontWeight="Bold" Grid.Column="0" Grid.Row="8" Margin="0,5"/>
+            <TextBlock Text="{Binding CargoStorage}" Grid.Column="1" Grid.Row="8" Margin="0,5"/>
+
+            <TextBlock Text="Warehousing Details:" FontWeight="Bold" Grid.Column="2" Grid.Row="8" Margin="0,5"/>
+            <TextBlock Text="{Binding WarehousingDetails}" Grid.Column="3" Grid.Row="8" Margin="0,5"/>
+
+            <!-- Date Issued -->
+            <TextBlock Text="Date Issued:" FontWeight="Bold" Grid.Column="0" Grid.Row="9" Margin="0,5"/>
+            <TextBlock Text="{Binding DateIssued}" Grid.Column="1" Grid.Row="9" Margin="0,5"/>
+
+            <!-- Price and Requires Multi-Leg Shipment in the same row -->
+            <TextBlock Text="Price:" FontWeight="Bold" Grid.Column="0" Grid.Row="11" Margin="0,5"/>
+            <TextBlock Text="{Binding price}" Grid.Column="1" Grid.Row="11" Margin="0,5"/>
+
+            <!-- Size of Container -->
+            <TextBlock Text="Size of Container:" FontWeight="Bold" Grid.Column="0" Grid.Row="12" Margin="0,5"/>
+            <TextBlock Text="{Binding SizeOfContainer}" Grid.Column="1" Grid.Row="12" Margin="0,5"/>
+
+        </Grid>
+
+        
+    </StackPanel>
+        <Button x:Name="GoBackButton" Click="GoBack_Click" Margin="0,0,709,350" Background="Transparent" BorderThickness="0" RenderTransformOrigin="0.5,0.5">
+            <Image Source="Resources/back.png" Width="50" Height="50" />
+        </Button  >
+        
+    </Grid>
+    <!-- Back button -->
+    
+</Page>

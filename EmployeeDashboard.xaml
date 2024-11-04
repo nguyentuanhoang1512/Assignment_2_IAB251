@@ -46,10 +46,12 @@
 
         <!-- Access Rate Schedule Button -->
         <Button Content="Access Rate Schedule" 
+                x:Name="ViewRateScheduleButton"
                              Margin="430,280,80,70" 
                             Background="#F7941D" 
                             Foreground="White" 
-                            FontFamily="Tw Cen MT Condensed Extra Bold" FontSize="24"/>
+                            FontFamily="Tw Cen MT Condensed Extra Bold" FontSize="24"
+                            Click="ViewRateSchedule_Click"/>
 
         <!-- Apply Discounts Button -->
         <Button Content="Apply Discounts" 

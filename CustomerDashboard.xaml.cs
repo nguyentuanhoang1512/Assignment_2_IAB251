@@ -27,11 +27,13 @@ namespace front_end
         private Customer _currentCustomer;
         private User user;
         private readonly Customer _loggedInCustomer;
+        private UserController _userController;
 
-        public CustomerDashboard(Customer loggedInCustomer = null)
+        public CustomerDashboard(UserController userController, Customer loggedInCustomer = null)
         {
             InitializeComponent();
             _loggedInCustomer = loggedInCustomer;
+            this._userController = userController;
 
             if (_loggedInCustomer?.Messages?.Any() == true)
             {
@@ -56,7 +58,7 @@ namespace front_end
                 var mainWindow = Application.Current.MainWindow as MainWindow;
                 if (mainWindow != null)
                 {
-                    mainWindow.MainFrame.Navigate(new front_end.login()); // Navigate to sign-up page
+                    mainWindow.MainFrame.Navigate(new front_end.login(_userController));
                 }
             }
         }
@@ -66,7 +68,7 @@ namespace front_end
             var mainWindow = Application.Current.MainWindow as MainWindow;
             if (mainWindow != null)
             {
-                mainWindow.MainFrame.Navigate(new front_end.RequestQuotationForm(_loggedInCustomer)); // Navigate to sign-up page
+                mainWindow.MainFrame.Navigate(new front_end.RequestQuotationForm(_loggedInCustomer, _userController)); // Navigate to sign-up page
             }
 
         }
@@ -76,7 +78,7 @@ namespace front_end
             var mainWindow = Application.Current.MainWindow as MainWindow;
             if (mainWindow != null)
             {
-                mainWindow.MainFrame.Navigate(new front_end.Quotations()); // Navigate to sign-up page
+                mainWindow.MainFrame.Navigate(new front_end.Quotations(_userController)); // Navigate to sign-up page
             }
         }
 

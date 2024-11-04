@@ -1,4 +1,5 @@
 ﻿using IAB251_A2.Controllers;
+using IAB251_A2.Services;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -18,12 +19,13 @@ namespace IAB251_A2
 
     public partial class MainWindow : Window
     {
-        private UserController userController;
+        private UserController _userController;
 
         public MainWindow()
         {
             InitializeComponent();
-            MainFrame.Navigate(new front_end.login()); // Load the login page initially
+            _userController = new UserController(new UserService());
+            MainFrame.Navigate(new front_end.login(_userController)); // Load the login page initially
         }
     }
 }
