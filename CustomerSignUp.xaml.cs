@@ -31,6 +31,11 @@ namespace front_end
         {
             InitializeComponent();
             this.userController = userController;
+            this.Loaded += CustomerSignUp_Loaded;
+        }
+
+        private void CustomerSignUp_Loaded(object sender, RoutedEventArgs e)
+        {
             AddPlaceholderText(FirstNameTextBox, null);
             AddPlaceholderText(LastNameTextBox, null);
             AddPlaceholderText(EmailTextBox, null);
@@ -38,7 +43,6 @@ namespace front_end
             AddPlaceholderText(CompanyNameTextBox, null);
             AddPlaceholderText(AddressTextBox, null);
         }
-
 
         private void GoBack_Click(object sender, RoutedEventArgs e)
         {
@@ -63,7 +67,7 @@ namespace front_end
         private void AddPlaceholderText(object sender, RoutedEventArgs e)
         {
             TextBox textBox = sender as TextBox;
-            if (string.IsNullOrWhiteSpace(textBox.Text))
+            if (textBox != null && string.IsNullOrWhiteSpace(textBox.Text))
             {
                 textBox.Text = textBox.Tag.ToString();
                 textBox.Foreground = new SolidColorBrush(Colors.Gray);

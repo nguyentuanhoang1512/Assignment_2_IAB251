@@ -7,6 +7,20 @@
 
     <Grid  Background="#002F6C">
 
+        <Button  x:Name="GoBackButton" Click="GoBack_Click" Margin="0,0,716,330" Background="Transparent" BorderThickness="0" RenderTransformOrigin="0.5,0.5">
+            <Border CornerRadius="18">
+                <Image Source="Resources/back.png" Width="64" Height="50" RenderTransformOrigin="0.5,0.5" >
+                    <Image.RenderTransform>
+                        <TransformGroup>
+                            <ScaleTransform/>
+                            <SkewTransform AngleY="0.367"/>
+                            <RotateTransform/>
+                            <TranslateTransform Y="0.16"/>
+                        </TransformGroup>
+                    </Image.RenderTransform>
+                </Image>
+            </Border>
+        </Button>
 
         <Button  x:Name="GoBackButton" Click="GoBack_Click" Margin="0,0,716,350" Background="Transparent" BorderThickness="0" RenderTransformOrigin="0.5,0.5">
             <Border CornerRadius="18">
@@ -83,7 +97,7 @@
             <TextBox Name="CargoStorageTextBox" BorderThickness="0" TextWrapping="Wrap" Tag="Nature of the Package" GotFocus="ClearText" LostFocus="AddPlaceholderText" VerticalAlignment="Center" FontFamily="Tw Cen MT Condensed Extra Bold" Foreground="#333333" />
         </Border>
         <Border HorizontalAlignment="Left" Width="199" Background="White" CornerRadius="10" Margin="172,259,0,106">
-            <TextBox Name="WarehousingTextBox" BorderThickness="0" TextWrapping="Wrap" Tag="Nature of the Package" GotFocus="ClearText" LostFocus="AddPlaceholderText" VerticalAlignment="Center" FontFamily="Tw Cen MT Condensed Extra Bold" Foreground="#333333" />
+            <TextBox Name="WarehousingTextBox" BorderThickness="0" TextWrapping="Wrap" Tag="Warehousing" GotFocus="ClearText" LostFocus="AddPlaceholderText" VerticalAlignment="Center" FontFamily="Tw Cen MT Condensed Extra Bold" Foreground="#333333" />
         </Border>
 
         <!-- Submit Button -->
