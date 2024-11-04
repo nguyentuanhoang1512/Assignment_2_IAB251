@@ -63,7 +63,7 @@ namespace front_end
             var mainWindow = Application.Current.MainWindow as MainWindow;
             if (mainWindow != null)
             {
-                mainWindow.MainFrame.Navigate(new front_end.CustomerDashboard());
+                mainWindow.MainFrame.Navigate(new front_end.CustomerDashboard(_userController));
             }
 
         }
