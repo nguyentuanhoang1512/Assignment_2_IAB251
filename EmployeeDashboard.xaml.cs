@@ -46,7 +46,7 @@ namespace front_end
             var mainWindow = Application.Current.MainWindow as MainWindow;
             if (mainWindow != null)
             {
-                mainWindow.MainFrame.Navigate(new front_end.Quotations());
+                mainWindow.MainFrame.Navigate(new front_end.ReviewQuotations());
             }
         }
         private void ViewRateSchedule_Click(object sender, RoutedEventArgs e)

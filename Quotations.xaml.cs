@@ -58,8 +58,12 @@ namespace front_end
 
         private void GoBack_Click(object sender, RoutedEventArgs e)
         {
-            var navigationService = NavigationService.GetNavigationService(this);
-            navigationService.GoBack();
+            var mainWindow = Application.Current.MainWindow as MainWindow;
+            if (mainWindow != null)
+            {
+                mainWindow.MainFrame.Navigate(new front_end.CustomerDashboard());
+            }
+
         }
     }
 

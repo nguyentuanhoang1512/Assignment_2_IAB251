@@ -15,6 +15,7 @@ using System.Windows.Shapes;
 using IAB251_A2.Models;
 using IAB251_A2.Services;
 using System.Collections.ObjectModel;
+using IAB251_A2;
 
 namespace front_end
 {
@@ -79,8 +80,12 @@ namespace front_end
 
         private void GoBack_Click(object sender, RoutedEventArgs e)
         {
-            var EmployeeDashboard = new EmployeeDashboard();
-            
+            var mainWindow = Application.Current.MainWindow as MainWindow;
+            if (mainWindow != null)
+            {
+                mainWindow.MainFrame.Navigate(new front_end.EmployeeDashboard()); 
+            }
+
         }
     }
 }
