@@ -97,6 +97,26 @@ namespace front_end
                 result = (ContainerSize)1;
             }
 
+            var requestedJobs = new List<string>();
+            if (cbWalfBooking.IsChecked == true) requestedJobs.Add("Walf Booking Fee");
+            if (cbLiftOn.IsChecked == true) requestedJobs.Add("Lift on");
+            if (cbLiftOff.IsChecked == true) requestedJobs.Add("Lift Off");
+            if (cbFumigation.IsChecked == true) requestedJobs.Add("Fumigation");
+            if (cbLCLDelivery.IsChecked == true) requestedJobs.Add("LCL Delivery Depot");
+            if (cbTailgateInspection.IsChecked == true) requestedJobs.Add("Tailgate Inspection");
+            if (cbStorageFee.IsChecked == true) requestedJobs.Add("Storage Fee");
+            if (cbWalfInspection.IsChecked == true) requestedJobs.Add("Walf Inspection");
+
+            int size = 0;
+            if (ContainerSizeTextBox.Text == "20 feet")
+            {
+                size = 20;
+            }
+            else if (ContainerSizeTextBox.Text == "40 feet")
+            {
+                size = 40;
+            }
+
             var newQuotation = new Quotation
             {
                 Source = SourceTextBox.Text,
@@ -108,11 +128,14 @@ namespace front_end
                 QuarantineRequirements = QuarantineTextBox.Text,
                 CargoStorage = CargoStorageTextBox.Text,
                 WarehousingDetails = WarehousingTextBox.Text,
-                SizeOfContainer = result
+                SizeOfContainer = size,
+                NatureOfJobs = requestedJobs
             };
-
+            calculatePrice(newQuotation);
+            
             quotationService.SubmitQuotation(newQuotation);
             MessageBox.Show("Quotation request submitted successfully!");
+
 
             var mainWindow = Application.Current.MainWindow as MainWindow;
             if (mainWindow != null)
@@ -122,5 +145,49 @@ namespace front_end
 
         }
 
+        private void calculatePrice(Quotation quotation)
+        {
+            if (quotation.NatureOfJobs.Count ==0)
+            {
+                quotation.price = 0;
+            }
+            else
+            {
+                double tempPirce = 0;
+
+                if (quotation.SizeOfContainer == 20)
+                {
+                    tempPirce += 70; // Default adding Facility Fee
+                    for (int i = 0; i < quotation.NatureOfJobs.Count; i++)
+                    {
+                        if (quotation.NatureOfJobs[i] == "Walf Booking Fee") tempPirce += 60;
+                        if (quotation.NatureOfJobs[i] == ("Lift on")) tempPirce += 80;
+                        if (quotation.NatureOfJobs[i] == ("Lift off")) tempPirce += 80;
+                        if (quotation.NatureOfJobs[i] == "Fumigation") tempPirce += 220;
+                        if (quotation.NatureOfJobs[i] == "LCL Delivery Depot") tempPirce += 400;
+                        if (quotation.NatureOfJobs[i] == "Tailgate Inspection") tempPirce += 120;
+                        if (quotation.NatureOfJobs[i] == "Storage Fee") tempPirce += 240;
+                        if (quotation.NatureOfJobs[i] == "Walf Inspection") tempPirce += 60;
+                    }
+                }else if (quotation.SizeOfContainer == 40)
+                {
+                    tempPirce += 100; // Default adding Facility Fee
+                    for (int i = 0; i < quotation.NatureOfJobs.Count; i++)
+                    {
+                        if (quotation.NatureOfJobs[i] == "Walf Booking Fee") tempPirce += 70;
+                        if (quotation.NatureOfJobs[i] == ("Lift on")) tempPirce += 120;
+                        if (quotation.NatureOfJobs[i] == ("Lift off")) tempPirce += 120;
+                        if (quotation.NatureOfJobs[i] == "Fumigation") tempPirce += 280;
+                        if (quotation.NatureOfJobs[i] == "LCL Delivery Depot") tempPirce += 500;
+                        if (quotation.NatureOfJobs[i] == "Tailgate Inspection") tempPirce += 160;
+                        if (quotation.NatureOfJobs[i] == "Storage Fee") tempPirce += 300;
+                        if (quotation.NatureOfJobs[i] == "Walf Inspection") tempPirce += 90;
+                    }
+                }
+
+                tempPirce = tempPirce * 1.1; // Adding 10% GST
+                quotation.price = tempPirce;
+            }
+        }
     }
 }

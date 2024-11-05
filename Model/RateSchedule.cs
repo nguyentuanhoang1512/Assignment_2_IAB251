@@ -8,12 +8,9 @@ namespace IAB251_A2.Model
 {
     public class RateSchedule
     {
-        public int ScheduleID { get; set; }
-        public string Origin { get; set; }
-        public string Destination { get; set; }
-        public decimal RatePerContainer { get; set; }
-        public string Currency { get; set; }
-        public DateTime EffectiveDate { get; set; }
-        public DateTime ExpiryDate { get; set; }
+        public string Type { get; set; }
+        public string PriceFor20Feet { get; set; }
+        public string PriceFor40Feet { get; set; }
     }
+
 }

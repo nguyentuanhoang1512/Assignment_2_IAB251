@@ -30,9 +30,9 @@
         <!-- Title Label -->
 
         <!-- List of Quotations -->
-        <ListView x:Name="QuotationListView" Margin="221,42,221,91">
-            <ListView.View>
-                <GridView>
+        <ListView x:Name="QuotationListView" Margin="221,42,221,91" SelectionChanged="QuotationListView_SelectionChanged">
+            <ListView.View >
+                <GridView >
                     <GridViewColumn Header="ID" DisplayMemberBinding="{Binding RequestID}" Width="30"/>
                     <GridViewColumn Header="Source" DisplayMemberBinding="{Binding Source}" Width="60"/>
                     <GridViewColumn Header="Destination" DisplayMemberBinding="{Binding Destination}" Width="60"/>
