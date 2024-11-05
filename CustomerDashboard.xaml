@@ -25,7 +25,7 @@
                                TextWrapping="Wrap" TextAlignment="Center" Margin="159,200,159,122"/>
 
         <Button Content="Request Quotation" 
-        Margin="180,276,420,64" 
+        Margin="80,276,520,64" 
         Background="#F7941D" 
         Foreground="White" 
         FontFamily="Tw Cen MT Condensed Extra Bold"
@@ -43,7 +43,12 @@
         Background="#F7941D" 
         Foreground="White" 
         FontFamily="Tw Cen MT Condensed Extra Bold"
-        Click="ViewQuotationStatus_Click" Margin="420,276,180,64" FontSize="20"/>
+        Click="ViewQuotationStatus_Click" Margin="300,276,300,64" FontSize="20" RenderTransformOrigin="-0.246,0.552"/>
+        <Button Content="Finalise Quote" 
+            Background="#F7941D" 
+            Foreground="White" 
+            FontFamily="Tw Cen MT Condensed Extra Bold"
+            Click="FinaliseQuotation_Click" Margin="522,278,78,62" FontSize="20" RenderTransformOrigin="-0.246,0.552"/>
 
 
     </Grid>

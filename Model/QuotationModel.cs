@@ -46,6 +46,8 @@ namespace IAB251_A2.Models
         public bool QuarantineFlag { get; set; } //True if quarantine is required
         public bool FumigationFlag { get; set; } //True if fumigation is required
 
+        
+
 
     }
 

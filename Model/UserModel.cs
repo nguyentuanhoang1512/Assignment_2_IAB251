@@ -30,7 +30,7 @@ namespace IAB251_A2.Models
         //Applying Discount to quote and updating the cost/price
         private void ApplyDiscount(Quotation quotation, double discount)
         {
-            quotation.Cost = quotation.price * (1 - discount);
+            quotation.price = quotation.price * (1 - discount);
             Console.WriteLine($"Discount has been applyied! Quotation cost: {quotation.price}");
         }
         //Check Discount to calculate the correct percentage

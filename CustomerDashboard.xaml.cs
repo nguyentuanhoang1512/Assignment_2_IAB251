@@ -82,6 +82,15 @@ namespace front_end
             }
         }
 
+        public void FinaliseQuotation_Click(object sender, RoutedEventArgs e)
+        {
+            var mainWindow = Application.Current.MainWindow as MainWindow;
+            if (mainWindow != null)
+            {
+                mainWindow.MainFrame.Navigate(new front_end.Quotations(_userController)); // Navigate to sign-up page
+            }
+        }
+
 
         private void DisplayMessages()
         {
