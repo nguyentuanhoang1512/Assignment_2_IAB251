@@ -70,37 +70,40 @@ namespace IAB251_A2.Services
         //Prepare Discount to calculate the correct percentage
         public void PrepareDiscount(Quotation quotation)
         {
+            quotation.DiscountPrice = quotation.price * (1 - 0.1);   //10%
 
-            if ((quotation.NumberOfContainers > 5) && (quotation.QuarantineFlag || quotation.FumigationFlag))
-            {
-                quotation.DiscountPrice = quotation.price * (1 - 0.025); //2.5%
-            }
-            else if ((quotation.NumberOfContainers > 5) && (quotation.QuarantineFlag && quotation.FumigationFlag))
-            {
-                quotation.DiscountPrice = quotation.price * (1 - 0.05);  //5%
-            }
-            else if ((quotation.NumberOfContainers > 5) && (quotation.QuarantineFlag && quotation.FumigationFlag))
+            if ((quotation.NumberOfContainers > 10) && (quotation.QuarantineFlag && quotation.FumigationFlag))
             {
                 quotation.DiscountPrice = quotation.price * (1 - 0.1);   //10%
             }
+            else if ((quotation.NumberOfContainers > 5) && (quotation.QuarantineFlag && quotation.FumigationFlag))
+            {
+                quotation.DiscountPrice = quotation.price * (1 - 0.05);   //10%
+            }
+            else if ((quotation.NumberOfContainers > 5) && (quotation.QuarantineFlag || quotation.FumigationFlag))
+            {
+                quotation.DiscountPrice = quotation.price * (1 - 0.025);   //10%
+            }
+
         }
         //Check Discount to calculate the correct percentage
         public void UpdateDiscount(Quotation quotation)
         {
 
-
-            if ((quotation.NumberOfContainers > 5) && (quotation.QuarantineFlag || quotation.FumigationFlag))
+            if ((quotation.NumberOfContainers > 10) && (quotation.QuarantineFlag && quotation.FumigationFlag))
             {
-                ApplyDiscount(quotation, 0.025); //2.5%
+                ApplyDiscount(quotation, 0.1);   //10%
             }
             else if ((quotation.NumberOfContainers > 5) && (quotation.QuarantineFlag && quotation.FumigationFlag))
             {
                 ApplyDiscount(quotation, 0.05);  //5%
             }
-            else if ((quotation.NumberOfContainers > 5) && (quotation.QuarantineFlag && quotation.FumigationFlag))
+            else if ((quotation.NumberOfContainers > 5) && (quotation.QuarantineFlag || quotation.FumigationFlag))
             {
-                ApplyDiscount(quotation, 0.1);   //10%
+                ApplyDiscount(quotation, 0.025); //2.5%
             }
+
+
         }
 
         public List<Quotation> GetQuotations() => quotations;

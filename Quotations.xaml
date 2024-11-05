@@ -45,6 +45,7 @@
                     <GridViewColumn Header="ID" DisplayMemberBinding="{Binding RequestID}" Width="30"/>
                     <GridViewColumn Header="Source" DisplayMemberBinding="{Binding Source}" Width="60"/>
                     <GridViewColumn Header="Destination" DisplayMemberBinding="{Binding Destination}" Width="60"/>
+                    <GridViewColumn Header="Cost" DisplayMemberBinding="{Binding price}" Width="60"/>
                     <GridViewColumn Header="Date Issued" DisplayMemberBinding="{Binding DateIssued}" Width="80"/>
                     <GridViewColumn Header="Approve" DisplayMemberBinding="{Binding Approved}" Width="50"/>
                     <GridViewColumn Header="Status" DisplayMemberBinding="{Binding Status}" Width="50"/>
