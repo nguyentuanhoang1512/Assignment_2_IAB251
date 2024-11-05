@@ -61,7 +61,7 @@
             <TextBox Name="QuarantineTextBox" BorderThickness="0" TextWrapping="Wrap" Tag="Nature of the Package" GotFocus="ClearText" LostFocus="AddPlaceholderText" VerticalAlignment="Center" FontFamily="Tw Cen MT Condensed Extra Bold" Foreground="#333333" />
         </Border>
         <Border HorizontalAlignment="Left" Width="199" Background="White" CornerRadius="10" Margin="314,114,0,252">
-            <TextBox Name="CargoStorageTextBox" BorderThickness="0" TextWrapping="Wrap" Tag="Nature of the Package" GotFocus="ClearText" LostFocus="AddPlaceholderText" VerticalAlignment="Center" FontFamily="Tw Cen MT Condensed Extra Bold" Foreground="#333333" />
+            <TextBox Name="CargoStorageTextBox" BorderThickness="0" TextWrapping="Wrap" Tag="Quarantine Details" GotFocus="ClearText" LostFocus="AddPlaceholderText" VerticalAlignment="Center" FontFamily="Tw Cen MT Condensed Extra Bold" Foreground="#333333" />
         </Border>
         
 
