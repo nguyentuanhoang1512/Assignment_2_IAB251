@@ -71,5 +71,22 @@ namespace front_end
                 mainWindow.MainFrame.Navigate(new front_end.RateSchedulePage(_loggedInEmployee, _userController));
             }
         }
+        private void ViewQuotationResponse_Click(object sender, RoutedEventArgs e)
+        {
+            var mainWindow = Application.Current.MainWindow as MainWindow;
+            if (mainWindow != null)
+            {
+                mainWindow.MainFrame.Navigate(new front_end.ViewQuotationResponse(_loggedInEmployee, _userController));
+            }
+        }
+        private void ViewPendingDiscount_Click(object sender, RoutedEventArgs e)
+        {
+            var mainWindow = Application.Current.MainWindow as MainWindow;
+            if (mainWindow != null)
+            {
+                mainWindow.MainFrame.Navigate(new front_end.DiscountPage(_loggedInEmployee, _userController));
+            }
+        }
+
     }
 }

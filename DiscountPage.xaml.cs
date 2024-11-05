@@ -20,7 +20,7 @@ using IAB251_A2;
 
 namespace front_end
 {
-    public partial class ReviewQuotations : Page
+    public partial class DiscountPage : Page
     {
         private readonly QuotationService _quotationService = QuotationService.Instance;
         public ObservableCollection<Quotation> QuotationsList { get; set; }
@@ -28,7 +28,7 @@ namespace front_end
         private UserController _userController;
 
         private Employee _loggedInEmployee;
-        public ReviewQuotations(Employee employee,  UserController userControler)
+        public DiscountPage(Employee employee,  UserController userControler)
         {
             InitializeComponent();
             _quotationService.QuotationsUpdated += RefreshQuotations;
@@ -39,7 +39,7 @@ namespace front_end
 
         private void LoadPendingQuotations()
         {
-            QuotationsList = new ObservableCollection<Quotation>(_quotationService.GetNotApprovedQuotations());
+            QuotationsList = new ObservableCollection<Quotation>(_quotationService.GetNotDiscountedQuotations());
             QuotationListView.ItemsSource = QuotationsList;
         }
 
@@ -48,36 +48,33 @@ namespace front_end
             Dispatcher.Invoke(() =>
             {
                 QuotationsList.Clear();
-                foreach (var quote in _quotationService.GetPendingQuotations())
+                foreach (var quote in _quotationService.GetNotDiscountedQuotations())
                 {
                     QuotationsList.Add(quote);
                 }
             });
         }
 
-        private void AcceptQuotation_Click(object sender, RoutedEventArgs e)
+        private void AcceptDiscount_Click(object sender, RoutedEventArgs e)
         {
             if (QuotationListView.SelectedItem is Quotation selectedQuotation)
             {
-                _quotationService.UpdateApprovedStatus(selectedQuotation.RequestID, "Approved");
-                MessageBox.Show("Quotation Approved");
+                _quotationService.UpdateDiscountStatus(selectedQuotation.RequestID, true);
+                _quotationService.UpdateDiscount(selectedQuotation);
+                MessageBox.Show($"Discount Applied. New Cost is ${selectedQuotation.price} ");
             }
         }
 
 
 
 
-        private void RejectQuotation_Click(object sender, RoutedEventArgs e)
+        private void RemoveDiscount_Click(object sender, RoutedEventArgs e)
         {
             if (QuotationListView.SelectedItem is Quotation selectedQuotation)
             {
-                _quotationService.UpdateApprovedStatus(selectedQuotation.RequestID, "Invalid");
+                _quotationService.UpdateDiscountStatus(selectedQuotation.RequestID, true);
 
-                // Fetch the customer and add a rejection message
-                var customer = _quotationService.GetCustomerByEmail(selectedQuotation.CustomerEmail);
-                customer?.Messages.Add("Your quotation was invalid.");
-
-                MessageBox.Show("Quotation Request Rejected");
+                MessageBox.Show("Discount Request Removed");
                 LoadPendingQuotations();
             }
         }

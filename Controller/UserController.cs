@@ -90,6 +90,7 @@ namespace IAB251_A2.Controllers
                 NatureOfPackage = natureOfPackage,
                 NatureOfJob = job,
                 Status = "Pending",
+                Approved = "False",
                 DateIssued = DateTime.Now
             };
 

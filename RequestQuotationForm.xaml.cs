@@ -74,11 +74,11 @@ namespace front_end
 
         private void Submit_Click(object sender, RoutedEventArgs e)
         {
+
             if (string.IsNullOrWhiteSpace(SourceTextBox.Text) ||
                 string.IsNullOrWhiteSpace(DestinationTextBox.Text) ||
                 string.IsNullOrWhiteSpace(NumberOfContainersTextBox.Text) ||
                 string.IsNullOrWhiteSpace(NatureOfPackageTextBox.Text) ||
-                string.IsNullOrWhiteSpace(QuarantineTextBox.Text) ||
                 string.IsNullOrWhiteSpace(CargoStorageTextBox.Text) ||
                 string.IsNullOrWhiteSpace(WarehousingTextBox.Text) ||
                 ImportExportComboBox.SelectedItem == null ||
@@ -96,12 +96,21 @@ namespace front_end
             {
                 result = (ContainerSize)1;
             }
-
+            bool QuarantineTag = false;
+            if ( !(string.IsNullOrWhiteSpace(QuarantineTextBox.Text)) )
+            {
+                QuarantineTag = true;
+            }
             var requestedJobs = new List<string>();
+            bool fumigationTag = false;
             if (cbWalfBooking.IsChecked == true) requestedJobs.Add("Walf Booking Fee");
             if (cbLiftOn.IsChecked == true) requestedJobs.Add("Lift on");
             if (cbLiftOff.IsChecked == true) requestedJobs.Add("Lift Off");
-            if (cbFumigation.IsChecked == true) requestedJobs.Add("Fumigation");
+            if (cbFumigation.IsChecked == true)
+            {
+                requestedJobs.Add("Fumigation");
+                fumigationTag = true;
+            }
             if (cbLCLDelivery.IsChecked == true) requestedJobs.Add("LCL Delivery Depot");
             if (cbTailgateInspection.IsChecked == true) requestedJobs.Add("Tailgate Inspection");
             if (cbStorageFee.IsChecked == true) requestedJobs.Add("Storage Fee");
@@ -129,7 +138,11 @@ namespace front_end
                 CargoStorage = CargoStorageTextBox.Text,
                 WarehousingDetails = WarehousingTextBox.Text,
                 SizeOfContainer = size,
-                NatureOfJobs = requestedJobs
+                NatureOfJobs = requestedJobs,
+                QuarantineFlag = QuarantineTag,
+                FumigationFlag = fumigationTag,
+                
+
             };
             calculatePrice(newQuotation);
             

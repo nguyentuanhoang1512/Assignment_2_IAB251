@@ -24,6 +24,7 @@ namespace IAB251_A2.Models
         public string NatureOfJob { get; set; }
         public List<string> NatureOfJobs { get; set; }
         public string Status { get; set; }
+        public string Approved { get; set; }
         public string ImportExport { get; set; }       
         public string PackingUnpacking { get; set; }   
         public string QuarantineRequirements { get; set; } 
@@ -38,6 +39,7 @@ namespace IAB251_A2.Models
         public string DiscountCode { get; set; } // To apply discount codes to quotations
 
         public double price { get; set; }
+        public double DiscountPrice { get; set; }
 
         public int SizeOfContainer { get; set; }
 
@@ -45,6 +47,7 @@ namespace IAB251_A2.Models
 
         public bool QuarantineFlag { get; set; } //True if quarantine is required
         public bool FumigationFlag { get; set; } //True if fumigation is required
+        public bool DiscountFlag { get; set; } //True when discount has been applied
 
         
 

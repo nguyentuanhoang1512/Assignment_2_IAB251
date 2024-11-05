@@ -1,7 +1,7 @@
-<Page
+﻿<Page x:Class="front_end.ViewQuotationResponse"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        xmlns:av="http://schemas.microsoft.com/expression/blend/2008" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" mc:Ignorable="av" x:Class="front_end.Quotations"
+        xmlns:av="http://schemas.microsoft.com/expression/blend/2008" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" mc:Ignorable="av" 
         Title="Quotations Made" Height="400" Width="780">
 
     <Grid Background="#002F6C">
@@ -39,15 +39,19 @@
         </Grid>
 
         <!-- List of Quotations -->
-        <ListView x:Name="QuotationListView" Height="300" Margin="216,50,229,50" ItemsSource="{Binding QuotationsList}" SelectionChanged="QuotationListView_SelectionChanged" av:ItemsSource="{av:SampleData ItemCount=5}">
+        <ListView x:Name="QuotationListView" Height="300" Margin="192,50,192,50" ItemsSource="{Binding QuotationsList}" SelectionChanged="QuotationListView_SelectionChanged" av:ItemsSource="{av:SampleData ItemCount=5}">
             <ListView.View>
                 <GridView>
                     <GridViewColumn Header="ID" DisplayMemberBinding="{Binding RequestID}" Width="30"/>
                     <GridViewColumn Header="Source" DisplayMemberBinding="{Binding Source}" Width="60"/>
                     <GridViewColumn Header="Destination" DisplayMemberBinding="{Binding Destination}" Width="60"/>
                     <GridViewColumn Header="Date Issued" DisplayMemberBinding="{Binding DateIssued}" Width="80"/>
+                    <GridViewColumn Header="Approve" DisplayMemberBinding="{Binding Approved}" Width="50"/>
                     <GridViewColumn Header="Status" DisplayMemberBinding="{Binding Status}" Width="50"/>
-                    <GridViewColumn Header="Accept" DisplayMemberBinding="{Binding Accept}" Width="50"/>
+                    
+                        
+                    
+
                 </GridView>
             </ListView.View>
         </ListView>

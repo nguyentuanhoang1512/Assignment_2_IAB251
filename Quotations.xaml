@@ -39,15 +39,32 @@
         </Grid>
 
         <!-- List of Quotations -->
-        <ListView x:Name="QuotationListView" Height="300" Margin="216,50,278,50" ItemsSource="{Binding QuotationsList}" SelectionChanged="QuotationListView_SelectionChanged" av:ItemsSource="{av:SampleData ItemCount=5}">
+        <ListView x:Name="QuotationListView" Height="300" Margin="192,50,192,50" ItemsSource="{Binding QuotationsList}" SelectionChanged="QuotationListView_SelectionChanged" av:ItemsSource="{av:SampleData ItemCount=5}">
             <ListView.View>
                 <GridView>
                     <GridViewColumn Header="ID" DisplayMemberBinding="{Binding RequestID}" Width="30"/>
                     <GridViewColumn Header="Source" DisplayMemberBinding="{Binding Source}" Width="60"/>
                     <GridViewColumn Header="Destination" DisplayMemberBinding="{Binding Destination}" Width="60"/>
                     <GridViewColumn Header="Date Issued" DisplayMemberBinding="{Binding DateIssued}" Width="80"/>
+                    <GridViewColumn Header="Approve" DisplayMemberBinding="{Binding Approved}" Width="50"/>
                     <GridViewColumn Header="Status" DisplayMemberBinding="{Binding Status}" Width="50"/>
-                    
+                    <GridViewColumn Header="Action" Width="60">
+                        <GridViewColumn.CellTemplate>
+                            <DataTemplate>
+                                <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                                    <!-- Accept Button -->
+                                    <Button Content="✓" Width="20" Height="20" Margin="2" 
+                        Background="#F7941D" Foreground="White" 
+                        Click="AcceptQuotation_Click"/>
+                                    <!-- Reject Button -->
+                                    <Button Content="✗" Width="20" Height="20" Margin="2" 
+                        Background="#F7941D" Foreground="White" 
+                        Click="RejectQuotation_Click"/>
+                                </StackPanel>
+                            </DataTemplate>
+                        </GridViewColumn.CellTemplate>
+                    </GridViewColumn>
+
                 </GridView>
             </ListView.View>
         </ListView>

@@ -1,7 +1,7 @@
-﻿<Page x:Class="front_end.ReviewQuotations"
+﻿<Page x:Class="front_end.DiscountPage"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        Title="Pending Quotations" Height="400" Width="780">
+        Title="Pending Discounts" Height="400" Width="780">
 
 
     <Grid Background="#002F6C">
@@ -22,7 +22,7 @@
             </Border>
         </Button>
 
-        <Label Content="Pending Quotations" 
+        <Label Content="Pending Discounts" 
                            FontSize="24" Foreground="White" 
                            FontFamily="Tw Cen MT Condensed Extra Bold" Margin="297,-5,296,363" 
                            />
@@ -30,14 +30,20 @@
         <!-- Title Label -->
 
         <!-- List of Quotations -->
-        <ListView x:Name="QuotationListView" Margin="221,42,221,91" SelectionChanged="QuotationListView_SelectionChanged">
+        <ListView x:Name="QuotationListView" Margin="103,66,102,66" SelectionChanged="QuotationListView_SelectionChanged">
             <ListView.View >
                 <GridView >
                     <GridViewColumn Header="ID" DisplayMemberBinding="{Binding RequestID}" Width="30"/>
                     <GridViewColumn Header="Source" DisplayMemberBinding="{Binding Source}" Width="60"/>
-                    <GridViewColumn Header="Destination" DisplayMemberBinding="{Binding Destination}" Width="60"/>
+                    <GridViewColumn Header="Destination" DisplayMemberBinding="{Binding Destination}" Width="70"/>
                     <GridViewColumn Header="Date" DisplayMemberBinding="{Binding DateIssued}" Width="60"/>
-                    <GridViewColumn Header="Approve" DisplayMemberBinding="{Binding Approved}" Width="60"/>
+                    <GridViewColumn Header="Fumigation" DisplayMemberBinding="{Binding FumigationFlag}" Width="70"/>
+                    <GridViewColumn Header="Quarantine" DisplayMemberBinding="{Binding QuarantineFlag}" Width="70"/>
+                    <GridViewColumn Header="Current Cost" DisplayMemberBinding="{Binding price}" Width="80"/>
+                    <GridViewColumn Header="New Cost" DisplayMemberBinding="{Binding DiscountPrice}" Width="70"/>
+                    
+                    
+                    
                     <GridViewColumn Header="Action" Width="60">
                         <GridViewColumn.CellTemplate>
                             <DataTemplate>
@@ -45,11 +51,13 @@
                                     <!-- Accept Button -->
                                     <Button Content="✓" Width="20" Height="20" Margin="2" 
                                             Background="#F7941D" Foreground="White" 
-                                            Click="AcceptQuotation_Click"/>
+                                            Click="AcceptDiscount_Click"/>
                                     <!-- Reject Button -->
                                     <Button Content="✗" Width="20" Height="20" Margin="2" 
                                             Background="#F7941D" Foreground="White" 
-                                            Click="RejectQuotation_Click"/>
+                                            Click="RemoveDiscount_Click"/>
+
+                                    
                                 </StackPanel>
                             </DataTemplate>
                         </GridViewColumn.CellTemplate>

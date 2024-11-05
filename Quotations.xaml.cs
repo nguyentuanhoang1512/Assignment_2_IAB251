@@ -76,6 +76,37 @@ namespace front_end
                 NavigationService.Navigate(quotationDetailPage);
             }
         }
+        private void LoadPendingQuotations()
+        {
+            QuotationsList = new ObservableCollection<Quotation>(_quotationService.GetPendingQuotations());
+            QuotationListView.ItemsSource = QuotationsList;
+        }
+        private void AcceptQuotation_Click(object sender, RoutedEventArgs e)
+        {
+            if (QuotationListView.SelectedItem is Quotation selectedQuotation)
+            {
+                _quotationService.UpdateQuotationStatus(selectedQuotation.RequestID, "Accepted");
+                MessageBox.Show("Quotation Accepted");
+            }
+        }
+
+
+
+
+        private void RejectQuotation_Click(object sender, RoutedEventArgs e)
+        {
+            if (QuotationListView.SelectedItem is Quotation selectedQuotation)
+            {
+                _quotationService.UpdateQuotationStatus(selectedQuotation.RequestID, "Rejected");
+
+                // Fetch the customer and add a rejection message
+                var customer = _quotationService.GetCustomerByEmail(selectedQuotation.CustomerEmail);
+                customer?.Messages.Add("Your quotation was rejected.");
+
+                MessageBox.Show("Quotation Rejected");
+                LoadPendingQuotations();
+            }
+        }
 
     }
 

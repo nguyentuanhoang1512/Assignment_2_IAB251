@@ -59,14 +59,17 @@
                             Margin="430,200,80,150" 
                             Background="#F7941D" 
                             Foreground="White" 
-                            FontFamily="Tw Cen MT Condensed Extra Bold" FontSize="24"/>
+                            FontFamily="Tw Cen MT Condensed Extra Bold" FontSize="24"
+                            Click ="ViewPendingDiscount_Click"/>
 
         <!-- View Quotation Responses Button -->
         <Button Content="View Quotation Responses" 
                             Margin="80,200,430,150" 
                             Background="#F7941D" 
                             Foreground="White" 
-                            FontFamily="Tw Cen MT Condensed Extra Bold" FontSize="24"/>
+                            FontFamily="Tw Cen MT Condensed Extra Bold" FontSize="24"
+                            Click ="ViewQuotationResponse_Click"/>
+                            
 
         <!-- Small Back Button -->
 
